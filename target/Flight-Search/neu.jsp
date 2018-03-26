@@ -83,13 +83,12 @@ Friends
 
 <div class="my-3 p-3 bg-white rounded box-shadow">
 <%--<h6 class="border-bottom border-gray pb-2 mb-0">Flugsuche</h6>--%>
-<h6>Flugsuche!!!</h6>
+<h6>Flugsuche</h6>
 
 <div class="form-row">
 <div class="col-md-3 mb-3">
 <input type="airportOfDeparture" id="inputAirportOfDeparture" class="form-control" placeholder="Abflughafen" required autofocus>
 <label for="inputAirportOfDeparture"></label>
-
 <div class="invalid-tooltip">
 Bitte einen Abflughafen angeben.
 </div>
@@ -115,27 +114,18 @@ Bitte ein Abflugdatum angeben.
 <div class="col-md-3 mb-3">
 <input type="returnFlightDate" id="inputReturnFlightDate" class="form-control" placeholder="Rueckflugdatum [dd.MM.yyyy]" required autofocus>
 <label for="inputReturnFlightDate"></label>
-
 <div class="invalid-tooltip">
 Bitte ein Rueckflugdatum angeben.
 </div>
 </div>
 </div>
 <p>
-
 <div class="form-check">
 <input type="checkbox" class="form-check-input" id="oneWayFlight">
-<label class="form-check-label" for="oneWayFlight">Nur Hinflug</label>
-<%--RÜCKFLUGFELD VERSTECKEN W3 TUT--%>
+<label class="form-check-label" for="oneWayFlight">Nur Direkt</label>
 </div>
 </p>
-
-<a href="output.jsp">Click here! </a>
 <button class="btn btn-primary" type="submit">Suche starten</button>
-
-
-</div>
-
 
 <!--
   <div class="form-label-group">
@@ -189,6 +179,7 @@ Bitte ein Rueckflugdatum angeben.
 <%--</div>--%>
 <%--</div>--%>
 
+</div>
 
 </main>
 
