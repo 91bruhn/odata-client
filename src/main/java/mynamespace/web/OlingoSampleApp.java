@@ -55,9 +55,11 @@ import java.util.Set;
  */
 public class OlingoSampleApp {
     private ODataClient client;
+    public List<ClientEntity> flights;
 
     public OlingoSampleApp() {
         client = ODataClientFactory.getClient();
+        flights = new ArrayList<>();
     }
 
     public static void main(String[] params) throws Exception {
@@ -66,6 +68,11 @@ public class OlingoSampleApp {
         app.perform("http://localhost:8080/flightDataManagement.svc");
 
     }
+
+    //    void getAllFlights(){
+    //        URI absoluteUri = client.newURIBuilder("http://localhost:8080/flightDataManagement.svc").appendEntitySetSegment("flights").build();
+    //        return readEntities(edm, absoluteUri);
+    //    }
 
     void perform(String serviceUrl) throws Exception {
 
@@ -97,7 +104,7 @@ public class OlingoSampleApp {
         }
 
         print("\n----- Read Entities ------------------------------");
-        List<EdmEntitySet> edmEntitySets = edm.getSchema("OData.Flugdatenverwaltung").getEntityContainer().getEntitySets();
+        List<EdmEntitySet> edmEntitySets = edm.getSchema("OData.FlightDataManagement").getEntityContainer().getEntitySets();
         for (EdmEntitySet edmEntitySet : edmEntitySets) {
             String edmEntitySetName = edmEntitySet.getName();
 
@@ -105,6 +112,9 @@ public class OlingoSampleApp {
 
             while (iterator.hasNext()) {
                 ClientEntity ce = iterator.next();
+                if (edmEntitySetName.equals("Flights")) {
+                    flights.add(ce);
+                }
                 print("Entry:\n" + prettyPrint(ce.getProperties(), 0));
             }
 

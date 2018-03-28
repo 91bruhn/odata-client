@@ -132,7 +132,7 @@ Bitte ein Rueckflugdatum angeben.
 
 <a href="output.jsp">Click here! </a>
 <button class="btn btn-primary" type="submit">Suche starten</button>
-
+<%--"/result"--%>
 
 </div>
 

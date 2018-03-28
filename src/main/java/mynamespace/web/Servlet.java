@@ -17,6 +17,7 @@ import java.io.IOException;
 /**
  *
  */
+
 public class Servlet extends HttpServlet {
 
     // ------------------------------------------------------------------------
@@ -36,6 +37,7 @@ public class Servlet extends HttpServlet {
         //        app.perform("http://localhost:8080/cars.svc");
         try {
             app.perform("http://localhost:8080/flightDataManagement.svc");
+
         } catch (Exception e) {
 
         }
@@ -55,5 +57,4 @@ public class Servlet extends HttpServlet {
             throw new ServletException("Server Error occurred in FlightDataServlet");
         }
     }
-
 }
