@@ -32,16 +32,16 @@ public class Servlet extends HttpServlet {
     // methods
     // ------------------------------------------------------------------------
 
-    public void init() throws ServletException {
-        OlingoSampleApp app = new OlingoSampleApp();
-        //        app.perform("http://localhost:8080/cars.svc");
-        try {
-            app.perform("http://localhost:8080/flightDataManagement.svc");
-
-        } catch (Exception e) {
-
-        }
-    }
+//    public void init() throws ServletException {
+//        OlingoSampleApp app = new OlingoSampleApp();
+//        //        app.perform("http://localhost:8080/cars.svc");
+//        try {
+//            app.perform("http://localhost:8080/flightDataManagement.svc");
+//
+//        } catch (Exception e) {
+//
+//        }
+//    }
 
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

@@ -85,9 +85,12 @@ Friends
 <%--<h6 class="border-bottom border-gray pb-2 mb-0">Flugsuche</h6>--%>
 <h6>Flugsuche!!!</h6>
 
+<form action="result" method="GET">
+First Name: <input type="text" name="first_name">
+
 <div class="form-row">
 <div class="col-md-3 mb-3">
-<input type="airportOfDeparture" id="inputAirportOfDeparture" class="form-control" placeholder="Abflughafen" required autofocus>
+<input type="airportOfDeparture" id="inputAirportOfDeparture" name="inputAirportOfDeparture" class="form-control" placeholder="Abflughafen" required autofocus>
 <label for="inputAirportOfDeparture"></label>
 
 <div class="invalid-tooltip">
@@ -95,7 +98,7 @@ Bitte einen Abflughafen angeben.
 </div>
 </div>
 <div class="col-md-3 mb-3">
-<input type="airportOfArrival" id="inputAirportOfArrival" class="form-control" placeholder="Ankunftsflughafen" required autofocus>
+<input type="airportOfArrival" id="inputAirportOfArrival" name="inputAirportOfArrival" class="form-control" placeholder="Ankunftsflughafen" required autofocus>
 <label for="inputAirportOfArrival"></label>
 </div>
 <div class="invalid-tooltip">
@@ -130,9 +133,12 @@ Bitte ein Rueckflugdatum angeben.
 </div>
 </p>
 
-<a href="output.jsp">Click here! </a>
-<button class="btn btn-primary" type="submit">Suche starten</button>
 
+<%--<a href="output.jsp">Click here! </a>--%>
+
+<button class="btn btn-primary" type="submit">Suche starten</button>
+</form>
+<%--"/result"--%>
 
 </div>
 
