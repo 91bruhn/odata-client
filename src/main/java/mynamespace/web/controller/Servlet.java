@@ -5,7 +5,9 @@
 // Copyright (c) 2006 - 2018 FORCAM GmbH. All rights reserved.
 ////////////////////////////////////////////////////////////////////////////////
 
-package mynamespace.web;
+package mynamespace.web.controller;
+
+import mynamespace.web.service.Checker;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;

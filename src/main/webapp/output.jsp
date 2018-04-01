@@ -1,4 +1,4 @@
-<%@ page import="mynamespace.web.Checker" %>
+<%@ page import="mynamespace.web.service.Checker" %>
 <html>
 <head>
 <title>Ausgabe</title>

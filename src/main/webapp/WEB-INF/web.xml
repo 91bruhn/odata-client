@@ -7,7 +7,7 @@
 
     <servlet>
         <servlet-name>Servlet-flight-search</servlet-name>
-        <servlet-class>mynamespace.web.Servlet</servlet-class>
+        <servlet-class>mynamespace.web.controller.Servlet</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
 
@@ -34,7 +34,7 @@
         <!--xmlns="http://java.sun.com/xml/ns/javaee"-->
         <!--xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"-->
         <!--xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"-->
-        <!--id="Your_WebApp_ID"-->
+        <!--flightDate="Your_WebApp_ID"-->
         <!--version="2.5">-->
 
         <!--&lt;!&ndash; Here you go. &ndash;&gt;-->

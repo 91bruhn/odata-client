@@ -20,7 +20,7 @@
 <span class="navbar-toggler-icon"></span>
 </button>
 
-<div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
+<div class="navbar-collapse offcanvas-collapse" flightDate="navbarsExampleDefault">
 <ul class="navbar-nav mr-auto">
 <li class="nav-item active">
 <a class="nav-link" href="#">Dashboard <span class="sr-only">(current)</span></a>
@@ -35,7 +35,7 @@
 <a class="nav-link" href="#">Switch account</a>
 </li>
 <li class="nav-item dropdown">
-<a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Settings</a>
+<a class="nav-link dropdown-toggle" href="http://example.com" flightDate="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Settings</a>
 
 <div class="dropdown-menu" aria-labelledby="dropdown01">
 <a class="dropdown-item" href="#">Action</a>
@@ -90,7 +90,7 @@ First Name: <input type="text" name="first_name">
 
 <div class="form-row">
 <div class="col-md-3 mb-3">
-<input type="airportOfDeparture" id="inputAirportOfDeparture" name="inputAirportOfDeparture" class="form-control" placeholder="Abflughafen" required autofocus>
+<input type="airportOfDeparture" flightDate="inputAirportOfDeparture" name="inputAirportOfDeparture" class="form-control" placeholder="Abflughafen" required autofocus>
 <label for="inputAirportOfDeparture"></label>
 
 <div class="invalid-tooltip">
@@ -98,7 +98,7 @@ Bitte einen Abflughafen angeben.
 </div>
 </div>
 <div class="col-md-3 mb-3">
-<input type="airportOfArrival" id="inputAirportOfArrival" name="inputAirportOfArrival" class="form-control" placeholder="Ankunftsflughafen" required autofocus>
+<input type="airportOfArrival" flightDate="inputAirportOfArrival" name="inputAirportOfArrival" class="form-control" placeholder="Ankunftsflughafen" required autofocus>
 <label for="inputAirportOfArrival"></label>
 </div>
 <div class="invalid-tooltip">
@@ -108,7 +108,7 @@ Bitte einen Abflughafen angeben.
 
 <div class="form-row">
 <div class="col-md-3 mb-3">
-<input type="departureFlightDate" id="inputDepartureFlightDate" class="form-control" placeholder="Abflugdatum [dd.MM.yyyy]" required autofocus>
+<input type="departureFlightDate" flightDate="inputDepartureFlightDate" class="form-control" placeholder="Abflugdatum [dd.MM.yyyy]" required autofocus>
 <label for="inputDepartureFlightDate"></label>
 
 <div class="invalid-tooltip">
@@ -116,7 +116,7 @@ Bitte ein Abflugdatum angeben.
 </div>
 </div>
 <div class="col-md-3 mb-3">
-<input type="returnFlightDate" id="inputReturnFlightDate" class="form-control" placeholder="Rueckflugdatum [dd.MM.yyyy]" required autofocus>
+<input type="returnFlightDate" flightDate="inputReturnFlightDate" class="form-control" placeholder="Rueckflugdatum [dd.MM.yyyy]" required autofocus>
 <label for="inputReturnFlightDate"></label>
 
 <div class="invalid-tooltip">
@@ -127,7 +127,7 @@ Bitte ein Rueckflugdatum angeben.
 <p>
 
 <div class="form-check">
-<input type="checkbox" class="form-check-input" id="oneWayFlight">
+<input type="checkbox" class="form-check-input" flightDate="oneWayFlight">
 <label class="form-check-label" for="oneWayFlight">Nur Hinflug</label>
 <%--RÜCKFLUGFELD VERSTECKEN W3 TUT--%>
 </div>
@@ -145,12 +145,12 @@ Bitte ein Rueckflugdatum angeben.
 
 <!--
   <div class="form-label-group">
-       <input type="airportOfDeparture" id="inputAirportOfDeparture" class="form-control" placeholder="Abflughafen" required autofocus>
+       <input type="airportOfDeparture" flightDate="inputAirportOfDeparture" class="form-control" placeholder="Abflughafen" required autofocus>
        <label for="inputAirportOfDeparture">Abflughafen</label>
      </div>
 
   <div class="form-label-group">
-       <input type="airportOfArrival" id="inputAirportOfArrival" class="form-control" placeholder="Ankunftsflughafen" required autofocus>
+       <input type="airportOfArrival" flightDate="inputAirportOfArrival" class="form-control" placeholder="Ankunftsflughafen" required autofocus>
        <label for="inputAirportOfArrival">Ankunftsflughafen</label>
      </div>
 
@@ -158,7 +158,7 @@ Bitte ein Rueckflugdatum angeben.
 
       <div class="col-md-3 mb-3">
      <label for="validationTooltip05">Zip</label>
-     <input type="text" class="form-control" id="validationTooltip05" placeholder="Zip" required>
+     <input type="text" class="form-control" flightDate="validationTooltip05" placeholder="Zip" required>
      <div class="invalid-tooltip">
        Please provide a valid zip.
      </div>
@@ -171,7 +171,7 @@ Bitte ein Rueckflugdatum angeben.
 <%--<div class="row">--%>
 <%--<div class='col-sm-6'>--%>
 <%--<div class="form-group">--%>
-<%--<div class='input-group date' id='datetimepicker1'>--%>
+<%--<div class='input-group date' flightDate='datetimepicker1'>--%>
 <%--<input type='text' class="form-control"/>--%>
 <%--<span class="input-group-addon">--%>
 <%--<span class="glyphicon glyphicon-calendar"></span>--%>

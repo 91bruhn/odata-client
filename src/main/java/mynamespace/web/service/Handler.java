@@ -5,7 +5,7 @@
 // Copyright (c) 2006 - 2018 FORCAM GmbH. All rights reserved.
 ////////////////////////////////////////////////////////////////////////////////
 
-package mynamespace.web;
+package mynamespace.web.service;
 
 import org.apache.olingo.client.api.ODataClient;
 import org.apache.olingo.client.api.communication.request.retrieve.EdmMetadataRequest;
