@@ -13,16 +13,16 @@ package mynamespace.web.model;
 public class Booking {
 
     private String mBookId;
-    private String mScarrId;
-    private String mSpfliId;
-    private String mSflightId;
+    private String mCarrierId;
+    private String mConnectionId;
+    private String mFlightId;
     private String mCustomId;
-    private Character mCustType;
-    private Character mSmoker;
+    private String mCustType;
+    private boolean mSmoker;
     private double mLuggWeight;
     private String mWUnit;
     private boolean mInvoice;
-    private Character mFlightClass;
+    private String mFlightClass;
     private String mOrderDate;
     private boolean mCancelled;
     private boolean mReserved;
@@ -35,28 +35,28 @@ public class Booking {
         mBookId = bookId;
     }
 
-    public String getScarrId() {
-        return mScarrId;
+    public String getCarrierId() {
+        return mCarrierId;
     }
 
-    public void setScarrId(String scarrId) {
-        mScarrId = scarrId;
+    public void setCarrierId(String carrierId) {
+        mCarrierId = carrierId;
     }
 
-    public String getSpfliId() {
-        return mSpfliId;
+    public String getConnectionId() {
+        return mConnectionId;
     }
 
-    public void setSpfliId(String spfliId) {
-        mSpfliId = spfliId;
+    public void setConnectionId(String connectionId) {
+        mConnectionId = connectionId;
     }
 
-    public String getSflightId() {
-        return mSflightId;
+    public String getFlightId() {
+        return mFlightId;
     }
 
-    public void setSflightId(String sflightId) {
-        mSflightId = sflightId;
+    public void setFlightId(String flightId) {
+        mFlightId = flightId;
     }
 
     public String getCustomId() {
@@ -67,19 +67,19 @@ public class Booking {
         mCustomId = customId;
     }
 
-    public Character getCustType() {
+    public String getCustType() {
         return mCustType;
     }
 
-    public void setCustType(Character custType) {
+    public void setCustType(String custType) {
         mCustType = custType;
     }
 
-    public Character getSmoker() {
+    public boolean getSmoker() {
         return mSmoker;
     }
 
-    public void setSmoker(Character smoker) {
+    public void setSmoker(boolean smoker) {
         mSmoker = smoker;
     }
 
@@ -107,11 +107,11 @@ public class Booking {
         mInvoice = invoice;
     }
 
-    public Character getFlightClass() {
+    public String getFlightClass() {
         return mFlightClass;
     }
 
-    public void setFlightClass(Character flightClass) {
+    public void setFlightClass(String flightClass) {
         mFlightClass = flightClass;
     }
 

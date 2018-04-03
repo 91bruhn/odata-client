@@ -22,8 +22,8 @@
 <h3> My name is ${name1}</h3>
 
 <div class="container">
-<table class="table table-hover table-dark">
-<thead class="thead-light">
+<table class="table table-hover">
+<thead class="thead-dark">
 <tr>
 <th>Flugdatum</th>
 <th>Flugpreis</th>
@@ -36,18 +36,18 @@
 <c:forEach items="${sessionScope.flights}" var="flight">
 <tr>
 <td>
-<c:out value="${flight.id}"/>
+<c:out value="${flight.flightDate}"/>
 </td>
 <td>
-<c:out value="${flight.price} €"/>
+<c:out value="${flight.airfair} €"/>
 </td>
 <td>
-<c:out value="${flight.seatsMax}"/>
+<c:out value="${flight.seatsMaxE}"/>
 </td>
 <td>
 <%--<%= request.setAttribute("fligtz", request.getAttribute("flights"))%>--%>
-<a href="/current.jsp?id=${flight.id}" class="btn btn-info" role="button">Details</a>
-<%--<a href="current?id=${product.id}">detail</a>--%>
+<a href="/current.jsp?flightDate=${flight.flightDate}" class="btn btn-info" role="button">Details</a>
+<%--<a href="current?flightDate=${product.flightDate}">detail</a>--%>
 <%--<button type="button" class="btn btn-info">Info</button>--%>
 </td>
 </tr>

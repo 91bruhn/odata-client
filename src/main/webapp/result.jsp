@@ -22,8 +22,8 @@
 <h3> My name is ${name1}</h3>
 
 <div class="container">
-<table class="table table-hover table-dark">
-<thead class="thead-light">
+<table class="table table-hover">
+<thead class="thead-dark">
 <tr>
 <th>Flugdatum</th>
 <th>Flugpreis</th>

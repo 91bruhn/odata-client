@@ -1,5 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page import="mynamespace.web.Flight" %>
+<%@ page import="mynamespace.web.model.Flight" %>
 <!doctype html>
 <html lang="en">
 <head>
@@ -16,16 +16,16 @@
 <h1>Hello, world!</h1>
 <%pageContext.setAttribute("flightControl", new Flight());%>
 <%--<%pageContext.setAttribute("flight", flightControl.getFlight);%>--%>
-<%--<%pageContext.setAttribute("id", request.getParameter("id")%>--%>
+<%--<%pageContext.setAttribute("flightDate", request.getParameter("flightDate")%>--%>
 
-<c:set var="id" value="${param.id}" />
+<c:set var="flightDate" value="${param.flightDate}"/>
 <%--<c:set var="user" value="${flightControl.getFlight(flights, )}" scope="session" />--%>
 
 <%--<%pageContext.setAttribute("flightControl", new Flight());%>--%>
 
 <%--<%pageContext.setAttribute("${flightControl.getFlight(sessionScope.flights, "12.12.2012")}");%>--%>
 <%--<c:set var="flight" value="${sessionScope.flights}"/>--%>0
-<c:set var="flight" value="${flightControl.getFlight(sessionScope.flights, id)}"/>
+<c:set var="flight" value="${flightControl.getFlight(sessionScope.flights, flightDate)}"/>
 <table class="table table-bordered table-striped">
 <thead>
 <tr>
