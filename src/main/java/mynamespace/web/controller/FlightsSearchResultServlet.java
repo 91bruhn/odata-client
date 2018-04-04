@@ -31,7 +31,7 @@ import java.util.List;
  *
  */
 @WebServlet("/result")
-public class SearchResultServlet extends HttpServlet {
+public class FlightsSearchResultServlet extends HttpServlet {
 
     ODataClient mODataClient = ODataClientFactory.getClient();
 
@@ -47,10 +47,6 @@ public class SearchResultServlet extends HttpServlet {
         String inputReturnFlightDate = (String) req.getAttribute("inputReturnFlightDate");
         //        boolean oneWayFlight = (boolean) req.getAttribute("oneWayFlight");
 
-        //        <a href="mobile.jsp?id=iphone">Iphone 4S</a>
-        //        String clickedPhoneId = request.getParameter("id");
-        //        <c:if test="${param.id == 's5'}">S5 has been clicked</c:if>
-
         req.setAttribute("name1", "Hussein Terek");
         req.setAttribute("dada", inputAirportOfDeparture2);
         req.setAttribute("bb", inputAirportOfDeparture);
@@ -59,6 +55,7 @@ public class SearchResultServlet extends HttpServlet {
 
         String serviceUri = "http://localhost:8080/flightDataManagement.svc";
         String entitySetName = "Flights";
+
         ClientEntitySetIterator<ClientEntitySet, ClientEntity> iterator = readEntities(serviceUri, entitySetName);
         List<Flight> flights = new ArrayList<>();
         while (iterator.hasNext()) {
@@ -75,39 +72,13 @@ public class SearchResultServlet extends HttpServlet {
         req.getRequestDispatcher("/result.jsp").forward(req, resp);
     }
 
-    @Override
-    public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String inputAirportOfDeparture = (String) req.getAttribute("inputAirportOfDeparture");
-        String inputAirportOfDeparture2 = req.getParameter("inputAirportOfDeparture");
-
-        String name = req.getParameter("first_name");
-
-        String inputAirportOfArrival = (String) req.getAttribute("inputAirportOfArrival");
-        String inputAirportOfArrival2 = req.getParameter("inputAirportOfArrival");
-
-        String inputDepartureFlightDate = (String) req.getAttribute("inputDepartureFlightDate");
-        String inputReturnFlightDate = (String) req.getAttribute("inputReturnFlightDate");
-        boolean oneWayFlight = (boolean) req.getAttribute("oneWayFlight");
-
-        String serviceUri = "http://localhost:8080/flightDataManagement.svc";
-        String entitySetName = "Flights";
-        ClientEntitySetIterator<ClientEntitySet, ClientEntity> iterator = readEntities(serviceUri, entitySetName);
-        //
-        //        while (iterator.hasNext()) {
-        //            ClientEntity ce = iterator.next();
-        //            //            print("Entry:\n" + prettyPrint(ce.getProperties(), 0));
-        //            flights = ce.getProperties();
-        //        }
-
-    }
-
     public ClientEntitySetIterator<ClientEntitySet, ClientEntity> readEntities(String serviceUri, String entitySetName) {
         URI absoluteUri = mODataClient.newURIBuilder(serviceUri).appendEntitySetSegment(entitySetName).build();
         return readEntities(absoluteUri);
     }
 
     private ClientEntitySetIterator<ClientEntitySet, ClientEntity> readEntities(URI absoluteUri) {
-        System.out.println("URI = " + absoluteUri);
+//        System.out.println("URI = " + absoluteUri);
         ODataEntitySetIteratorRequest<ClientEntitySet, ClientEntity> request = mODataClient.getRetrieveRequestFactory()
                                                                                            .getEntitySetIteratorRequest(absoluteUri);
         // odata4 sample/server limitation not handling metadata=full

@@ -63,3 +63,6 @@
 
 </body>
 </html>
+<%--<a href="mobile.jsp?id=iphone">Iphone 4S</a>--%>
+<%--String clickedPhoneId = request.getParameter("id");--%>
+<%--<c:if test="${param.id == 's5'}">S5 has been clicked</c:if>--%>
