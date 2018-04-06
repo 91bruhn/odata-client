@@ -11,8 +11,14 @@ import mynamespace.web.model.Booking;
 import mynamespace.web.model.Carrier;
 import mynamespace.web.model.Connection;
 import mynamespace.web.model.Flight;
+import mynamespace.web.model.FlightSearchResult;
 import mynamespace.web.model.Plane;
 import org.apache.olingo.client.api.domain.ClientEntity;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 
 import static mynamespace.web.util.EntityNames.AIRPORT_FROM;
 import static mynamespace.web.util.EntityNames.AIRPORT_TO;
@@ -69,7 +75,86 @@ import static mynamespace.web.util.EntityNames.WEIGHT_UNIT;
 /**
  *
  */
-public class Mapper {
+public class RequestResultDataTransformator {
+
+    public static FlightSearchResult transformFlightSearchResultRequestToFlightSearchResult(ClientEntity entityFlightSearchResult, String dateFrom) {
+        final FlightSearchResult flightSearchResult = new FlightSearchResult();
+
+        flightSearchResult.setConnId((String) entityFlightSearchResult.getProperty(CONNECTION_ID).getValue().asPrimitive().toValue());
+        flightSearchResult.setCountryFrom((String) entityFlightSearchResult.getProperty(COUNTRY_FROM).getValue().asPrimitive().toValue());
+        flightSearchResult.setCityFrom((String) entityFlightSearchResult.getProperty(CITY_FROM).getValue().asPrimitive().toValue());
+        flightSearchResult.setAirpFrom((String) entityFlightSearchResult.getProperty(AIRPORT_FROM).getValue().asPrimitive().toValue());
+        flightSearchResult.setDepTime((String) entityFlightSearchResult.getProperty(DEPARTURE_TIME).getValue().asPrimitive().toValue());
+        flightSearchResult.setCountryTo((String) entityFlightSearchResult.getProperty(COUNTRY_TO).getValue().asPrimitive().toValue());
+        flightSearchResult.setCityTo((String) entityFlightSearchResult.getProperty(CITY_TO).getValue().asPrimitive().toValue());
+        flightSearchResult.setAirpTo((String) entityFlightSearchResult.getProperty(AIRPORT_TO).getValue().asPrimitive().toValue());
+        flightSearchResult.setArrTime((String) entityFlightSearchResult.getProperty(ARRIVAL_TIME).getValue().asPrimitive().toValue());
+        flightSearchResult.setFlTime((Integer) entityFlightSearchResult.getProperty(FLIGHT_TIME).getValue().asPrimitive().toValue());
+        flightSearchResult.setDistance((Double) entityFlightSearchResult.getProperty(DISTANCE).getValue().asPrimitive().toValue());
+        flightSearchResult.setDistId((String) entityFlightSearchResult.getProperty(DISTANCE_UNIT).getValue().asPrimitive().toValue());
+
+        final Carrier carrier = new Carrier();
+        carrier.setCarrName((String) entityFlightSearchResult.getProperty("Carrier").getComplexValue().get("CarrierName").getValue().asPrimitive().toValue());
+        carrier.setUrl((String) entityFlightSearchResult.getProperty("Carrier").getComplexValue().get("URL").getValue().asPrimitive().toValue());
+
+        final List<Flight> flights = new ArrayList<>();
+        entityFlightSearchResult.getProperty("Flights").getCollectionValue().forEach(flightRequestEntity -> {
+            final Flight flight = new Flight();
+            final String flightDate = (String) flightRequestEntity.asComplex().get("FlightDate").getValue().asPrimitive().toValue();
+
+            //            if (considerFlight(flightDate, dateFrom)) {//TODO richtig machen
+            flight.setFlightDate(flightDate);
+            //            flight.setAirfair((Double) flightRequestEntity.asComplex().get("Airfare").getValue().asPrimitive().toValue());
+            //            flight.setPlane((String) flightRequestEntity.asComplex().get("PlaneType").getValue().asPrimitive().toValue());
+            flight.setSeatsMaxE((Integer) flightRequestEntity.asComplex().get("MaxSeatsEconomyClass").getValue().asPrimitive().toValue());
+            flight.setSeatsMaxB((Integer) flightRequestEntity.asComplex().get("MaxSeatsBusinessClass").getValue().asPrimitive().toValue());
+            flight.setSeatsMaxF((Integer) flightRequestEntity.asComplex().get("MaxSeatsFirstClass").getValue().asPrimitive().toValue());
+            flight.setSeatsOccupiedE((Integer) flightRequestEntity.asComplex().get("OccupiedSeatsInEconomyClass").getValue().asPrimitive().toValue());
+            flight.setSeatsOccupiedB((Integer) flightRequestEntity.asComplex().get("OccupiedSeatsBusinessClass").getValue().asPrimitive().toValue());
+            flight.setSeatOccupiedF((Integer) flightRequestEntity.asComplex().get("OccupiedSeatsFirstClass").getValue().asPrimitive().toValue());
+
+            flights.add(flight);
+            //            }
+        });
+
+        flightSearchResult.setCarrier(carrier);
+        flightSearchResult.setFlights(flights);
+
+        return flightSearchResult;
+    }
+
+    // only considering flights that are starting at given date or up to a week later todo beschreibung
+    private static boolean considerFlight(String flightDate, String requestedDepartureDate) {
+        final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+        final LocalDate localDate = LocalDate.parse(flightDate, formatter);
+        final LocalDate exactRequestedDate = LocalDate.parse(requestedDepartureDate, formatter);
+        final LocalDate oneWeekAfterRequestedDate = LocalDate.parse(requestedDepartureDate, formatter).plusDays(8);
+
+        return localDate.isEqual(exactRequestedDate) || localDate.isBefore(oneWeekAfterRequestedDate);
+
+    }
+
+    public static Connection transformConnectionEntityToConnection(ClientEntity entityConnection) {
+        final Connection connection = new Connection();
+
+        connection.setConnId((String) entityConnection.getProperty(CONNECTION_ID).getValue().asPrimitive().toValue());
+        connection.setScarrId((String) entityConnection.getProperty(CARRIER_ID).getValue().asPrimitive().toValue());
+        connection.setFlType((String) entityConnection.getProperty(FLIGHT_TYPE).getValue().asPrimitive().toValue());
+        connection.setCountryFrom((String) entityConnection.getProperty(COUNTRY_FROM).getValue().asPrimitive().toValue());
+        connection.setCityFrom((String) entityConnection.getProperty(CITY_FROM).getValue().asPrimitive().toValue());
+        connection.setAirpFrom((String) entityConnection.getProperty(AIRPORT_FROM).getValue().asPrimitive().toValue());
+        connection.setDepTime((String) entityConnection.getProperty(DEPARTURE_TIME).getValue().asPrimitive().toValue());
+        connection.setCountryTo((String) entityConnection.getProperty(COUNTRY_TO).getValue().asPrimitive().toValue());
+        connection.setCityTo((String) entityConnection.getProperty(CITY_TO).getValue().asPrimitive().toValue());
+        connection.setAirpTo((String) entityConnection.getProperty(AIRPORT_TO).getValue().asPrimitive().toValue());
+        connection.setArrTime((String) entityConnection.getProperty(ARRIVAL_TIME).getValue().asPrimitive().toValue());
+        connection.setFlTime((Integer) entityConnection.getProperty(FLIGHT_TIME).getValue().asPrimitive().toValue());
+        connection.setDistance((Double) entityConnection.getProperty(DISTANCE).getValue().asPrimitive().toValue());
+        connection.setDistId((String) entityConnection.getProperty(DISTANCE_UNIT).getValue().asPrimitive().toValue());
+        connection.setPeriod((Integer) entityConnection.getProperty(PERIOD).getValue().asPrimitive().toValue());
+
+        return connection;
+    }
 
     public static Flight transformFlightEntityToFlight(ClientEntity entityFlight) {
         final Flight flight = new Flight();
@@ -120,28 +205,6 @@ public class Mapper {
         carrier.setUrl((String) entityCarrier.getProperty(URL).getValue().asPrimitive().toValue());
 
         return carrier;
-    }
-
-    public static Connection transformConnectionEntityToConnection(ClientEntity entityConnection) {
-        final Connection connection = new Connection();
-
-        connection.setConnId((String) entityConnection.getProperty(CONNECTION_ID).getValue().asPrimitive().toValue());
-        connection.setScarrId((String) entityConnection.getProperty(CARRIER_ID).getValue().asPrimitive().toValue());
-        connection.setFlType((String) entityConnection.getProperty(FLIGHT_TYPE).getValue().asPrimitive().toValue());
-        connection.setCountryFrom((String) entityConnection.getProperty(COUNTRY_FROM).getValue().asPrimitive().toValue());
-        connection.setCityFrom((String) entityConnection.getProperty(CITY_FROM).getValue().asPrimitive().toValue());
-        connection.setAirpFrom((String) entityConnection.getProperty(AIRPORT_FROM).getValue().asPrimitive().toValue());
-        connection.setDepTime((String) entityConnection.getProperty(DEPARTURE_TIME).getValue().asPrimitive().toValue());
-        connection.setCountryTo((String) entityConnection.getProperty(COUNTRY_TO).getValue().asPrimitive().toValue());
-        connection.setCityTo((String) entityConnection.getProperty(CITY_TO).getValue().asPrimitive().toValue());
-        connection.setAirpTo((String) entityConnection.getProperty(AIRPORT_TO).getValue().asPrimitive().toValue());
-        connection.setArrTime((String) entityConnection.getProperty(ARRIVAL_TIME).getValue().asPrimitive().toValue());
-        connection.setFlTime((Integer) entityConnection.getProperty(FLIGHT_TIME).getValue().asPrimitive().toValue());
-        connection.setDistance((Integer) entityConnection.getProperty(DISTANCE).getValue().asPrimitive().toValue());
-        connection.setDistId((String) entityConnection.getProperty(DISTANCE_UNIT).getValue().asPrimitive().toValue());
-        connection.setPeriod((Integer) entityConnection.getProperty(PERIOD).getValue().asPrimitive().toValue());
-
-        return connection;
     }
 
     public static Plane transformPlaneEntityToPlane(ClientEntity entityPlane) {

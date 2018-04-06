@@ -84,17 +84,20 @@
 <p>
 <ul class="nav nav-tabs">
 <li class="nav-item">
-<a class="nav-link active" href="#">Hin- und Rueckflueg</a>
+<a class="nav-link" href="index.jsp">Hin- und Rueckflueg</a>
 </li>
 <li class="nav-item">
-<a class="nav-link" href="indexOneWay.jsp">Nur Hinflug</a>
+<a class="nav-link active" href="#">Nur Hinflug</a>
 </li>
 </ul>
 </p>
+
 <%--<h6 class="border-bottom border-gray pb-2 mb-0">Flugsuche</h6>--%>
+
+
 <%--<h6>Hin- und Rueckflug suchen</h6>--%>
 
-<form action="searchResult" method="GET">
+<form action="oneWaySearchResult" method="GET">
 <div class="form-row">
 <div class="col-md-3 mb-3">
 <input type="airportOfDeparture" flightDate="inputAirportOfDeparture" name="inputAirportOfDeparture" class="form-control" placeholder="Abflughafen" required autofocus>
@@ -122,18 +125,7 @@ Bitte einen Abflughafen angeben.
 Bitte ein Abflugdatum angeben.
 </div>
 </div>
-<div class="col-md-3 mb-3">
-<input type="returnFlightDate" flightDate="inputReturnFlightDate" name="inputReturnFlightDate" class="form-control" placeholder="Rueckflugdatum [dd.MM.yyyy]" required autofocus>
-<label for="inputReturnFlightDate"></label>
-
-<div class="invalid-tooltip">
-Bitte ein Rueckflugdatum angeben.
 </div>
-</div>
-</div>
-
-
-<%--<a href="output.jsp">Click here! </a>--%>
 
 <button class="btn btn-primary" type="submit">Suche starten</button>
 </form>

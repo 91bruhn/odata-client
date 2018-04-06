@@ -7,9 +7,7 @@
 
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
-
-<link href="offcanvas.css" rel="stylesheet">
+<link href="/resources/css/offcanvas.css" rel="stylesheet">
 </head>
 
 <body class="bg-light">
@@ -51,22 +49,22 @@
 </div>
 </nav>
 
-<div class="nav-scroller bg-white box-shadow">
-<nav class="nav nav-underline">
-<a class="nav-link active" href="#">Dashboard</a>
-<a class="nav-link" href="#">
-Friends
-<span class="badge badge-pill bg-light align-text-bottom">27</span>
-</a>
-<a class="nav-link" href="#">Explore</a>
-<a class="nav-link" href="#">Suggestions</a>
-<a class="nav-link" href="#">Link</a>
-<a class="nav-link" href="#">Link</a>
-<a class="nav-link" href="#">Link</a>
-<a class="nav-link" href="#">Link</a>
-<a class="nav-link" href="#">Link</a>
-</nav>
-</div>
+<%--<div class="nav-scroller bg-white box-shadow">--%>
+<%--<nav class="nav nav-underline">--%>
+<%--<a class="nav-link active" href="#">Dashboard</a>--%>
+<%--<a class="nav-link" href="#">--%>
+<%--Friends--%>
+<%--<span class="badge badge-pill bg-light align-text-bottom">27</span>--%>
+<%--</a>--%>
+<%--<a class="nav-link" href="#">Explore</a>--%>
+<%--<a class="nav-link" href="#">Suggestions</a>--%>
+<%--<a class="nav-link" href="#">Link</a>--%>
+<%--<a class="nav-link" href="#">Link</a>--%>
+<%--<a class="nav-link" href="#">Link</a>--%>
+<%--<a class="nav-link" href="#">Link</a>--%>
+<%--<a class="nav-link" href="#">Link</a>--%>
+<%--</nav>--%>
+<%--</div>--%>
 
 
 <main role="main" class="container">
@@ -81,13 +79,22 @@ Friends
 </div>
 </div>
 
+
 <div class="my-3 p-3 bg-white rounded box-shadow">
+<p>
+<ul class="nav nav-tabs">
+<li class="nav-item">
+<a class="nav-link active" href="#">Hin- und Rueckflueg</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="indexOneWay.jsp">Nur Hinflug</a>
+</li>
+</ul>
+</p>
 <%--<h6 class="border-bottom border-gray pb-2 mb-0">Flugsuche</h6>--%>
-<h6>Flugsuche!!!</h6>
+<%--<h6>Hin- und Rueckflug suchen</h6>--%>
 
-<form action="result" method="GET">
-First Name: <input type="text" name="first_name">
-
+<form action="searchResult" method="GET">
 <div class="form-row">
 <div class="col-md-3 mb-3">
 <input type="airportOfDeparture" flightDate="inputAirportOfDeparture" name="inputAirportOfDeparture" class="form-control" placeholder="Abflughafen" required autofocus>
@@ -108,7 +115,7 @@ Bitte einen Abflughafen angeben.
 
 <div class="form-row">
 <div class="col-md-3 mb-3">
-<input type="departureFlightDate" flightDate="inputDepartureFlightDate" class="form-control" placeholder="Abflugdatum [dd.MM.yyyy]" required autofocus>
+<input type="departureFlightDate" flightDate="inputDepartureFlightDate" name="inputDepartureFlightDate" class="form-control" placeholder="Abflugdatum [dd.MM.yyyy]" required autofocus>
 <label for="inputDepartureFlightDate"></label>
 
 <div class="invalid-tooltip">
@@ -116,7 +123,7 @@ Bitte ein Abflugdatum angeben.
 </div>
 </div>
 <div class="col-md-3 mb-3">
-<input type="returnFlightDate" flightDate="inputReturnFlightDate" class="form-control" placeholder="Rueckflugdatum [dd.MM.yyyy]" required autofocus>
+<input type="returnFlightDate" flightDate="inputReturnFlightDate" name="inputReturnFlightDate" class="form-control" placeholder="Rueckflugdatum [dd.MM.yyyy]" required autofocus>
 <label for="inputReturnFlightDate"></label>
 
 <div class="invalid-tooltip">
@@ -124,14 +131,6 @@ Bitte ein Rueckflugdatum angeben.
 </div>
 </div>
 </div>
-<p>
-
-<div class="form-check">
-<input type="checkbox" class="form-check-input" flightDate="oneWayFlight">
-<label class="form-check-label" for="oneWayFlight">Nur Hinflug</label>
-<%--RÜCKFLUGFELD VERSTECKEN W3 TUT--%>
-</div>
-</p>
 
 
 <%--<a href="output.jsp">Click here! </a>--%>

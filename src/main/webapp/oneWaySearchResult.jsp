@@ -13,44 +13,79 @@
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-<title>Hello, world!</title>
+<title>Flugsuchergebnis</title>
 </head>
 
 
 <body>
-<%--<h3> My name is request.getAttribute("name")</h3>--%>
-<h3> My name is ${name1}</h3>
+
+<%--<div class="container">--%>
+<div class="jumbotron">
+<h1 class="text-center"><b> Ergebnisse der Flugsuche von <%= request.getParameter("inputAirportOfDeparture")%> nach <%= request.getParameter("inputAirportOfArrival")%>
+</b></h1>
+</div>
+<%--</div>--%>
 
 <div class="container">
+<%--<table class="table table-hover">table table-hover table-dark--%>
 <table class="table table-hover">
 <thead class="thead-dark">
 <tr>
-<th>Flugdatum</th>
+<th>Abflugsdatum</th>
+<th>Abflugszeit</th>
+<th>Ankunftszeit</th>
+<th>Flugdauer</th>
+<th>Abflugflughafen</th>
+<th>Ankunftsflughafen</th>
 <th>Flugpreis</th>
-<th>Max Sitze</th>
-<th>Details</th>
+<th>Vorh. Sitzplätze</th>
+<th>Buchen</th>
 </tr>
 </thead>
 <tbody>
-
-<c:forEach items="${sessionScope.flights}" var="flight">
+<c:forEach items="${sessionScope.searchResults}" var="searchResult">
+<c:forEach items="${searchResult.flights}" var="flight">
 <tr>
 <td>
 <c:out value="${flight.flightDate}"/>
 </td>
 <td>
-<c:out value="${flight.airfair} €"/>
+<c:out value="${searchResult.depTime}"/>
 </td>
 <td>
-<c:out value="${flight.seatsMaxE}"/>
+<c:out value="${searchResult.arrTime}"/>
 </td>
 <td>
+<c:out value="${searchResult.flTime}"/> min.
+</td>
+<td>
+<c:out value="${searchResult.cityFrom}"/> (<c:out value="${searchResult.airpFrom}"/>)
+</td>
+<td>
+<c:out value="${searchResult.cityTo}"/> (<c:out value="${searchResult.airpTo}"/>)
+</td>
+<td>
+<%--<c:out value="${flight.airFair}"/>--%>
+0
+</td>
+<td>
+<%--<c:out value="${searchResult.seatsMaxE}"/>--%>
+0
+</td>
+<td>
+<a href="/oneWayBooking.jsp" class="btn btn-info" role="button">Buchen</a>
+</td>
 <%--<%= request.setAttribute("fligtz", request.getAttribute("flights"))%>--%>
-<a href="/current.jsp?flightDate=${flight.flightDate}" class="btn btn-info" role="button">Details</a>
+
+
+<%--<a href="/current.jsp?flightDate=${flight.flightDate}" class="btn btn-info" role="button">Details</a>--%>
+
+
 <%--<a href="current?flightDate=${product.flightDate}">detail</a>--%>
 <%--<button type="button" class="btn btn-info">Info</button>--%>
 </td>
 </tr>
+</c:forEach>
 </c:forEach>
 
 
@@ -63,3 +98,6 @@
 
 </body>
 </html>
+<%--<a href="mobile.jsp?id=iphone">Iphone 4S</a>--%>
+<%--String clickedPhoneId = request.getParameter("id");--%>
+<%--<c:if test="${param.id == 's5'}">S5 has been clicked</c:if>--%>

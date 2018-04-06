@@ -52,13 +52,13 @@ public class ResultServlet extends HttpServlet {
     //            //            ce.getProperty()
     //            //            print("Entry:\n" + prettyPrint(ce.getProperties(), 0));
     //            //            flights = ce.getProperties();
-    //            flights.add(Mapper.transformFlightEntityToFlight(ce));
+    //            flights.add(RequestResultDataTransformator.transformFlightEntityToFlight(ce));
     //            //            flights.add(ce);
     //        }
     //        //        req.getSession().setAttribute("flights", flights);
     //        req.getSession().setAttribute("flights", flights);
     //        req.setAttribute("flights", flights);
-    //        req.getRequestDispatcher("/result.jsp").forward(req, resp);
+    //        req.getRequestDispatcher("/searchResults.jsp").forward(req, resp);
     //    }
     //
     //    public ClientEntitySetIterator<ClientEntitySet, ClientEntity> readEntities(String serviceUri, String entitySetName) {
