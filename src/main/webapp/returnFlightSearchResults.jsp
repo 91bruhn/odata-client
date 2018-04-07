@@ -34,7 +34,6 @@
 <%--&lt;%&ndash;</div>&ndash;%&gt;--%>
 
 
-
 <%--<div class="container">--%>
 <div class="jumbotron">
 <h1 class="text-center"><b>Ergebnisse der Flugsuche von ${dataTransformator.transformRequestCityName(airportOfDeparture)} nach ${dataTransformator.transformRequestCityName(airportOfArrival)}
@@ -87,7 +86,7 @@ ${dataTransformator.calculateFlightPriceInEuros(flight.airfair, flight.currency)
 ${dataTransformator.getCombinedAmountOfAvailableSeats(flight.seatsMaxE, flight.seatsMaxB, flight.seatsMaxF, flight.seatsOccupiedE, flight.seatsOccupiedB, flight.seatsOccupiedF)}
 </td>
 <td>
-<a href="/returnFlightSearchResult.jsp?flightDate=${flight.flightDate}&connId=${searchResult.connId}" class="btn btn-info" role="button">Buchen</a>
+<a href="/booking.jsp?flightDate=${flight.flightDate}&connId=${searchResult.connId}&carrierCode=${flight.carrierId}" class="btn btn-info" role="button">Buchen</a>
 </td>
 <%--<%= request.setAttribute("fligtz", request.getAttribute("flights"))%>--%>
 

@@ -77,7 +77,9 @@ ${dataTransformator.calculateFlightPriceInEuros(flight.airfair, flight.currency)
 ${dataTransformator.getCombinedAmountOfAvailableSeats(flight.seatsMaxE, flight.seatsMaxB, flight.seatsMaxF, flight.seatsOccupiedE, flight.seatsOccupiedB, flight.seatsOccupiedF)}
 </td>
 <td>
-<a href="/returnFlightSearchResult?flightDate=${flight.flightDate}&connId=${searchResult.connId}" class="btn btn-info" role="button">Rueckflug suchen</a>
+<a href="/returnFlightSearchResult?flightDate=${flight.flightDate}&connId=${searchResult.connId}" class="btn btn-info" role="button">Rueckflug suchen
+<span class="glyphicon glyphicon-plane"></span>
+</a>
 </td>
 <%--<%= request.setAttribute("fligtz", request.getAttribute("flights"))%>--%>
 
