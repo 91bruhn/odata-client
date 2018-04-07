@@ -8,7 +8,7 @@
 package mynamespace.web.controller;
 
 import mynamespace.web.model.FlightSearchResult;
-import mynamespace.web.service.RequestResultDataTransformator;
+import mynamespace.web.service.DataTransformator;
 import org.apache.olingo.client.api.ODataClient;
 import org.apache.olingo.client.api.communication.request.retrieve.ODataEntitySetIteratorRequest;
 import org.apache.olingo.client.api.communication.response.ODataRetrieveResponse;
@@ -42,8 +42,12 @@ public class FlightSearchResultServlet extends HttpServlet {
         final String inputDepartureFlightDate = req.getParameter("inputDepartureFlightDate");
         final String inputReturnFlightDate = req.getParameter("inputReturnFlightDate");
 
+        //TODO auslagern?? oder in Methode speichern...
+        //TODO Sample Zeug iwie benutzen?
+        //TODO Doku diese Applikation kann die Möglichkeiten von OData nur begrenzt ausreizen...
         final String serviceUri = "http://localhost:8080/flightDataManagement.svc/";
         final String entitySetName = "Connections";
+        //TODO in Doku nutzen
         //1 -- http://localhost:8080/flightDataManagement.svc/Connections?$filter=DepartureCity eq 'NEWYORK' and ArrivalCity eq 'SANFRANCISCO'
         //2 -- &$expand=Flights($select=FlightDate,MaxSeatsEconomyClass,OccupiedSeatsInEconomyClass,MaxSeatsBusinessClass,OccupiedSeatsBusinessClass,MaxSeatsFirstClass,OccupiedSeatsFirstClass),
         //3 Carrier($select=CarrierName,URL)
@@ -54,6 +58,8 @@ public class FlightSearchResultServlet extends HttpServlet {
                                             .filter("DepartureCity eq '" + inputAirportOfDeparture + "' and ArrivalCity eq '" + inputAirportOfArrival + "'")
                                             .expandWithSelect("Flights",
                                                               "FlightDate",
+                                                              "Airfare",
+                                                              "LocalCurrencyOfAirline",
                                                               "MaxSeatsEconomyClass",
                                                               "OccupiedSeatsInEconomyClass",
                                                               "MaxSeatsBusinessClass",
@@ -66,15 +72,20 @@ public class FlightSearchResultServlet extends HttpServlet {
         final List<FlightSearchResult> searchResults = new ArrayList<>();
 
         while (iterator.hasNext()) {
-            searchResults.add(RequestResultDataTransformator.transformFlightSearchResultRequestToFlightSearchResult(iterator.next(), inputDepartureFlightDate));
+            searchResults.add(DataTransformator.transformFlightSearchResultRequestToFlightSearchResult(iterator.next(),
+                                                                                                       inputDepartureFlightDate,
+                                                                                                       inputReturnFlightDate));
         }
         //TODO wenn keine Flüge gefunden wurden zu dem Datum
         //TODO muss jetzt eig noch alles als session scooped?
-        req.getSession().setAttribute("searchResults", searchResults);
+//        req.getSession().setAttribute("searchResults", searchResults);
+        req.setAttribute("searchResults", searchResults);
         req.getSession().setAttribute("inputAirportOfDeparture", inputAirportOfDeparture);
         req.getSession().setAttribute("inputAirportOfArrival", inputAirportOfArrival);
+        req.getSession().setAttribute("inputDepartureFlightDate", inputDepartureFlightDate);
         req.getSession().setAttribute("inputReturnFlightDate", inputReturnFlightDate);
         req.setAttribute("searchResults", searchResults);
+
         req.getRequestDispatcher("/searchResults.jsp").forward(req, resp);
     }
 

@@ -12,63 +12,7 @@
 
 <body class="bg-light">
 
-<nav class="navbar navbar-expand-md fixed-top navbar-dark bg-dark">
-<a class="navbar-brand" href="#">Offcanvas navbar</a>
-<button class="navbar-toggler p-0 border-0" type="button" data-toggle="offcanvas">
-<span class="navbar-toggler-icon"></span>
-</button>
-
-<div class="navbar-collapse offcanvas-collapse" flightDate="navbarsExampleDefault">
-<ul class="navbar-nav mr-auto">
-<li class="nav-item active">
-<a class="nav-link" href="#">Dashboard <span class="sr-only">(current)</span></a>
-</li>
-<li class="nav-item">
-<a class="nav-link" href="#">Notifications</a>
-</li>
-<li class="nav-item">
-<a class="nav-link" href="#">Profile</a>
-</li>
-<li class="nav-item">
-<a class="nav-link" href="#">Switch account</a>
-</li>
-<li class="nav-item dropdown">
-<a class="nav-link dropdown-toggle" href="http://example.com" flightDate="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Settings</a>
-
-<div class="dropdown-menu" aria-labelledby="dropdown01">
-<a class="dropdown-item" href="#">Action</a>
-<a class="dropdown-item" href="#">Another action</a>
-<a class="dropdown-item" href="#">Something else here</a>
-</div>
-</li>
-</ul>
-<form class="form-inline my-2 my-lg-0">
-<input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-</form>
-</div>
-</nav>
-
-<%--<div class="nav-scroller bg-white box-shadow">--%>
-<%--<nav class="nav nav-underline">--%>
-<%--<a class="nav-link active" href="#">Dashboard</a>--%>
-<%--<a class="nav-link" href="#">--%>
-<%--Friends--%>
-<%--<span class="badge badge-pill bg-light align-text-bottom">27</span>--%>
-<%--</a>--%>
-<%--<a class="nav-link" href="#">Explore</a>--%>
-<%--<a class="nav-link" href="#">Suggestions</a>--%>
-<%--<a class="nav-link" href="#">Link</a>--%>
-<%--<a class="nav-link" href="#">Link</a>--%>
-<%--<a class="nav-link" href="#">Link</a>--%>
-<%--<a class="nav-link" href="#">Link</a>--%>
-<%--<a class="nav-link" href="#">Link</a>--%>
-<%--</nav>--%>
-<%--</div>--%>
-
-
 <main role="main" class="container">
-
 
 <div class="d-flex align-items-center p-3 my-3 text-white-50 bg-purple rounded box-shadow">
 <img class="mr-3" src="https://getbootstrap.com/assets/brand/bootstrap-outline.svg" alt="" width="48" height="48">
@@ -91,110 +35,96 @@
 </li>
 </ul>
 </p>
-<%--<h6 class="border-bottom border-gray pb-2 mb-0">Flugsuche</h6>--%>
-<%--<h6>Hin- und Rueckflug suchen</h6>--%>
+<%--<br>--%>
 
 <form action="searchResult" method="GET">
 <div class="form-row">
+<%--            First  Row               --%>
 <div class="col-md-3 mb-3">
-<input type="airportOfDeparture" flightDate="inputAirportOfDeparture" name="inputAirportOfDeparture" class="form-control" placeholder="Abflughafen" required autofocus>
-<label for="inputAirportOfDeparture"></label>
+<%--            Airport of Departure               --%>
+<%--<input type="airportOfDeparture" flightDate="inputAirportOfDeparture" name="inputAirportOfDeparture" class="form-control" placeholder="Abflughafen" required autofocus>--%>
+
+<select class="form-control" id="inputAirportOfDeparture" name="inputAirportOfDeparture" required autofocus>
+<%--<option value="AUSWAHL">Abflughafen auswaehlen...</option>--%>
+<option value="NEWYORK">New York</option>
+<option value="FRANKFURT">Frankfurt</option>
+<option value="SANFRANCISCO">San Francisco</option>
+<option value="ROME">Rome</option>
+<option value="TOKYO">Tokyo</option>
+<option value="OSAKA">Osaka</option>
+<option value="BERLIN">Berlin</option>
+<option value="SINGAPORE">Singapore</option>
+<option value="BANGKOK">Bangkok</option>
+<option value="KUALALUMPUR">Kualalumpur</option>
+<option value="JAKARTA">Jakarta</option>
+<option value="HONGKONG">Hongkong</option>
+</select>
+<label for="inputAirportOfDeparture">Abflughafen</label>
 
 <div class="invalid-tooltip">
 Bitte einen Abflughafen angeben.
 </div>
 </div>
+
+
 <div class="col-md-3 mb-3">
-<input type="airportOfArrival" flightDate="inputAirportOfArrival" name="inputAirportOfArrival" class="form-control" placeholder="Ankunftsflughafen" required autofocus>
-<label for="inputAirportOfArrival"></label>
+<%--<input type="airportOfArrival" flightDate="inputAirportOfArrival" name="inputAirportOfArrival" class="form-control" placeholder="Ankunftsflughafen" required autofocus>--%>
+<%--            Airport of Arrival               --%>
+<select class="form-control" id="inputAirportOfArrival" name="inputAirportOfArrival" required autofocus>
+<%--<option value="AUSWAHL">Ankunftsflughafen auswaehlen...</option>--%>
+<option value="SANFRANCISCO">San Francisco</option>
+<option value="NEWYORK">New York</option>
+<option value="FRANKFURT">Frankfurt</option>
+<option value="ROME">Rome</option>
+<option value="TOKYO">Tokyo</option>
+<option value="OSAKA">Osaka</option>
+<option value="BERLIN">Berlin</option>
+<option value="SINGAPORE">Singapore</option>
+<option value="BANGKOK">Bangkok</option>
+<option value="KUALALUMPUR">Kualalumpur</option>
+<option value="JAKARTA">Jakarta</option>
+<option value="HONGKONG">Hongkong</option>
+</select>
+<label for="inputAirportOfArrival">Ankunftsflughafen</label>
 </div>
 <div class="invalid-tooltip">
 Bitte einen Abflughafen angeben.
 </div>
 </div>
+
 
 <div class="form-row">
+<%--            Second  Row               --%>
 <div class="col-md-3 mb-3">
-<input type="departureFlightDate" flightDate="inputDepartureFlightDate" name="inputDepartureFlightDate" class="form-control" placeholder="Abflugdatum [dd.MM.yyyy]" required autofocus>
-<label for="inputDepartureFlightDate"></label>
+<%--            Departure Flight Date               --%>
+<%--<input type="departureFlightDate" flightDate="inputDepartureFlightDate" name="inputDepartureFlightDate" class="form-control" placeholder="Abflugdatum [dd.MM.yyyy]" required autofocus>--%>
+<input class="form-control" type="date" value="2017-10-01" id="inputDepartureFlightDate" name="inputDepartureFlightDate" required autofocus>
+<label for="inputDepartureFlightDate">Abflugdatum (default: fruehester)</label>
 
 <div class="invalid-tooltip">
 Bitte ein Abflugdatum angeben.
 </div>
 </div>
+
+
 <div class="col-md-3 mb-3">
-<input type="returnFlightDate" flightDate="inputReturnFlightDate" name="inputReturnFlightDate" class="form-control" placeholder="Rueckflugdatum [dd.MM.yyyy]" required autofocus>
-<label for="inputReturnFlightDate"></label>
+<%--            Return Flight Date               --%>
+<input class="form-control" type="date" value="2018-05-18" id="inputReturnFlightDate" name="inputReturnFlightDate" required autofocus>
+<%--<input type="returnFlightDate" flightDate="inputReturnFlightDate" name="inputReturnFlightDate" class="form-control" placeholder="Rueckflugdatum [dd.MM.yyyy]" required autofocus>--%>
+<label for="inputReturnFlightDate">Rueckflugdatum (default: spaetester)</label>
 
 <div class="invalid-tooltip">
 Bitte ein Rueckflugdatum angeben.
 </div>
 </div>
-</div>
 
+</div
 
-<%--<a href="output.jsp">Click here! </a>--%>
-
+<%--            Start Search               --%>
+<br>
 <button class="btn btn-primary" type="submit">Suche starten</button>
 </form>
-<%--"/result"--%>
-
 </div>
-
-
-<!--
-  <div class="form-label-group">
-       <input type="airportOfDeparture" flightDate="inputAirportOfDeparture" class="form-control" placeholder="Abflughafen" required autofocus>
-       <label for="inputAirportOfDeparture">Abflughafen</label>
-     </div>
-
-  <div class="form-label-group">
-       <input type="airportOfArrival" flightDate="inputAirportOfArrival" class="form-control" placeholder="Ankunftsflughafen" required autofocus>
-       <label for="inputAirportOfArrival">Ankunftsflughafen</label>
-     </div>
-
-
-
-      <div class="col-md-3 mb-3">
-     <label for="validationTooltip05">Zip</label>
-     <input type="text" class="form-control" flightDate="validationTooltip05" placeholder="Zip" required>
-     <div class="invalid-tooltip">
-       Please provide a valid zip.
-     </div>
-   </div>
-
-  -->
-
-
-<%--<div class="container">--%>
-<%--<div class="row">--%>
-<%--<div class='col-sm-6'>--%>
-<%--<div class="form-group">--%>
-<%--<div class='input-group date' flightDate='datetimepicker1'>--%>
-<%--<input type='text' class="form-control"/>--%>
-<%--<span class="input-group-addon">--%>
-<%--<span class="glyphicon glyphicon-calendar"></span>--%>
-<%--</span>--%>
-<%--</div>--%>
-<%--</div>--%>
-<%--</div>--%>
-<%--<script type="text/javascript">--%>
-<%--$(function () {--%>
-<%--$('#datetimepicker1').datetimepicker();--%>
-<%--});--%>
-<%--</script>--%>
-<%--</div>--%>
-<%--</div>--%>
-
-<%--<div class="input-group date" data-provide="datepicker">--%>
-<%--<input type="text" class="form-control">--%>
-
-<%--<div class="input-group-addon">--%>
-<%--<span class="glyphicon glyphicon-th"></span>--%>
-<%--</div>--%>
-<%--</div>--%>
-
-
 </main>
 
 <!-- Optional JavaScript -->

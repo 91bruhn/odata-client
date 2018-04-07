@@ -8,7 +8,8 @@
 package mynamespace.web.controller;
 
 import mynamespace.web.model.FlightSearchResult;
-import mynamespace.web.service.RequestResultDataTransformator;
+import mynamespace.web.service.DataTransformator;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.olingo.client.api.ODataClient;
 import org.apache.olingo.client.api.communication.request.retrieve.ODataEntitySetIteratorRequest;
 import org.apache.olingo.client.api.communication.response.ODataRetrieveResponse;
@@ -40,7 +41,6 @@ public class OneWayFlightSearchResultServlet extends HttpServlet {
         final String inputAirportOfDeparture = req.getParameter("inputAirportOfDeparture");
         final String inputAirportOfArrival = req.getParameter("inputAirportOfArrival");
         final String inputDepartureFlightDate = req.getParameter("inputDepartureFlightDate");
-        final String oneWayFlight = req.getParameter("oneWayFlight");
 
         final String serviceUri = "http://localhost:8080/flightDataManagement.svc/";
         final String entitySetName = "Connections";
@@ -63,13 +63,14 @@ public class OneWayFlightSearchResultServlet extends HttpServlet {
         final ClientEntitySetIterator<ClientEntitySet, ClientEntity> iterator = readEntities(absoluteUri);
         final List<FlightSearchResult> searchResults = new ArrayList<>();
         //        iterator.forEachRemaining(clientEntity -> {
-        //            searchResults.add(RequestResultDataTransformator.transformFlightSearchResultRequestToFlightSearchResult(iterator.next(),
+        //            searchResults.add(DataTransformator.transformFlightSearchResultRequestToFlightSearchResult(iterator.next(),
         //                                                                                                                    inputDepartureFlightDate,
         //                                                                                                                    inputReturnFlightDate));
         //        });
         while (iterator.hasNext()) {
-            searchResults.add(RequestResultDataTransformator.transformFlightSearchResultRequestToFlightSearchResult(iterator.next(),
-                                                                                                                    inputDepartureFlightDate));
+            searchResults.add(DataTransformator.transformFlightSearchResultRequestToFlightSearchResult(iterator.next(),
+                                                                                                       inputDepartureFlightDate,
+                                                                                                       StringUtils.EMPTY));
         }
         //        req.getSession().setAttribute("searchResults", searchResults);
         req.getSession().setAttribute("searchResults", searchResults);

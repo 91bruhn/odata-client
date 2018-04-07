@@ -52,7 +52,7 @@ public class ResultServlet extends HttpServlet {
     //            //            ce.getProperty()
     //            //            print("Entry:\n" + prettyPrint(ce.getProperties(), 0));
     //            //            flights = ce.getProperties();
-    //            flights.add(RequestResultDataTransformator.transformFlightEntityToFlight(ce));
+    //            flights.add(DataTransformator.transformFlightEntityToFlight(ce));
     //            //            flights.add(ce);
     //        }
     //        //        req.getSession().setAttribute("flights", flights);

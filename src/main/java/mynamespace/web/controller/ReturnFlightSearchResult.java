@@ -8,7 +8,7 @@
 package mynamespace.web.controller;
 
 import mynamespace.web.model.FlightSearchResult;
-import mynamespace.web.service.RequestResultDataTransformator;
+import mynamespace.web.service.DataTransformator;
 import org.apache.olingo.client.api.ODataClient;
 import org.apache.olingo.client.api.communication.request.retrieve.ODataEntitySetIteratorRequest;
 import org.apache.olingo.client.api.communication.response.ODataRetrieveResponse;
@@ -37,10 +37,10 @@ public class ReturnFlightSearchResult extends HttpServlet {
 
     @Override
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        final String inputAirportOfDeparture = (String) req.getSession().getAttribute("inputAirportOfDeparture");
-        final String inputAirportOfArrival = (String) req.getSession().getAttribute("inputAirportOfArrival");
-        final String inputReturnFlightDate = (String) req.getSession().getAttribute("inputReturnFlightDate");
-
+        final String airportOfArrival = (String) req.getSession().getAttribute("inputAirportOfDeparture");
+        final String airportOfDeparture = (String) req.getSession().getAttribute("inputAirportOfArrival");
+        final String departureFlightDate = (String) req.getSession().getAttribute("inputDepartureFlightDate");
+        final String returnFlightDate = (String) req.getSession().getAttribute("inputReturnFlightDate");
         final String serviceUri = "http://localhost:8080/flightDataManagement.svc/";
         final String entitySetName = "Connections";
         //1 -- http://localhost:8080/flightDataManagement.svc/Connections?$filter=DepartureCity eq 'NEWYORK' and ArrivalCity eq 'SANFRANCISCO'
@@ -51,9 +51,11 @@ public class ReturnFlightSearchResult extends HttpServlet {
         //TODO umgedreht
         final URI absoluteUri = mODataClient.newURIBuilder(serviceUri)
                                             .appendEntitySetSegment(entitySetName)
-                                            .filter("DepartureCity eq '" + inputAirportOfArrival + "' and ArrivalCity eq '" + inputAirportOfDeparture + "'")
+                                            .filter("DepartureCity eq '" + airportOfDeparture + "' and ArrivalCity eq '" + airportOfArrival + "'")
                                             .expandWithSelect("Flights",
                                                               "FlightDate",
+                                                              "Airfare",
+                                                              "LocalCurrencyOfAirline",
                                                               "MaxSeatsEconomyClass",
                                                               "OccupiedSeatsInEconomyClass",
                                                               "MaxSeatsBusinessClass",
@@ -66,14 +68,26 @@ public class ReturnFlightSearchResult extends HttpServlet {
         final List<FlightSearchResult> returnFlightSearchResults = new ArrayList<>();
 
         while (iterator.hasNext()) {
-            returnFlightSearchResults.add(RequestResultDataTransformator.transformFlightSearchResultRequestToFlightSearchResult(iterator.next(),
-                                                                                                                                inputReturnFlightDate));
+            returnFlightSearchResults.add(DataTransformator.transformFlightSearchResultRequestToFlightSearchResult(iterator.next(),
+                                                                                                                   departureFlightDate,
+                                                                                                                   returnFlightDate));
         }
 
-        req.getSession().setAttribute("returnFlightSearchResults", returnFlightSearchResults);
+        //        req.getSession().setAttribute("returnFlightSearchResults", returnFlightSearchResults);
         //        req.getSession().setAttribute("inputReturnFlightDate", inputReturnFlightDate);
         req.setAttribute("returnFlightSearchResults", returnFlightSearchResults);
+        //override old values - meaning vice versa is true
+        req.getSession().setAttribute("inputAirportOfDeparture", airportOfDeparture);
+        req.getSession().setAttribute("inputAirportOfArrival", airportOfArrival);
         req.getRequestDispatcher("/returnFlightSearchResults.jsp").forward(req, resp);
+
+        //        req.getSession().setAttribute("searchResults", searchResults);
+        //        req.getSession().setAttribute("inputAirportOfDeparture", inputAirportOfDeparture);
+        //        req.getSession().setAttribute("inputAirportOfArrival", inputAirportOfArrival);
+        //        req.getSession().setAttribute("inputDepartureFlightDate", inputDepartureFlightDate);
+        //        req.getSession().setAttribute("inputReturnFlightDate", inputReturnFlightDate);
+        //        req.setAttribute("searchResults", searchResults);
+
     }
 
     private ClientEntitySetIterator<ClientEntitySet, ClientEntity> readEntities(URI absoluteUri) {

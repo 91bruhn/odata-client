@@ -25,7 +25,7 @@ public class Flight {
     private int mSeatsMaxB;
     private int mSeatsOccupiedB;
     private int mSeatsMaxF;
-    private int mSeatOccupiedF;
+    private int mSeatsOccupiedF;
 
     // ------------------------------------------------------------------------
     // methods
@@ -132,11 +132,11 @@ public class Flight {
         mSeatsMaxF = seatsMaxF;
     }
 
-    public int getSeatOccupiedF() {
-        return mSeatOccupiedF;
+    public int getSeatsOccupiedF() {
+        return mSeatsOccupiedF;
     }
 
-    public void setSeatOccupiedF(int seatOccupiedF) {
-        mSeatOccupiedF = seatOccupiedF;
+    public void setSeatsOccupiedF(int seatsOccupiedF) {
+        mSeatsOccupiedF = seatsOccupiedF;
     }
 }

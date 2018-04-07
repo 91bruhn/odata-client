@@ -1,3 +1,4 @@
+<%@ page import="mynamespace.web.service.DataTransformator" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--Notwendig--%>
@@ -10,18 +11,23 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+<%--<c:set var = "airportOfDeparture" scope = "session" value = "request.getAttribute("inputAirportOfDeparture")"/>--%>
+<%--<c:set var = "airportOfArrival" scope = "session" value = "${2000*2}"/>--%>
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 <title>Flugsuchergebnis</title>
 </head>
 
-
+<%--<%= ((Person)request.getAttribute("PesronObj"))%>--%>
 <body>
-
+<% pageContext.setAttribute("dataTransformator", new DataTransformator()); %>
+<c:set var="airportOfDeparture" value="${sessionScope.inputAirportOfDeparture}"/>
+<c:set var="airportOfArrival" value="${sessionScope.inputAirportOfArrival}"/>
+<%--<c:set var="airportOfDepartureFormatted" value="${dataTransformator.transformRequestCityName(airportOfDeparture)}"/>--%>
 <%--<div class="container">--%>
 <div class="jumbotron">
-<h1 class="text-center"><b> ANPASSEN!!! Ergebnisse der Flugsuche von <%= request.getParameter("inputAirportOfDeparture")%> nach <%= request.getParameter("inputAirportOfArrival")%>
+<h1 class="text-center"><b>Ergebnisse der Flugsuche von ${dataTransformator.transformRequestCityName(airportOfDeparture)} nach ${dataTransformator.transformRequestCityName(airportOfArrival)}
 </b></h1>
 </div>
 <%--</div>--%>
@@ -43,7 +49,7 @@
 </tr>
 </thead>
 <tbody>
-<c:forEach items="${sessionScope.searchResults}" var="searchResult">
+<c:forEach items="${requestScope.searchResults}" var="searchResult">
 <c:forEach items="${searchResult.flights}" var="flight">
 <tr>
 <td>
@@ -65,12 +71,10 @@
 <c:out value="${searchResult.cityTo}"/> (<c:out value="${searchResult.airpTo}"/>)
 </td>
 <td>
-<%--<c:out value="${flight.airFair}"/>--%>
-0
+${dataTransformator.calculateFlightPriceInEuros(flight.airfair, flight.currency)} €
 </td>
 <td>
-<%--<c:out value="${searchResult.seatsMaxE}"/>--%>
-0
+${dataTransformator.getCombinedAmountOfAvailableSeats(flight.seatsMaxE, flight.seatsMaxB, flight.seatsMaxF, flight.seatsOccupiedE, flight.seatsOccupiedB, flight.seatsOccupiedF)}
 </td>
 <td>
 <a href="/returnFlightSearchResult?flightDate=${flight.flightDate}&connId=${searchResult.connId}" class="btn btn-info" role="button">Rueckflug suchen</a>

@@ -13,8 +13,10 @@ import mynamespace.web.model.Connection;
 import mynamespace.web.model.Flight;
 import mynamespace.web.model.FlightSearchResult;
 import mynamespace.web.model.Plane;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.olingo.client.api.domain.ClientEntity;
 
+import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -75,9 +77,10 @@ import static mynamespace.web.util.EntityNames.WEIGHT_UNIT;
 /**
  *
  */
-public class RequestResultDataTransformator {
+public class DataTransformator {
 
-    public static FlightSearchResult transformFlightSearchResultRequestToFlightSearchResult(ClientEntity entityFlightSearchResult, String dateFrom) {
+    public static FlightSearchResult transformFlightSearchResultRequestToFlightSearchResult(ClientEntity entityFlightSearchResult, String dateFrom,
+                                                                                            String dateTo) {
         final FlightSearchResult flightSearchResult = new FlightSearchResult();
 
         flightSearchResult.setConnId((String) entityFlightSearchResult.getProperty(CONNECTION_ID).getValue().asPrimitive().toValue());
@@ -102,19 +105,20 @@ public class RequestResultDataTransformator {
             final Flight flight = new Flight();
             final String flightDate = (String) flightRequestEntity.asComplex().get("FlightDate").getValue().asPrimitive().toValue();
 
-            //            if (considerFlight(flightDate, dateFrom)) {//TODO richtig machen
-            flight.setFlightDate(flightDate);
-            //            flight.setAirfair((Double) flightRequestEntity.asComplex().get("Airfare").getValue().asPrimitive().toValue());
-            //            flight.setPlane((String) flightRequestEntity.asComplex().get("PlaneType").getValue().asPrimitive().toValue());
-            flight.setSeatsMaxE((Integer) flightRequestEntity.asComplex().get("MaxSeatsEconomyClass").getValue().asPrimitive().toValue());
-            flight.setSeatsMaxB((Integer) flightRequestEntity.asComplex().get("MaxSeatsBusinessClass").getValue().asPrimitive().toValue());
-            flight.setSeatsMaxF((Integer) flightRequestEntity.asComplex().get("MaxSeatsFirstClass").getValue().asPrimitive().toValue());
-            flight.setSeatsOccupiedE((Integer) flightRequestEntity.asComplex().get("OccupiedSeatsInEconomyClass").getValue().asPrimitive().toValue());
-            flight.setSeatsOccupiedB((Integer) flightRequestEntity.asComplex().get("OccupiedSeatsBusinessClass").getValue().asPrimitive().toValue());
-            flight.setSeatOccupiedF((Integer) flightRequestEntity.asComplex().get("OccupiedSeatsFirstClass").getValue().asPrimitive().toValue());
+            if (considerFlight(flightDate, dateFrom, dateTo)) {//TODO richtig machen
+                flight.setFlightDate(flightDate);
+                flight.setAirfair((Double) flightRequestEntity.asComplex().get("Airfare").getValue().asPrimitive().toValue());
+                flight.setCurrency((String) flightRequestEntity.asComplex().get("LocalCurrencyOfAirline").getValue().asPrimitive().toValue());
+                //            flight.setPlane((String) flightRequestEntity.asComplex().get("PlaneType").getValue().asPrimitive().toValue());
+                flight.setSeatsMaxE((Integer) flightRequestEntity.asComplex().get("MaxSeatsEconomyClass").getValue().asPrimitive().toValue());
+                flight.setSeatsMaxB((Integer) flightRequestEntity.asComplex().get("MaxSeatsBusinessClass").getValue().asPrimitive().toValue());
+                flight.setSeatsMaxF((Integer) flightRequestEntity.asComplex().get("MaxSeatsFirstClass").getValue().asPrimitive().toValue());
+                flight.setSeatsOccupiedE((Integer) flightRequestEntity.asComplex().get("OccupiedSeatsInEconomyClass").getValue().asPrimitive().toValue());
+                flight.setSeatsOccupiedB((Integer) flightRequestEntity.asComplex().get("OccupiedSeatsBusinessClass").getValue().asPrimitive().toValue());
+                flight.setSeatsOccupiedF((Integer) flightRequestEntity.asComplex().get("OccupiedSeatsFirstClass").getValue().asPrimitive().toValue());
 
-            flights.add(flight);
-            //            }
+                flights.add(flight);
+            }
         });
 
         flightSearchResult.setCarrier(carrier);
@@ -124,14 +128,21 @@ public class RequestResultDataTransformator {
     }
 
     // only considering flights that are starting at given date or up to a week later todo beschreibung
-    private static boolean considerFlight(String flightDate, String requestedDepartureDate) {
-        final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
-        final LocalDate localDate = LocalDate.parse(flightDate, formatter);
-        final LocalDate exactRequestedDate = LocalDate.parse(requestedDepartureDate, formatter);
-        final LocalDate oneWeekAfterRequestedDate = LocalDate.parse(requestedDepartureDate, formatter).plusDays(8);
+    private static boolean considerFlight(String flightDateOfRequest, String requestedDateFrom, String requestedDateTo) {
+        final DateTimeFormatter formatterRequestedDate = DateTimeFormatter.ofPattern("yyyy-MM-dd");//2017-10-01, dd.MM.yyyy
+        final DateTimeFormatter formatterRequestDate = DateTimeFormatter.ofPattern("dd.MM.yyyy");//2017-10-01, dd.MM.yyyy
+        final LocalDate flightDate = LocalDate.parse(flightDateOfRequest, formatterRequestDate);
+        //        final LocalDate oneWeekAfterRequestedDate = LocalDate.parse(requestedDateFrom, formatterRequestedDate).plusDays(8);
+        //        final LocalDate oneWeekBeforeRequestedDate = LocalDate.parse(requestedDateFrom, formatterRequestedDate).minusDays(8);
+        final LocalDate dateFrom = LocalDate.parse(requestedDateFrom, formatterRequestedDate);
 
-        return localDate.isEqual(exactRequestedDate) || localDate.isBefore(oneWeekAfterRequestedDate);
+        if (requestedDateTo.isEmpty()) {
+            return flightDate.isAfter(dateFrom) || flightDate.isEqual(dateFrom);
+        }
 
+        final LocalDate dateTo = LocalDate.parse(requestedDateTo, formatterRequestedDate);
+
+        return (flightDate.isAfter(dateFrom) || flightDate.isEqual(dateFrom)) && (flightDate.isBefore(dateTo) || flightDate.isEqual(dateTo));
     }
 
     public static Connection transformConnectionEntityToConnection(ClientEntity entityConnection) {
@@ -170,7 +181,7 @@ public class RequestResultDataTransformator {
         flight.setSeatsMaxB((Integer) entityFlight.getProperty(SEATS_MAX_B).getValue().asPrimitive().toValue());
         flight.setSeatsOccupiedB((Integer) entityFlight.getProperty(SEATS_OCC_B).getValue().asPrimitive().toValue());
         flight.setSeatsMaxF((Integer) entityFlight.getProperty(SEATS_MAX_F).getValue().asPrimitive().toValue());
-        flight.setSeatOccupiedF((Integer) entityFlight.getProperty(SEATS_OCC_F).getValue().asPrimitive().toValue());
+        flight.setSeatsOccupiedF((Integer) entityFlight.getProperty(SEATS_OCC_F).getValue().asPrimitive().toValue());
 
         return flight;
     }
@@ -226,5 +237,76 @@ public class RequestResultDataTransformator {
         plane.setProducer((String) entityPlane.getProperty(PRODUCER).getValue().asPrimitive().toValue());
 
         return plane;
+    }
+
+    public String transformRequestCityName(String cityName) {
+        switch (cityName) {
+            case "SANFRANCISCO":
+                return "San Francisco";
+            case "NEWYORK":
+                return "New York";
+            case "FRANKFURT":
+                return "Frankfurt";
+            case "ROME":
+                return "Rome";
+            case "TOKYO":
+                return "Tokyo";
+            case "OSAKA":
+                return "Osaka";
+            case "BERLIN":
+                return "Berlin";
+            case "SINGAPORE":
+                return "Singapore";
+            case "KUALALUMPUR":
+                return "Kualalumpur";
+            case "BANGKOK":
+                return "Bangkok";
+            case "JAKARTA":
+                return "Jakarta";
+            case "HONGKONG":
+                return "Hongkong";
+            default:
+                return StringUtils.EMPTY;
+        }
+    }
+
+    //if price is not in euros then adjust price
+    public double calculateFlightPriceInEuros(double flightPrice, String currency) {
+        switch (currency) {
+            case "EUR":
+                break;
+            case "USD":
+                flightPrice = flightPrice * 0.846302926;
+                break;
+            case "CAD":
+                flightPrice = flightPrice * 0.660759472;
+                break;
+            case "GBP":
+                flightPrice = flightPrice * 1.13498532;
+                break;
+            case "JPY":
+                flightPrice = flightPrice * 0.00751516998;
+                break;
+            case "AUD":
+                flightPrice = flightPrice * 0.645898393;
+                break;
+            case "ZAR":
+                flightPrice = flightPrice * 0.0628887704;
+                break;
+            case "SGD":
+                flightPrice = flightPrice * 0.628227588;
+                break;
+            case "CHF":
+                flightPrice = flightPrice * 0.859039785;
+                break;
+        }
+        final DecimalFormat format = new DecimalFormat("#.00");
+
+        return Double.parseDouble(format.format(flightPrice).replace(",", "."));
+    }
+
+    //combines the amount of available seats from economic, business and first class
+    public int getCombinedAmountOfAvailableSeats(int seatsMaxE, int seatsMaxB, int seatsMaxF, int seatsOccuppiedE, int seatsOccuppiedB, int seatsOccuppiedF) {
+        return (seatsMaxE - seatsOccuppiedE) + (seatsMaxB - seatsOccuppiedB) + (seatsMaxF - seatsOccuppiedF);
     }
 }
