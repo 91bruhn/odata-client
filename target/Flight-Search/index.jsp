@@ -27,7 +27,7 @@
 <p>
 <ul class="nav nav-tabs">
 <li class="nav-item">
-<a class="nav-link active" href="#">Hin- und Rueckflueg</a>
+<a class="nav-link active" href="#">Hin- und R&uuml;ckflug</a>
 </li>
 <li class="nav-item">
 <a class="nav-link" href="indexOneWay.jsp">Nur Hinflug</a>
@@ -98,7 +98,7 @@ Bitte einen Abflughafen angeben.
 <%--            Departure Flight Date               --%>
 <%--<input type="departureFlightDate" flightDate="inputDepartureFlightDate" name="inputDepartureFlightDate" class="form-control" placeholder="Abflugdatum [dd.MM.yyyy]" required autofocus>--%>
 <input class="form-control" type="date" value="2017-10-01" id="inputDepartureFlightDate" name="inputDepartureFlightDate" required autofocus>
-<label for="inputDepartureFlightDate">Abflugdatum (default: fruehester)</label>
+<label for="inputDepartureFlightDate">Abflugdatum (default: fr&uuml;hester)</label>
 
 <div class="invalid-tooltip">
 Bitte ein Abflugdatum angeben.
@@ -110,10 +110,10 @@ Bitte ein Abflugdatum angeben.
 <%--            Return Flight Date               --%>
 <input class="form-control" type="date" value="2018-05-18" id="inputReturnFlightDate" name="inputReturnFlightDate" required autofocus>
 <%--<input type="returnFlightDate" flightDate="inputReturnFlightDate" name="inputReturnFlightDate" class="form-control" placeholder="Rueckflugdatum [dd.MM.yyyy]" required autofocus>--%>
-<label for="inputReturnFlightDate">Rueckflugdatum (default: spaetester)</label>
+<label for="inputReturnFlightDate">R&uuml;ckflugdatum (default: sp&auml;tester)</label>
 
 <div class="invalid-tooltip">
-Bitte ein Rueckflugdatum angeben.
+Bitte ein R&uuml;ckflugdatum angeben.
 </div>
 </div>
 

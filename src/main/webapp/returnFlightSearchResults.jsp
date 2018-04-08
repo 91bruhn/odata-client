@@ -54,12 +54,13 @@
 <th>Ankunftsflughafen</th>
 <th>Flugpreis</th>
 <th>Vorh. Sitzplätze</th>
-<th>Rueckflug</th>
+<th>Flüge buchen</th>
 </tr>
 </thead>
 <tbody>
 <c:forEach items="${requestScope.returnConnectionSearchResults}" var="returnFlightSearchResult">
 <c:forEach items="${returnFlightSearchResult.flights}" var="flight">
+<c:set value="${returnFlightSearchResult.carrier}" var="carrier"/>
 <tr>
 <td>
 <c:out value="${flight.flightDate}"/>
@@ -86,10 +87,10 @@ ${dataTransformator.calculateFlightPriceInEuros(flight.airfair, flight.currency)
 ${dataTransformator.getCombinedAmountOfAvailableSeats(flight.seatsMaxE, flight.seatsMaxB, flight.seatsMaxF, flight.seatsOccupiedE, flight.seatsOccupiedB, flight.seatsOccupiedF)}
 </td>
 <td>
-<a href="/booking.jsp?flightDate=${flight.flightDate}&connId=${searchResult.connId}&carrierCode=${flight.carrierId}" class="btn btn-info" role="button">Buchen</a>
+<a href="/booking.jsp?connId=${returnFlightSearchResult.connId}&flightDate=${flight.flightDate}" class="btn btn-info" role="button">Buchen</a>
 </td>
 <%--<%= request.setAttribute("fligtz", request.getAttribute("flights"))%>--%>
-
+<%--&carrierCode=${carrier.carrierId}--%>
 
 <%--<a href="/current.jsp?flightDate=${flight.flightDate}" class="btn btn-info" role="button">Details</a>--%>
 

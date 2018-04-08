@@ -18,11 +18,13 @@
 <body class="text-center">
 
 <div class="py-5 text-center">
-<img class="d-block mx-auto mb-4" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+<%--<img class="d-block mx-auto mb-4" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">--%>
 
-<h2>Checkout form</h2>
+<h2>Buchungsformular</h2>
 
-<p class="lead">Below is an example form built entirely with Bootstrap's form controls. Each required form group has a validation state that can be triggered by attempting to submit the form without completing it.</p>
+<p class="lead">Bitte geben Sie Ihre Daten an, um die Buchung f&uuml;r die Reise abzuschlie&szlig;en.
+Auf der n&auml;chsten Seite wird der Gesamtpreis berechnet.
+Bitte beachten Sie, dass sich der Preis durch die Bef&ouml;rderungsklasse ver&auml;ndert.</p>
 </div>
 
 
@@ -32,14 +34,23 @@
 <div class="form-row">
 
 
-<div class="form-group col-md-6">
-<label for="inputEmail4">Vorname</label>
-<input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+<div class="form-group col-md-4">
+<label for="inputFirstName">Vorname</label>
+<input type="text" class="form-control" id="inputFirstName" placeholder="Vorname">
 </div>
 
-<div class="form-group col-md-6">
-<label for="inputPassword4">Nachname</label>
-<input type="password" class="form-control" id="inputPassword4" placeholder="Password">
+<div class="form-group col-md-4">
+<label for="inputLastName">Nachname</label>
+<input type="text" class="form-control" id="inputLastName" placeholder="Nachname">
+</div>
+
+<%--<div class="form-group col-md-4">--%>
+<div class="form-group col-md-2">
+<label for="inputSex">Geschlecht</label>
+<select id="inputSex" class="form-control">
+<option selected>m&auml;nnlich</option>
+<option>weiblich</option>
+</select>
 </div>
 
 
@@ -50,25 +61,18 @@
 
 
 <div class="form-group col-md-4">
-<label for="inputFlightClass">Befoerderungsklasse</label>
+<label for="inputFlightClass">Bef&ouml;rderungsklasse</label>
 <select id="inputFlightClass" class="form-control">
 <option selected>Economy Class (Basis: kein Aufschlag)</option>
-<option>Business Class (1,5 facher Aufschlag)</option>
-<option>First Class (3,5 facher Aufschlag)</option>
+<option>Business Class (1,5-facher Aufschlag)</option>
+<option>First Class (3,5-facher Aufschlag)</option>
 </select>
 </div>
 
-<div class="form-group col-md-4">
-<label for="inputSex">Geschlecht</label>
-<select id="inputSex" class="form-control">
-<option selected>maennlich</option>
-<option>weiblich</option>
-</select>
-</div>
 
 <div class="form-group col-md-2">
-<label for="inputZip">Gewicht Gepaeck in Kg</label>
-<input type="text" class="form-control" id="inputZip">
+<label for="inputLuggWeight">Gewicht Gep&auml;ck in Kg</label>
+<input type="text" class="form-control" id="inputLuggWeight">
 </div>
 
 
@@ -77,8 +81,8 @@
 
 <div class="form-group">
 <div class="form-check">
-<input class="form-check-input" type="checkbox" id="gridCheck">
-<label class="form-check-label" for="gridCheck">Raucher?</label>
+<input class="form-check-input" type="checkbox" id="isSmoker">
+<label class="form-check-label" for="isSmoker">Raucher?</label>
 </div>
 </div>
 <button type="submit" class="btn btn-primary">zur Zusammenfassung</button>
