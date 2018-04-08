@@ -7,7 +7,7 @@
 
 package mynamespace.web.controller;
 
-import mynamespace.web.model.FlightSearchResult;
+import mynamespace.web.model.ConnectionSearchResult;
 import mynamespace.web.service.DataTransformator;
 import org.apache.olingo.client.api.ODataClient;
 import org.apache.olingo.client.api.communication.request.retrieve.ODataEntitySetIteratorRequest;
@@ -69,12 +69,12 @@ public class FlightSearchResultServlet extends HttpServlet {
                                             .expandWithSelect("Carrier", "CarrierName", "URL")
                                             .build();
         final ClientEntitySetIterator<ClientEntitySet, ClientEntity> iterator = readEntities(absoluteUri);
-        final List<FlightSearchResult> searchResults = new ArrayList<>();
+        final List<ConnectionSearchResult> searchResults = new ArrayList<>();
 
         while (iterator.hasNext()) {
-            searchResults.add(DataTransformator.transformFlightSearchResultRequestToFlightSearchResult(iterator.next(),
-                                                                                                       inputDepartureFlightDate,
-                                                                                                       inputReturnFlightDate));
+            searchResults.add(DataTransformator.transformConnectionSearchResultRequestToConnectionSearchResult(iterator.next(),
+                                                                                                               inputDepartureFlightDate,
+                                                                                                               inputReturnFlightDate));
         }
         //TODO wenn keine Flüge gefunden wurden zu dem Datum
         //TODO muss jetzt eig noch alles als session scooped?

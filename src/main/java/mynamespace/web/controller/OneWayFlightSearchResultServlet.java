@@ -7,7 +7,7 @@
 
 package mynamespace.web.controller;
 
-import mynamespace.web.model.FlightSearchResult;
+import mynamespace.web.model.ConnectionSearchResult;
 import mynamespace.web.service.DataTransformator;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.olingo.client.api.ODataClient;
@@ -61,16 +61,16 @@ public class OneWayFlightSearchResultServlet extends HttpServlet {
                                                                                                                                          "CarrierName",
                                                                                                                                          "URL").build();
         final ClientEntitySetIterator<ClientEntitySet, ClientEntity> iterator = readEntities(absoluteUri);
-        final List<FlightSearchResult> searchResults = new ArrayList<>();
+        final List<ConnectionSearchResult> searchResults = new ArrayList<>();
         //        iterator.forEachRemaining(clientEntity -> {
-        //            searchResults.add(DataTransformator.transformFlightSearchResultRequestToFlightSearchResult(iterator.next(),
+        //            searchResults.add(DataTransformator.transformConnectionSearchResultRequestToConnectionSearchResult(iterator.next(),
         //                                                                                                                    inputDepartureFlightDate,
         //                                                                                                                    inputReturnFlightDate));
         //        });
         while (iterator.hasNext()) {
-            searchResults.add(DataTransformator.transformFlightSearchResultRequestToFlightSearchResult(iterator.next(),
-                                                                                                       inputDepartureFlightDate,
-                                                                                                       StringUtils.EMPTY));
+            searchResults.add(DataTransformator.transformConnectionSearchResultRequestToConnectionSearchResult(iterator.next(),
+                                                                                                               inputDepartureFlightDate,
+                                                                                                               StringUtils.EMPTY));
         }
         //        req.getSession().setAttribute("searchResults", searchResults);
         req.getSession().setAttribute("searchResults", searchResults);

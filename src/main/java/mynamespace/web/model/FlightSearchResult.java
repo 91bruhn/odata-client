@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////
 //
-// Created by BBruhns on 06.04.2018.
+// Created by BBruhns on 08.04.2018.
 //
 // Copyright (c) 2006 - 2018 FORCAM GmbH. All rights reserved.
 ////////////////////////////////////////////////////////////////////////////////
@@ -14,35 +14,64 @@ import java.util.List;
  */
 public class FlightSearchResult {
 
-    private String connId;
-    private List<Flight> mFlights;
+    private Flight mFlight;
+    private  Connection mConnection;
     private Carrier mCarrier;
-    private String mAirpFrom;
-    private String mAirpTo;
-    private String mCityFrom;
-    private String mCityTo;
-    private String mCountryFrom;
-    private String mCountryTo;
-    private int mFlTime;
-    private String mDepTime;
-    private String mArrTime;
-    private double mDistance;
-    private String mDistId;
 
-    public String getConnId() {
-        return connId;
+//    .select("Airfare",
+//                "LocalCurrencyOfAirline",
+//                "MaxSeatsEconomyClass",
+//                "OccupiedSeatsInEconomyClass",
+//                "MaxSeatsBusinessClass",
+//                "OccupiedSeatsBusinessClass",
+//                "MaxSeatsFirstClass",
+//                "OccupiedSeatsFirstClass")
+//    .expandWithSelect(entitySetNameConnection,
+//                      "DepartureCountryKey",
+//                          "DepartureCity",
+//                          "DepartureAirport",
+//                          "ArrivalCountryKey",
+//                          "ArrivalCity",
+//                          "ArrivalAirport",
+//                          "FlightTime",
+//                          "DepartureTime",
+//                          "ArrivalTime")
+//    .expandWithSelect(entitySetNameCarrier, "CarrierName", "URL")
+//
+
+//    private String mFlightDate;
+//    private Connection mConnection;
+//    private Carrier mCarrier;
+//    private String mLocCurrency;
+//
+//
+//
+//    private String mAirpFrom;
+//    private String mAirpTo;
+//    private String mCityFrom;
+//    private String mCityTo;
+//    private String mCountryFrom;
+//    private String mCountryTo;
+//    private int mFlTime;
+//    private String mDepTime;
+//    private String mArrTime;
+//    private double mDistance;
+//    private String mDistId;
+
+    public Flight getFlight() {
+        return mFlight;
     }
 
-    public void setConnId(String connId) {
-        this.connId = connId;
+    public void setFlight(Flight flight) {
+        mFlight = flight;
     }
 
-    public List<Flight> getFlights() {
-        return mFlights;
+    public Connection getConnection() {
+        return mConnection;
     }
 
-    public void setFlights(List<Flight> flights) {
-        mFlights = flights;
+    public void setConnection(Connection connection) {
+        mConnection = connection;
     }
 
     public Carrier getCarrier() {
@@ -51,93 +80,5 @@ public class FlightSearchResult {
 
     public void setCarrier(Carrier carrier) {
         mCarrier = carrier;
-    }
-
-    public String getAirpFrom() {
-        return mAirpFrom;
-    }
-
-    public void setAirpFrom(String airpFrom) {
-        mAirpFrom = airpFrom;
-    }
-
-    public String getAirpTo() {
-        return mAirpTo;
-    }
-
-    public void setAirpTo(String airpTo) {
-        mAirpTo = airpTo;
-    }
-
-    public String getCityFrom() {
-        return mCityFrom;
-    }
-
-    public void setCityFrom(String cityFrom) {
-        mCityFrom = cityFrom;
-    }
-
-    public String getCityTo() {
-        return mCityTo;
-    }
-
-    public void setCityTo(String cityTo) {
-        mCityTo = cityTo;
-    }
-
-    public String getCountryFrom() {
-        return mCountryFrom;
-    }
-
-    public void setCountryFrom(String countryFrom) {
-        mCountryFrom = countryFrom;
-    }
-
-    public String getCountryTo() {
-        return mCountryTo;
-    }
-
-    public void setCountryTo(String countryTo) {
-        mCountryTo = countryTo;
-    }
-
-    public int getFlTime() {
-        return mFlTime;
-    }
-
-    public void setFlTime(int flTime) {
-        mFlTime = flTime;
-    }
-
-    public String getDepTime() {
-        return mDepTime;
-    }
-
-    public void setDepTime(String depTime) {
-        mDepTime = depTime;
-    }
-
-    public String getArrTime() {
-        return mArrTime;
-    }
-
-    public void setArrTime(String arrTime) {
-        mArrTime = arrTime;
-    }
-
-    public double getDistance() {
-        return mDistance;
-    }
-
-    public void setDistance(double distance) {
-        mDistance = distance;
-    }
-
-    public String getDistId() {
-        return mDistId;
-    }
-
-    public void setDistId(String distId) {
-        mDistId = distId;
     }
 }

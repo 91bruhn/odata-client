@@ -58,7 +58,7 @@
 </tr>
 </thead>
 <tbody>
-<c:forEach items="${requestScope.returnFlightSearchResults}" var="returnFlightSearchResult">
+<c:forEach items="${requestScope.returnConnectionSearchResults}" var="returnFlightSearchResult">
 <c:forEach items="${returnFlightSearchResult.flights}" var="flight">
 <tr>
 <td>

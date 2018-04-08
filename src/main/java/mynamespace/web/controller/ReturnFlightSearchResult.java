@@ -7,7 +7,7 @@
 
 package mynamespace.web.controller;
 
-import mynamespace.web.model.FlightSearchResult;
+import mynamespace.web.model.ConnectionSearchResult;
 import mynamespace.web.service.DataTransformator;
 import org.apache.olingo.client.api.ODataClient;
 import org.apache.olingo.client.api.communication.request.retrieve.ODataEntitySetIteratorRequest;
@@ -65,21 +65,21 @@ public class ReturnFlightSearchResult extends HttpServlet {
                                             .expandWithSelect("Carrier", "CarrierName", "URL")
                                             .build();
         final ClientEntitySetIterator<ClientEntitySet, ClientEntity> iterator = readEntities(absoluteUri);
-        final List<FlightSearchResult> returnFlightSearchResults = new ArrayList<>();
+        final List<ConnectionSearchResult> returnConnectionSearchResults = new ArrayList<>();
 
         while (iterator.hasNext()) {
-            returnFlightSearchResults.add(DataTransformator.transformFlightSearchResultRequestToFlightSearchResult(iterator.next(),
-                                                                                                                   departureFlightDate,
-                                                                                                                   returnFlightDate));
+            returnConnectionSearchResults.add(DataTransformator.transformConnectionSearchResultRequestToConnectionSearchResult(iterator.next(),
+                                                                                                                           departureFlightDate,
+                                                                                                                           returnFlightDate));
         }
 
-        //        req.getSession().setAttribute("returnFlightSearchResults", returnFlightSearchResults);
+        //        req.getSession().setAttribute("returnConnectionSearchResults", returnConnectionSearchResults);
         //        req.getSession().setAttribute("inputReturnFlightDate", inputReturnFlightDate);
-        req.setAttribute("returnFlightSearchResults", returnFlightSearchResults);
+        req.setAttribute("returnConnectionSearchResults", returnConnectionSearchResults);
         //override old values - meaning vice versa is true
         req.getSession().setAttribute("inputAirportOfDeparture", airportOfDeparture);
         req.getSession().setAttribute("inputAirportOfArrival", airportOfArrival);
-        req.getRequestDispatcher("/returnFlightSearchResults.jsp").forward(req, resp);
+        req.getRequestDispatcher("/returnConnectionSearchResults.jsp").forward(req, resp);
 
         //        req.getSession().setAttribute("searchResults", searchResults);
         //        req.getSession().setAttribute("inputAirportOfDeparture", inputAirportOfDeparture);
