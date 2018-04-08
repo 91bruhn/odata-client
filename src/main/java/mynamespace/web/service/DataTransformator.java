@@ -14,6 +14,7 @@ import mynamespace.web.model.Flight;
 import mynamespace.web.model.FlightSearchResult;
 import mynamespace.web.model.Plane;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.olingo.client.api.domain.ClientComplexValue;
 import org.apache.olingo.client.api.domain.ClientEntity;
 
 import java.text.DecimalFormat;
@@ -97,25 +98,28 @@ public class DataTransformator {
         flightSearchResult.setDistId((String) entityFlightSearchResult.getProperty(DISTANCE_UNIT).getValue().asPrimitive().toValue());
 
         final Carrier carrier = new Carrier();
-        carrier.setCarrName((String) entityFlightSearchResult.getProperty("Carrier").getComplexValue().get("CarrierName").getValue().asPrimitive().toValue());
-        carrier.setUrl((String) entityFlightSearchResult.getProperty("Carrier").getComplexValue().get("URL").getValue().asPrimitive().toValue());
+        final ClientComplexValue complexValueCarrier = entityFlightSearchResult.getProperty("Carrier").getComplexValue();
+        carrier.setCarrId((String) complexValueCarrier.get("CarrierCode").getValue().asPrimitive().toValue());
+        carrier.setCarrName((String) complexValueCarrier.get("CarrierName").getValue().asPrimitive().toValue());
+        carrier.setUrl((String) complexValueCarrier.get("URL").getValue().asPrimitive().toValue());
 
         final List<Flight> flights = new ArrayList<>();
         entityFlightSearchResult.getProperty("Flights").getCollectionValue().forEach(flightRequestEntity -> {
             final Flight flight = new Flight();
-            final String flightDate = (String) flightRequestEntity.asComplex().get("FlightDate").getValue().asPrimitive().toValue();
+            final ClientComplexValue complexValueFlight = flightRequestEntity.asComplex();
+            final String flightDate = (String) complexValueFlight.get("FlightDate").getValue().asPrimitive().toValue();
 
             if (considerFlight(flightDate, dateFrom, dateTo)) {//TODO richtig machen
                 flight.setFlightDate(flightDate);
-                flight.setAirfair((Double) flightRequestEntity.asComplex().get("Airfare").getValue().asPrimitive().toValue());
-                flight.setCurrency((String) flightRequestEntity.asComplex().get("LocalCurrencyOfAirline").getValue().asPrimitive().toValue());
+                flight.setAirfair((Double) complexValueFlight.get("Airfare").getValue().asPrimitive().toValue());
+                flight.setCurrency((String) complexValueFlight.get("LocalCurrencyOfAirline").getValue().asPrimitive().toValue());
                 //            flight.setPlane((String) flightRequestEntity.asComplex().get("PlaneType").getValue().asPrimitive().toValue());
-                flight.setSeatsMaxE((Integer) flightRequestEntity.asComplex().get("MaxSeatsEconomyClass").getValue().asPrimitive().toValue());
-                flight.setSeatsMaxB((Integer) flightRequestEntity.asComplex().get("MaxSeatsBusinessClass").getValue().asPrimitive().toValue());
-                flight.setSeatsMaxF((Integer) flightRequestEntity.asComplex().get("MaxSeatsFirstClass").getValue().asPrimitive().toValue());
-                flight.setSeatsOccupiedE((Integer) flightRequestEntity.asComplex().get("OccupiedSeatsInEconomyClass").getValue().asPrimitive().toValue());
-                flight.setSeatsOccupiedB((Integer) flightRequestEntity.asComplex().get("OccupiedSeatsBusinessClass").getValue().asPrimitive().toValue());
-                flight.setSeatsOccupiedF((Integer) flightRequestEntity.asComplex().get("OccupiedSeatsFirstClass").getValue().asPrimitive().toValue());
+                flight.setSeatsMaxE((Integer) complexValueFlight.get("MaxSeatsEconomyClass").getValue().asPrimitive().toValue());
+                flight.setSeatsMaxB((Integer) complexValueFlight.get("MaxSeatsBusinessClass").getValue().asPrimitive().toValue());
+                flight.setSeatsMaxF((Integer) complexValueFlight.get("MaxSeatsFirstClass").getValue().asPrimitive().toValue());
+                flight.setSeatsOccupiedE((Integer) complexValueFlight.get("OccupiedSeatsInEconomyClass").getValue().asPrimitive().toValue());
+                flight.setSeatsOccupiedB((Integer) complexValueFlight.get("OccupiedSeatsBusinessClass").getValue().asPrimitive().toValue());
+                flight.setSeatsOccupiedF((Integer) complexValueFlight.get("OccupiedSeatsFirstClass").getValue().asPrimitive().toValue());
 
                 flights.add(flight);
             }
@@ -129,11 +133,9 @@ public class DataTransformator {
 
     // only considering flights that are starting at given date or up to a week later todo beschreibung
     private static boolean considerFlight(String flightDateOfRequest, String requestedDateFrom, String requestedDateTo) {
-        final DateTimeFormatter formatterRequestedDate = DateTimeFormatter.ofPattern("yyyy-MM-dd");//2017-10-01, dd.MM.yyyy
-        final DateTimeFormatter formatterRequestDate = DateTimeFormatter.ofPattern("dd.MM.yyyy");//2017-10-01, dd.MM.yyyy
+        final DateTimeFormatter formatterRequestedDate = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        final DateTimeFormatter formatterRequestDate = DateTimeFormatter.ofPattern("dd.MM.yyyy");
         final LocalDate flightDate = LocalDate.parse(flightDateOfRequest, formatterRequestDate);
-        //        final LocalDate oneWeekAfterRequestedDate = LocalDate.parse(requestedDateFrom, formatterRequestedDate).plusDays(8);
-        //        final LocalDate oneWeekBeforeRequestedDate = LocalDate.parse(requestedDateFrom, formatterRequestedDate).minusDays(8);
         final LocalDate dateFrom = LocalDate.parse(requestedDateFrom, formatterRequestedDate);
 
         if (requestedDateTo.isEmpty()) {

@@ -45,12 +45,13 @@
 <th>Ankunftsflughafen</th>
 <th>Flugpreis</th>
 <th>Vorh. Sitzplätze</th>
-<th>Rueckflug</th>
+<th>Rückflug hinzufügen</th>
 </tr>
 </thead>
 <tbody>
 <c:forEach items="${requestScope.searchResults}" var="searchResult">
 <c:forEach items="${searchResult.flights}" var="flight">
+<c:set value="${searchResult.carrier}" var="carrier"/>
 <tr>
 <td>
 <c:out value="${flight.flightDate}"/>
@@ -77,10 +78,9 @@ ${dataTransformator.calculateFlightPriceInEuros(flight.airfair, flight.currency)
 ${dataTransformator.getCombinedAmountOfAvailableSeats(flight.seatsMaxE, flight.seatsMaxB, flight.seatsMaxF, flight.seatsOccupiedE, flight.seatsOccupiedB, flight.seatsOccupiedF)}
 </td>
 <td>
-<a href="/returnFlightSearchResult?flightDate=${flight.flightDate}&connId=${searchResult.connId}" class="btn btn-info" role="button">Rueckflug suchen
-<span class="glyphicon glyphicon-plane"></span>
-</a>
+<a href="/returnFlightSearchResult?connId=${searchResult.connId}&flightDate=${flight.flightDate}" class="btn btn-info" role="button">R&uuml;ckflug suchen</a>
 </td>
+<%--&carrierCode=${carrier.carrierId}--%>
 <%--<%= request.setAttribute("fligtz", request.getAttribute("flights"))%>--%>
 
 

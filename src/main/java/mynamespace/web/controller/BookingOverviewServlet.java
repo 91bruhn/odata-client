@@ -24,9 +24,12 @@ public class BookingOverviewServlet extends HttpServlet {
     //<a href="/booking.jsp?flightDate=${flight.flightDate}&connId=${searchResult.connId}&carrierCode=${flight.mCarrierId}" class="btn btn-info" role="button">Buchen</a>
     @Override
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        final String flightDate = req.getParameter("flightDate");
-        final String connectionId = req.getParameter("connId");
-        final String carrierCode = req.getParameter("carrierCode");
+        final String firstName = req.getParameter("inputFirstName");
+        final String lastName = req.getParameter("inputLastName");
+        final String sex = req.getParameter("inputSex");
+        final String flightClass = req.getParameter("inputFlightClass");
+        final String luggWeight = req.getParameter("inputLuggWeight");
+        final String isSmoker = req.getParameter("isSmoker");
 
         //        final String serviceUri = "http://localhost:8080/flightDataManagement.svc/";
         //        final String entitySetName = "Connections";
@@ -37,12 +40,37 @@ public class BookingOverviewServlet extends HttpServlet {
         //        req.getSession().setAttribute("inputReturnFlightDate", inputReturnFlightDate);
         //        req.setAttribute("searchResults", searchResults);
 
-        req.setAttribute("flightDate", flightDate);
-        req.setAttribute("connectionId", connectionId);
-        req.setAttribute("carrierCode", carrierCode);
+        req.setAttribute("firstName", firstName);
+        req.setAttribute("lastName", lastName);
+        req.setAttribute("sex", sex);
+        req.setAttribute("flightClass", flightClass);
+        req.setAttribute("luggWeight", luggWeight);
+        req.setAttribute("isSmoker", isSmoker);
+        req.setAttribute("endPrice", adjustFlightPrice(flightClass, 350.50));
 
-        req.getRequestDispatcher("/booking.jsp").forward(req, resp);
+        req.getRequestDispatcher("/bookingOverview.jsp").forward(req, resp);
     }
+
+    private double adjustFlightPrice(String flightClass, double airfare) {
+        switch (flightClass) {
+            case "Business Class (1,5-facher Aufschlag)":
+                return airfare * 1.5;
+
+            case "First Class (3,5-facher Aufschlag)":
+                return airfare * 3.5;
+            default:
+                return airfare;
+        }
+    }
+
+    //    private void getDepartureFlightInfo(HttpServletRequest req){
+    //        req.getSession().getAttribute()
+    //    }
+    //
+    //
+    //    private void getReturnFlightInfo(HttpServletRequest req){
+    //        req.getSession().getAttribute()
+    //    }
 
     //    private ClientEntitySetIterator<ClientEntitySet, ClientEntity> readEntities(URI absoluteUri) {
     //        final ODataEntitySetIteratorRequest<ClientEntitySet, ClientEntity> request = mODataClient.getRetrieveRequestFactory().getEntitySetIteratorRequest(

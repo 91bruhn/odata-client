@@ -62,7 +62,7 @@ public class ReturnFlightSearchResult extends HttpServlet {
                                                               "OccupiedSeatsBusinessClass",
                                                               "MaxSeatsFirstClass",
                                                               "OccupiedSeatsFirstClass")
-                                            .expandWithSelect("Carrier", "CarrierName", "URL")
+                                            .expandWithSelect("Carrier", "CarrierCode", "CarrierName", "URL")
                                             .build();
         final ClientEntitySetIterator<ClientEntitySet, ClientEntity> iterator = readEntities(absoluteUri);
         final List<FlightSearchResult> returnFlightSearchResults = new ArrayList<>();

@@ -66,7 +66,7 @@ public class FlightSearchResultServlet extends HttpServlet {
                                                               "OccupiedSeatsBusinessClass",
                                                               "MaxSeatsFirstClass",
                                                               "OccupiedSeatsFirstClass")
-                                            .expandWithSelect("Carrier", "CarrierName", "URL")
+                                            .expandWithSelect("Carrier", "CarrierCode", "CarrierName", "URL")
                                             .build();
         final ClientEntitySetIterator<ClientEntitySet, ClientEntity> iterator = readEntities(absoluteUri);
         final List<FlightSearchResult> searchResults = new ArrayList<>();
@@ -78,7 +78,7 @@ public class FlightSearchResultServlet extends HttpServlet {
         }
         //TODO wenn keine Flüge gefunden wurden zu dem Datum
         //TODO muss jetzt eig noch alles als session scooped?
-//        req.getSession().setAttribute("searchResults", searchResults);
+        //        req.getSession().setAttribute("searchResults", searchResults);
         req.setAttribute("searchResults", searchResults);
         req.getSession().setAttribute("inputAirportOfDeparture", inputAirportOfDeparture);
         req.getSession().setAttribute("inputAirportOfArrival", inputAirportOfArrival);
