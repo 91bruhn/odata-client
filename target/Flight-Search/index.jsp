@@ -30,7 +30,7 @@
 <a class="nav-link active" href="#">Hin- und R&uuml;ckflug</a>
 </li>
 <li class="nav-item">
-<a class="nav-link" href="indexOneWay.jsp">Nur Hinflug</a>
+<a class="nav-link" href="bookingSearch.jsp">Buchungen</a>
 </li>
 </ul>
 </p>
