@@ -58,7 +58,7 @@
 </tr>
 </thead>
 <tbody>
-<c:forEach items="${requestScope.returnFlightSearchResults}" var="returnFlightSearchResult">
+<c:forEach items="${requestScope.returnConnectionSearchResults}" var="returnFlightSearchResult">
 <c:forEach items="${returnFlightSearchResult.flights}" var="flight">
 <c:set value="${returnFlightSearchResult.carrier}" var="carrier"/>
 <tr>
@@ -87,7 +87,7 @@ ${dataTransformator.calculateFlightPriceInEuros(flight.airfair, flight.currency)
 ${dataTransformator.getCombinedAmountOfAvailableSeats(flight.seatsMaxE, flight.seatsMaxB, flight.seatsMaxF, flight.seatsOccupiedE, flight.seatsOccupiedB, flight.seatsOccupiedF)}
 </td>
 <td>
-<a href="/booking.jsp?connId=${returnFlightSearchResult.connId}&flightDate=${flight.flightDate}" class="btn btn-info" role="button">Buchen</a>
+<a href="/booking?connId=${returnFlightSearchResult.connId}&flightDate=${flight.flightDate}&carrId=${carrier.carrId}" class="btn btn-info" role="button">Buchen</a>
 </td>
 <%--<%= request.setAttribute("fligtz", request.getAttribute("flights"))%>--%>
 <%--&carrierCode=${carrier.carrierId}--%>

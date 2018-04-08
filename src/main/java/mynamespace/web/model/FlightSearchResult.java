@@ -18,46 +18,6 @@ public class FlightSearchResult {
     private  Connection mConnection;
     private Carrier mCarrier;
 
-//    .select("Airfare",
-//                "LocalCurrencyOfAirline",
-//                "MaxSeatsEconomyClass",
-//                "OccupiedSeatsInEconomyClass",
-//                "MaxSeatsBusinessClass",
-//                "OccupiedSeatsBusinessClass",
-//                "MaxSeatsFirstClass",
-//                "OccupiedSeatsFirstClass")
-//    .expandWithSelect(entitySetNameConnection,
-//                      "DepartureCountryKey",
-//                          "DepartureCity",
-//                          "DepartureAirport",
-//                          "ArrivalCountryKey",
-//                          "ArrivalCity",
-//                          "ArrivalAirport",
-//                          "FlightTime",
-//                          "DepartureTime",
-//                          "ArrivalTime")
-//    .expandWithSelect(entitySetNameCarrier, "CarrierName", "URL")
-//
-
-//    private String mFlightDate;
-//    private Connection mConnection;
-//    private Carrier mCarrier;
-//    private String mLocCurrency;
-//
-//
-//
-//    private String mAirpFrom;
-//    private String mAirpTo;
-//    private String mCityFrom;
-//    private String mCityTo;
-//    private String mCountryFrom;
-//    private String mCountryTo;
-//    private int mFlTime;
-//    private String mDepTime;
-//    private String mArrTime;
-//    private double mDistance;
-//    private String mDistId;
-
     public Flight getFlight() {
         return mFlight;
     }

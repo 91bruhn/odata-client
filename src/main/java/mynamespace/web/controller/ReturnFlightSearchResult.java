@@ -39,8 +39,15 @@ public class ReturnFlightSearchResult extends HttpServlet {
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         final String airportOfArrival = (String) req.getSession().getAttribute("inputAirportOfDeparture");
         final String airportOfDeparture = (String) req.getSession().getAttribute("inputAirportOfArrival");
+        //input values from flight search mask
         final String departureFlightDate = (String) req.getSession().getAttribute("inputDepartureFlightDate");
         final String returnFlightDate = (String) req.getSession().getAttribute("inputReturnFlightDate");
+
+        //request parameters - from chosen departure flight
+        final String chosenDepartureFlightDate = req.getParameter("flightDate");
+        final String chosenDepartureConnId = req.getParameter("connId");
+        final String chosenDepartureCarrId = req.getParameter("carrId");
+
         final String serviceUri = "http://localhost:8080/flightDataManagement.svc/";
         final String entitySetName = "Connections";
         //1 -- http://localhost:8080/flightDataManagement.svc/Connections?$filter=DepartureCity eq 'NEWYORK' and ArrivalCity eq 'SANFRANCISCO'
@@ -69,17 +76,19 @@ public class ReturnFlightSearchResult extends HttpServlet {
 
         while (iterator.hasNext()) {
             returnConnectionSearchResults.add(DataTransformator.transformConnectionSearchResultRequestToConnectionSearchResult(iterator.next(),
-                                                                                                                           departureFlightDate,
-                                                                                                                           returnFlightDate));
+                                                                                                                               departureFlightDate,
+                                                                                                                               returnFlightDate));
         }
-
         //        req.getSession().setAttribute("returnConnectionSearchResults", returnConnectionSearchResults);
         //        req.getSession().setAttribute("inputReturnFlightDate", inputReturnFlightDate);
         req.setAttribute("returnConnectionSearchResults", returnConnectionSearchResults);
         //override old values - meaning vice versa is true
+        req.getSession().setAttribute("chosenDepartureFlightDate", chosenDepartureFlightDate);
+        req.getSession().setAttribute("chosenDepartureConnId", chosenDepartureConnId);
+        req.getSession().setAttribute("chosenDepartureCarrId", chosenDepartureCarrId);
         req.getSession().setAttribute("inputAirportOfDeparture", airportOfDeparture);
         req.getSession().setAttribute("inputAirportOfArrival", airportOfArrival);
-        req.getRequestDispatcher("/returnConnectionSearchResults.jsp").forward(req, resp);
+        req.getRequestDispatcher("/returnFlightSearchResults.jsp").forward(req, resp);
 
         //        req.getSession().setAttribute("searchResults", searchResults);
         //        req.getSession().setAttribute("inputAirportOfDeparture", inputAirportOfDeparture);

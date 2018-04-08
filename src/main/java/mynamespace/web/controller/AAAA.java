@@ -23,6 +23,7 @@ public class AAAA {
         System.out.println(date.getYear());
         System.out.println(date.getDayOfMonth());
         System.out.println(date.getMonth());
+
     }
     //  Abflugszeit von der verbindung hier mit rein
     //    private static Date conv(BSONObject bsonObject, String value, LocalTime departureTime) {

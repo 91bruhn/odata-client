@@ -36,18 +36,18 @@ Bitte beachten Sie, dass sich der Preis durch die Bef&ouml;rderungsklasse ver&au
 
 <div class="form-group col-md-4">
 <label for="inputFirstName">Vorname</label>
-<input type="text" class="form-control" id="inputFirstName" placeholder="Vorname">
+<input type="text" class="form-control" id="inputFirstName" name="inputFirstName" placeholder="Vorname">
 </div>
 
 <div class="form-group col-md-4">
 <label for="inputLastName">Nachname</label>
-<input type="text" class="form-control" id="inputLastName" placeholder="Nachname">
+<input type="text" class="form-control" id="inputLastName" name="inputLastName" placeholder="Nachname">
 </div>
 
 <%--<div class="form-group col-md-4">--%>
 <div class="form-group col-md-2">
 <label for="inputSex">Geschlecht</label>
-<select id="inputSex" class="form-control">
+<select id="inputSex" class="form-control" name="inputSex">
 <option selected>m&auml;nnlich</option>
 <option>weiblich</option>
 </select>
@@ -62,7 +62,7 @@ Bitte beachten Sie, dass sich der Preis durch die Bef&ouml;rderungsklasse ver&au
 
 <div class="form-group col-md-4">
 <label for="inputFlightClass">Bef&ouml;rderungsklasse</label>
-<select id="inputFlightClass" class="form-control">
+<select id="inputFlightClass" class="form-control" name="inputFlightClass">
 <option selected>Economy Class (Basis: kein Aufschlag)</option>
 <option>Business Class (1,5-facher Aufschlag)</option>
 <option>First Class (3,5-facher Aufschlag)</option>
@@ -72,7 +72,7 @@ Bitte beachten Sie, dass sich der Preis durch die Bef&ouml;rderungsklasse ver&au
 
 <div class="form-group col-md-2">
 <label for="inputLuggWeight">Gewicht Gep&auml;ck in Kg</label>
-<input type="text" class="form-control" id="inputLuggWeight">
+<input type="text" class="form-control" id="inputLuggWeight" name="inputLuggWeight">
 </div>
 
 
@@ -81,7 +81,7 @@ Bitte beachten Sie, dass sich der Preis durch die Bef&ouml;rderungsklasse ver&au
 
 <div class="form-group">
 <div class="form-check">
-<input class="form-check-input" type="checkbox" id="isSmoker">
+<input class="form-check-input" type="checkbox" id="isSmoker" name="isSmoker">
 <label class="form-check-label" for="isSmoker">Raucher?</label>
 </div>
 </div>
