@@ -75,16 +75,16 @@ Bitte beachten Sie, dass sich der Preis durch die Bef&ouml;rderungsklasse ver&au
 <input type="text" class="form-control" id="inputLuggWeight" name="inputLuggWeight">
 </div>
 
-
+<div class="form-group col-md-2">
+<%--<div class="col-10">--%>
+<label for="isSmoker">Raucher?</label>
+<select id="isSmoker" class="form-control" name="isSmoker">
+<option selected>nein</option>
+<option>ja</option>
+</select>
+</div>
 </div>
 
-
-<div class="form-group">
-<div class="form-check">
-<input class="form-check-input" type="checkbox" id="isSmoker" name="isSmoker">
-<label class="form-check-label" for="isSmoker">Raucher?</label>
-</div>
-</div>
 <button type="submit" class="btn btn-primary">zur Zusammenfassung</button>
 </form>
 <%--</div>--%>

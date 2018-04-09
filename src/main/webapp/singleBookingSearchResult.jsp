@@ -19,11 +19,11 @@
 
 <body>
 <% pageContext.setAttribute("dataTransformator", new DataTransformator()); %>
-<c:set var="depConnection" value="${sessionScope.departureBookingSearchResult.connection}"/>
+<c:set var="connection" value="${sessionScope.departureBookingSearchResult.connection}"/>
 <c:set var="depCarrier" value="${sessionScope.departureBookingSearchResult.carrier}"/>
-<c:set var="depBooking" value="${sessionScope.departureBookingSearchResult.booking}"/>
-<c:set var="depAirport" value="${depConnection.cityFrom}"/>
-<c:set var="retAirport" value="${depConnection.cityTo}"/>
+<c:set var="booking" value="${sessionScope.departureBookingSearchResult.booking}"/>
+<c:set var="depAirport" value="${connection.cityFrom}"/>
+<c:set var="retAirport" value="${connection.cityTo}"/>
 
 <c:set var="retConnection" value="${sessionScope.returnBookingSearchResult.connection}"/>
 <c:set var="retCarrier" value="${sessionScope.returnBookingSearchResult.carrier}"/>
@@ -54,22 +54,22 @@
 <tbody>
 <tr>
 <td>
-<c:out value="${depBooking.flightId}"/>
+<c:out value="${booking.flightId}"/>
 </td>
 <td>
-<c:out value="${depConnection.depTime}"/>
+<c:out value="${connection.depTime}"/>
 </td>
 <td>
-<c:out value="${depConnection.arrTime}"/>
+<c:out value="${connection.arrTime}"/>
 </td>
 <td>
-<c:out value="${depConnection.flTime}"/>min.
+<c:out value="${connection.flTime}"/>min.
 </td>
 <td>
-<c:out value="${depConnection.cityFrom}"/> (<c:out value="${depConnection.airpFrom}"/>)
+<c:out value="${connection.cityFrom}"/> (<c:out value="${connection.airpFrom}"/>)
 </td>
 <td>
-<c:out value="${depConnection.cityTo}"/> (<c:out value="${depConnection.airpTo}"/>)
+<c:out value="${connection.cityTo}"/> (<c:out value="${connection.airpTo}"/>)
 </td>
 <td>
 <c:out value="${depCarrier.carrName}"/> (<c:out value="${depCarrier.carrId}"/>)
@@ -97,7 +97,6 @@
 <thead class="thead-dark">
 <tr>
 <th>Buchungsnummer</th>
-<th>Kundennummer</th>
 <th>Geschlecht</th>
 <th>Raucher</th>
 <th>Gewicht Gep&auml;ck</th>
@@ -115,28 +114,25 @@
 
 <tr>
 <td>
-<c:out value="${depBooking.bookId}"/>
+<c:out value="${booking.bookId}"/>
 </td>
 <td>
-<c:out value="${depBooking.customId}"/>
+<c:out value="${booking.custType}"/>
 </td>
 <td>
-<c:out value="${depBooking.custType}"/>
+<c:out value="${booking.smoker}"/>
 </td>
 <td>
-<c:out value="${depBooking.smoker}"/>
+<c:out value="${booking.luggWeight}"/> (<c:out value="${booking.WUnit}"/>)
 </td>
 <td>
-<c:out value="${depBooking.luggWeight}"/> (<c:out value="${depBooking.WUnit}"/>)
+<c:out value="${booking.flightClass}"/>
 </td>
 <td>
-<c:out value="${depBooking.flightClass}"/>
+<c:out value="${booking.orderDate}"/>
 </td>
 <td>
-<c:out value="${depBooking.orderDate}"/>
-</td>
-<td>
-<c:out value="${depBooking.cancelled}"/>
+<c:out value="${booking.cancelled}"/>
 </td>
 <%--<a href="/current.jsp?flightDate=${flight.flightDate}" class="btn btn-info" role="button">Details</a>--%>
 </td>
@@ -145,124 +141,10 @@
 </tbody>
 </table>
 <%--</div>--%>
-<a href="/updateBooking?bookingId=${depBooking.bookId}" class="btn btn-warning" role="button">Buchung Hinflug bearbeiten</a>
+<a href="updateBooking.jsp?bookingId=${retBooking.bookId}" class="btn btn-warning" role="button">Buchung Hinflug bearbeiten</a>
 </div>
 </div>
 
-
-<div class="container">
-<div class="jumbotron">
-<h3 align="center">Fluginformationen zum Hinflug</h3>
-<%--<table class="table table-hover">table table-hover table-dark--%>
-<table class="table table-striped table-dark">
-<thead class="thead-dark">
-<tr>
-<th>Abflugsdatum</th>
-<th>Abflugszeit</th>
-<th>Ankunftszeit</th>
-<th>Flugdauer</th>
-<th>Abflugflughafen</th>
-<th>Ankunftsflughafen</th>
-<th>Fluggesellschaft</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-<c:out value="${retBooking.flightId}"/>
-</td>
-<td>
-<c:out value="${retConnection.depTime}"/>
-</td>
-<td>
-<c:out value="${retConnection.arrTime}"/>
-</td>
-<td>
-<c:out value="${retConnection.flTime}"/>min.
-</td>
-<td>
-<c:out value="${retConnection.cityFrom}"/> (<c:out value="${retConnection.airpFrom}"/>)
-</td>
-<td>
-<c:out value="${retConnection.cityTo}"/> (<c:out value="${retConnection.airpTo}"/>)
-</td>
-<td>
-<c:out value="${retCarrier.carrName}"/> (<c:out value="${retCarrier.carrId}"/>)
-</td>
-
-<%--&carrierCode=${carrier.carrierId}--%>
-<%--<%= request.setAttribute("fligtz", request.getAttribute("flights"))%>--%>
-
-
-<%--<a href="/current.jsp?flightDate=${flight.flightDate}" class="btn btn-info" role="button">Details</a>--%>
-
-
-<%--<a href="current?flightDate=${product.flightDate}">detail</a>--%>
-<%--<button type="button" class="btn btn-info">Info</button>--%>
-</td>
-</tr>
-
-
-</tbody>
-</table>
-<p></p>
-
-<h3 align="center">Fluginformationen zum Hinflug</h3>
-<table class="table table-hover table-dark">
-<thead class="thead-dark">
-<tr>
-<th>Buchungsnummer</th>
-<th>Kundennummer</th>
-<th>Geschlecht</th>
-<th>Raucher</th>
-<th>Gewicht Gep&auml;ck</th>
-<th>Bef&ouml;rderungsklasse</th>
-<th>Datum der Buchung</th>
-<th>Flug gestrichen?</th>
-</tr>
-</thead>
-<tbody>
-<%--<c:forEach items="${requestScope.searchResults}" var="searchResult">--%>
-<%--<c:forEach items="${searchResult.flights}" var="flight">--%>
-<%--<c:set value="${searchResult.carrier}" var="carrier"/>--%>
-<%--returnBookingSearchResult--%>
-<%--departureBookingSearchResult--%>
-
-<tr>
-<td>
-<c:out value="${retBooking.bookId}"/>
-</td>
-<td>
-<c:out value="${retBooking.customId}"/>
-</td>
-<td>
-<c:out value="${retBooking.custType}"/>
-</td>
-<td>
-<c:out value="${retBooking.smoker}"/>
-</td>
-<td>
-<c:out value="${retBooking.luggWeight}"/> (<c:out value="${retBooking.WUnit}"/>)
-</td>
-<td>
-<c:out value="${retBooking.flightClass}"/>
-</td>
-<td>
-<c:out value="${retBooking.orderDate}"/>
-</td>
-<td>
-<c:out value="${retBooking.cancelled}"/>
-</td>
-<%--<a href="/current.jsp?flightDate=${flight.flightDate}" class="btn btn-info" role="button">Details</a>--%>
-</td>
-</tr>
-
-</tbody>
-</table>
-<a href="/updateBooking?bookingId=${retBooking.bookId}" class="btn btn-warning" role="button">Buchung R&uuml;ckflug bearbeiten</a>
-<%--</div>--%>
-</div>
-</div>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>

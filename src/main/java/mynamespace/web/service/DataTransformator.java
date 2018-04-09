@@ -188,20 +188,9 @@ public class DataTransformator {
         booking.setCancelled((Boolean) entityBookingSearchResult.getProperty("IsCancelled").getValue().asPrimitive().toValue());
         booking.setReserved((Boolean) entityBookingSearchResult.getProperty("IsReserved").getValue().asPrimitive().toValue());
 
-//        final ClientComplexValue complexValueFlight = entityBookingSearchResult.getProperty("Flight").getComplexValue();
-//        final Flight flight = new Flight();
-//        flight.setFlightDate((String) complexValueFlight.get("FlightDate").getValue().asPrimitive().toValue());
-//        flight.setAirfair((Double) complexValueFlight.get("Airfare").getValue().asPrimitive().toValue());
-//        flight.setCurrency((String) complexValueFlight.get("LocalCurrencyOfAirline").getValue().asPrimitive().toValue());
-//        flight.setSeatsMaxF((Integer) complexValueFlight.get("MaxSeatsEconomyClass").getValue().asPrimitive().toValue());
-//        flight.setSeatsOccupiedE((Integer) complexValueFlight.get("OccupiedSeatsInEconomyClass").getValue().asPrimitive().toValue());
-//        flight.setSeatsMaxB((Integer) complexValueFlight.get("MaxSeatsBusinessClass").getValue().asPrimitive().toValue());
-//        flight.setSeatsOccupiedB((Integer) complexValueFlight.get("OccupiedSeatsBusinessClass").getValue().asPrimitive().toValue());
-//        flight.setSeatsMaxF((Integer) complexValueFlight.get("MaxSeatsFirstClass").getValue().asPrimitive().toValue());
-//        flight.setSeatsOccupiedF((Integer) complexValueFlight.get("OccupiedSeatsFirstClass").getValue().asPrimitive().toValue());
-
         final ClientComplexValue complexValueConnection = entityBookingSearchResult.getProperty("Connection").getComplexValue();
         final Connection connection = new Connection();
+        connection.setConnId((String) complexValueConnection.get("FlightConnectionNumber").getValue().asPrimitive().toValue());
         connection.setCountryFrom((String) complexValueConnection.get("DepartureCountryKey").getValue().asPrimitive().toValue());
         connection.setCityFrom((String) complexValueConnection.get("DepartureCity").getValue().asPrimitive().toValue());
         connection.setAirpFrom((String) complexValueConnection.get("DepartureAirport").getValue().asPrimitive().toValue());
@@ -291,8 +280,8 @@ public class DataTransformator {
         booking.setFlightId((String) entityBooking.getProperty(FLIGHT_DATE).getValue().asPrimitive().toValue());
         booking.setCustomId((String) entityBooking.getProperty(CUSTOMER_ID).getValue().asPrimitive().toValue());
         booking.setCustType((String) entityBooking.getProperty(SEX).getValue().asPrimitive().toValue());
-        booking.setSmoker((Boolean) entityBooking.getProperty(IS_SMOKER).getValue().asPrimitive().toValue());
-        booking.setLuggWeight((Integer) entityBooking.getProperty(LUGGAGE_WEIGHT).getValue().asPrimitive().toValue());
+        booking.setSmoker(Boolean.valueOf((Boolean) entityBooking.getProperty(IS_SMOKER).getValue().asPrimitive().toValue()));
+        booking.setLuggWeight((Double) entityBooking.getProperty(LUGGAGE_WEIGHT).getValue().asPrimitive().toValue());
         booking.setWUnit((String) entityBooking.getProperty(WEIGHT_UNIT).getValue().asPrimitive().toValue());
         booking.setInvoice((Boolean) entityBooking.getProperty(HAS_INVOICE).getValue().asPrimitive().toValue());
         booking.setFlightClass((String) entityBooking.getProperty(FLIGHT_CLASS).getValue().asPrimitive().toValue());
@@ -333,6 +322,10 @@ public class DataTransformator {
         plane.setProducer((String) entityPlane.getProperty(PRODUCER).getValue().asPrimitive().toValue());
 
         return plane;
+    }
+
+    public static String getBookingIdFromClientEntity(ClientEntity clientEntityBooking) {
+        return (String) clientEntityBooking.getProperty("BookingId").getValue().asPrimitive().toValue();
     }
 
     public String transformRequestCityName(String cityName) {

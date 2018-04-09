@@ -88,7 +88,7 @@
 
 
 <div class="alert alert-info" role="alert">
-<h3 class="alert-heading" align="center">Zusammenfassung Ihrer Buchung ${pageSex} ${sessionScope.firstName} ${sessionScope.lastName}</h3>
+<h3 class="alert-heading" align="center">Zusammenfassung Ihrer Buchungungen ${pageSex} ${sessionScope.firstName} ${sessionScope.lastName}</h3>
 
 <p></p>
 
@@ -106,7 +106,7 @@ um ${retTime}Uhr los und kommen nach ca. ${retFlTime}min., um ${retArrTime}Uhr, 
 <strong><p class="mb-0" align="left">Der Gesamtpreis der Reise bel&auml;uft sich auf: ${finalPrice}€</p></strong>
 
 <div class="container">
-<a href="/#" class="btn btn-info" role="button">Buchung abschließen</a>
+<a href="/bookingSuccessful" class="btn btn-info" role="button">Buchung abschließen</a>
 <%--<a href="/booking?connId=${returnFlightSearchResult.connId}&flightDate=${flight.flightDate}&carrId=${carrier.carrId}" class="btn btn-info" role="button">Buchen</a>--%>
 </div>
 </div>

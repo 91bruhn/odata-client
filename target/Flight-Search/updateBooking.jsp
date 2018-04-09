@@ -11,10 +11,11 @@
 
 <%--<title>Hello, world!</title>--%>
 </head>
-<c:set var="depBooking" value="${sessionScope.departureBookingSearchResult.booking}"/>
+<c:set var="booking" value="${sessionScope.departureBookingSearchResult.booking}"/>
 <body class="bg-light">
 <div class="jumbotron">
 <h2 align="center">Buchungsformular</h2>
+
 <p class="lead" align="center">In diesem Formular haben Sie die M&ouml;glichkeit Ihre Buchung zu ver&auml;ndern.</p>
 </div>
 <%--<form>--%>
@@ -33,7 +34,7 @@
 
 <div class="jumbotron">
 <%--<div class="col-md-8 order-md-1">--%>
-<form action="bookingOverview" method="GET">
+<form action="bookingUpdateSuccessful" method="GET">
 <%--<div class="form-row">--%>
 
 <%--<div class="form-group col-md-4">--%>
@@ -68,17 +69,16 @@
 <%--<div class="form-group col-md-2">--%>
 <div class="form-group row">
 <label for="inputLuggWeight">Gewicht Gep&auml;ck in Kg</label>
-<input type="text" class="form-control" id="inputLuggWeight" name="inputLuggWeight" value="${depBooking.luggWeight}">
+<input type="text" class="form-control" id="inputLuggWeight" name="inputLuggWeight" value="${booking.luggWeight}">
 </div>
 
 <%--</div>--%>
 
 
 <%--<div class="form-group col-md-2">--%>
-<label for="inputSex">Raucher?</label>
-
 <div class="form-group row">
 <%--<div class="col-10">--%>
+<label for="isSmoker">Raucher?</label>
 <select id="isSmoker" class="form-control" name="isSmoker">
 <option selected>nein</option>
 <option>ja</option>

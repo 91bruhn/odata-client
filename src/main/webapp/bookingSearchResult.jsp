@@ -19,11 +19,11 @@
 
 <body>
 <% pageContext.setAttribute("dataTransformator", new DataTransformator()); %>
-<c:set var="depConnection" value="${sessionScope.departureBookingSearchResult.connection}"/>
+<c:set var="connection" value="${sessionScope.departureBookingSearchResult.connection}"/>
 <c:set var="depCarrier" value="${sessionScope.departureBookingSearchResult.carrier}"/>
-<c:set var="depBooking" value="${sessionScope.departureBookingSearchResult.booking}"/>
-<c:set var="depAirportFrom" value="${depConnection.cityFrom}"/>
-<c:set var="depAirportTo" value="${depConnection.cityTo}"/>
+<c:set var="booking" value="${sessionScope.departureBookingSearchResult.booking}"/>
+<c:set var="depAirportFrom" value="${connection.cityFrom}"/>
+<c:set var="depAirportTo" value="${connection.cityTo}"/>
 
 <c:set var="retConnection" value="${sessionScope.returnBookingSearchResult.connection}"/>
 <c:set var="retCarrier" value="${sessionScope.returnBookingSearchResult.carrier}"/>
@@ -57,22 +57,22 @@
 <tbody>
 <tr>
 <td>
-<c:out value="${depBooking.flightId}"/>
+<c:out value="${booking.flightId}"/>
 </td>
 <td>
-<c:out value="${depConnection.depTime}"/>
+<c:out value="${connection.depTime}"/>
 </td>
 <td>
-<c:out value="${depConnection.arrTime}"/>
+<c:out value="${connection.arrTime}"/>
 </td>
 <td>
-<c:out value="${depConnection.flTime}"/>min.
+<c:out value="${connection.flTime}"/>min.
 </td>
 <td>
-<c:out value="${depConnection.cityFrom}"/> (<c:out value="${depConnection.airpFrom}"/>)
+<c:out value="${connection.cityFrom}"/> (<c:out value="${connection.airpFrom}"/>)
 </td>
 <td>
-<c:out value="${depConnection.cityTo}"/> (<c:out value="${depConnection.airpTo}"/>)
+<c:out value="${connection.cityTo}"/> (<c:out value="${connection.airpTo}"/>)
 </td>
 <td>
 <c:out value="${depCarrier.carrName}"/> (<c:out value="${depCarrier.carrId}"/>)
@@ -100,7 +100,6 @@
 <thead class="thead-dark">
 <tr>
 <th>Buchungsnummer</th>
-<th>Kundennummer</th>
 <th>Geschlecht</th>
 <th>Raucher</th>
 <th>Gewicht Gep&auml;ck</th>
@@ -118,28 +117,25 @@
 
 <tr>
 <td>
-<c:out value="${depBooking.bookId}"/>
+<c:out value="${booking.bookId}"/>
 </td>
 <td>
-<c:out value="${depBooking.customId}"/>
+<c:out value="${booking.custType}"/>
 </td>
 <td>
-<c:out value="${depBooking.custType}"/>
+<c:out value="${booking.smoker}"/>
 </td>
 <td>
-<c:out value="${depBooking.smoker}"/>
+<c:out value="${booking.luggWeight}"/> (<c:out value="${booking.WUnit}"/>)
 </td>
 <td>
-<c:out value="${depBooking.luggWeight}"/> (<c:out value="${depBooking.WUnit}"/>)
+<c:out value="${booking.flightClass}"/>
 </td>
 <td>
-<c:out value="${depBooking.flightClass}"/>
+<c:out value="${booking.orderDate}"/>
 </td>
 <td>
-<c:out value="${depBooking.orderDate}"/>
-</td>
-<td>
-<c:out value="${depBooking.cancelled}"/>
+<c:out value="${booking.cancelled}"/>
 </td>
 <%--<a href="/current.jsp?flightDate=${flight.flightDate}" class="btn btn-info" role="button">Details</a>--%>
 </td>
@@ -148,7 +144,7 @@
 </tbody>
 </table>
 <%--</div>--%>
-<a href="/updateBooking?bookingId=${depBooking.bookId}" class="btn btn-warning" role="button">Buchung Hinflug bearbeiten</a>
+<a href="updateBooking.jsp?bookingId=${retBooking.bookId}" class="btn btn-warning" role="button">Buchung Hinflug bearbeiten</a>
 </div>
 </div>
 
@@ -218,7 +214,6 @@
 <thead class="thead-dark">
 <tr>
 <th>Buchungsnummer</th>
-<th>Kundennummer</th>
 <th>Geschlecht</th>
 <th>Raucher</th>
 <th>Gewicht Gep&auml;ck</th>
@@ -237,9 +232,6 @@
 <tr>
 <td>
 <c:out value="${retBooking.bookId}"/>
-</td>
-<td>
-<c:out value="${retBooking.customId}"/>
 </td>
 <td>
 <c:out value="${retBooking.custType}"/>

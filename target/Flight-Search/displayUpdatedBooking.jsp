@@ -19,80 +19,20 @@
 
 <body>
 <% pageContext.setAttribute("dataTransformator", new DataTransformator()); %>
+<c:set var="booking" value="${requestScope.updatedResponseBooking}"/>
 <c:set var="connection" value="${sessionScope.departureBookingSearchResult.connection}"/>
-<c:set var="depCarrier" value="${sessionScope.departureBookingSearchResult.carrier}"/>
-<c:set var="booking" value="${sessionScope.departureBookingSearchResult.booking}"/>
 <c:set var="depAirport" value="${connection.cityFrom}"/>
 <c:set var="retAirport" value="${connection.cityTo}"/>
 
-<c:set var="retConnection" value="${sessionScope.returnBookingSearchResult.connection}"/>
-<c:set var="retCarrier" value="${sessionScope.returnBookingSearchResult.carrier}"/>
-<c:set var="retBooking" value="${sessionScope.returnBookingSearchResult.booking}"/>
-
 <%--<div class="container">--%>
-<div class="jumbotron">
-<h1 class="text-center"><b>Ihre Flugbuchung von ${dataTransformator.transformRequestCityName(depAirport)} nach ${dataTransformator.transformRequestCityName(retAirport)}</b></h1>
+<div class="alert alert-success">
+<h1 class="text-center"><b>Ihre erfolgreich aktualisierte Flugbuchung von ${dataTransformator.transformRequestCityName(depAirport)} nach ${dataTransformator.transformRequestCityName(retAirport)}</b></h1>
 </div>
 <%--</div>--%>
 
 <div class="container">
-<div class="jumbotron">
-<h3 align="center">Fluginformationen zum Hinflug</h3>
-<%--<table class="table table-hover">table table-hover table-dark--%>
-<table class="table table-striped table-dark">
-<thead class="thead-dark">
-<tr>
-<th>Abflugsdatum</th>
-<th>Abflugszeit</th>
-<th>Ankunftszeit</th>
-<th>Flugdauer</th>
-<th>Abflugflughafen</th>
-<th>Ankunftsflughafen</th>
-<th>Fluggesellschaft</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-<c:out value="${booking.flightId}"/>
-</td>
-<td>
-<c:out value="${connection.depTime}"/>
-</td>
-<td>
-<c:out value="${connection.arrTime}"/>
-</td>
-<td>
-<c:out value="${connection.flTime}"/>min.
-</td>
-<td>
-<c:out value="${connection.cityFrom}"/> (<c:out value="${connection.airpFrom}"/>)
-</td>
-<td>
-<c:out value="${connection.cityTo}"/> (<c:out value="${connection.airpTo}"/>)
-</td>
-<td>
-<c:out value="${depCarrier.carrName}"/> (<c:out value="${depCarrier.carrId}"/>)
-</td>
-
-<%--&carrierCode=${carrier.carrierId}--%>
-<%--<%= request.setAttribute("fligtz", request.getAttribute("flights"))%>--%>
-
-
-<%--<a href="/current.jsp?flightDate=${flight.flightDate}" class="btn btn-info" role="button">Details</a>--%>
-
-
-<%--<a href="current?flightDate=${product.flightDate}">detail</a>--%>
-<%--<button type="button" class="btn btn-info">Info</button>--%>
-</td>
-</tr>
-
-
-</tbody>
-</table>
-<p></p>
-
-<h3 align="center">Buchungsinformationen zum Hinflug</h3>
+<div class="alert alert-success">
+<h3 align="center">Buchungsinformationen</h3>
 <table class="table table-hover table-dark">
 <thead class="thead-dark">
 <tr>
@@ -106,11 +46,6 @@
 </tr>
 </thead>
 <tbody>
-<%--<c:forEach items="${requestScope.searchResults}" var="searchResult">--%>
-<%--<c:forEach items="${searchResult.flights}" var="flight">--%>
-<%--<c:set value="${searchResult.carrier}" var="carrier"/>--%>
-<%--returnBookingSearchResult--%>
-<%--departureBookingSearchResult--%>
 
 <tr>
 <td>
@@ -141,7 +76,7 @@
 </tbody>
 </table>
 <%--</div>--%>
-<a href="updateBooking.jsp?bookingId=${retBooking.bookId}" class="btn btn-warning" role="button">Buchung Hinflug bearbeiten</a>
+<a href="index.jsp" class="btn btn-success" role="button">zur Startseite</a>
 </div>
 </div>
 
