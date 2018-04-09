@@ -41,22 +41,21 @@
 <div class="form-row">
 <%--            First  Row               --%>
 <div class="col-md-3 mb-3">
-<div class="input-group">
-<input type="text" class="form-control" id="inputBookingIdDepFlight" placeholder="Buchungsnummer">
+<%--<div class="input-group">--%>
+<input type="text" class="form-control" id="inputBookingIdDepFlight" name="inputBookingIdDepFlight" placeholder="Buchungsnummer">
 <label for="inputBookingIdDepFlight">Hinflug</label>
+
 <div class="invalid-tooltip">
-Bitte einen Abflughafen angeben.
+Bitte eine Buchungsnummer angeben.
 </div>
 </div>
-</div>
+<%--</div>--%>
 
 <div class="col-md-3 mb-3">
 <input type="text" class="form-control" id="inputBookingIdRetFlight" name="inputBookingIdRetFlight" aria-describedby="infoDepFlight" placeholder="Buchungsnummer">
 <label for="inputBookingIdRetFlight">R&uuml;ckflug</label>
 <small id="infoDepFlight" class="form-text text-muted">Die Angabe einer zweiten Buchungsnummer ist optional.</small>
 </div>
-
-
 
 
 </div>

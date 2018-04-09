@@ -8,6 +8,7 @@
 package mynamespace.web.service;
 
 import mynamespace.web.model.Booking;
+import mynamespace.web.model.BookingSearchResult;
 import mynamespace.web.model.Carrier;
 import mynamespace.web.model.Connection;
 import mynamespace.web.model.ConnectionSearchResult;
@@ -168,6 +169,60 @@ public class DataTransformator {
         flightSearchResult.setCarrier(carrier);
 
         return flightSearchResult;
+    }
+
+    public static BookingSearchResult transformBookingSearchResultRequestToBookingSearchResult(ClientEntity entityBookingSearchResult) {
+        final BookingSearchResult bookingSearchResult = new BookingSearchResult();
+
+        final Booking booking = new Booking();
+        booking.setBookId((String) entityBookingSearchResult.getProperty("BookingId").getValue().asPrimitive().toValue());
+        booking.setFlightId((String) entityBookingSearchResult.getProperty("FlightDate").getValue().asPrimitive().toValue());
+        booking.setCustomId((String) entityBookingSearchResult.getProperty("CustomerId").getValue().asPrimitive().toValue());
+        booking.setCustType((String) entityBookingSearchResult.getProperty("Sex").getValue().asPrimitive().toValue());
+        booking.setSmoker((Boolean) entityBookingSearchResult.getProperty("IsSmoker").getValue().asPrimitive().toValue());
+        booking.setLuggWeight((Double) entityBookingSearchResult.getProperty("LuggageWeight").getValue().asPrimitive().toValue());
+        booking.setWUnit((String) entityBookingSearchResult.getProperty("WeightUnit").getValue().asPrimitive().toValue());
+        booking.setInvoice((Boolean) entityBookingSearchResult.getProperty("InvoiceAvailable").getValue().asPrimitive().toValue());
+        booking.setFlightClass((String) entityBookingSearchResult.getProperty("FlightClass").getValue().asPrimitive().toValue());
+        booking.setOrderDate((String) entityBookingSearchResult.getProperty("OrderDate").getValue().asPrimitive().toValue());
+        booking.setCancelled((Boolean) entityBookingSearchResult.getProperty("IsCancelled").getValue().asPrimitive().toValue());
+        booking.setReserved((Boolean) entityBookingSearchResult.getProperty("IsReserved").getValue().asPrimitive().toValue());
+
+//        final ClientComplexValue complexValueFlight = entityBookingSearchResult.getProperty("Flight").getComplexValue();
+//        final Flight flight = new Flight();
+//        flight.setFlightDate((String) complexValueFlight.get("FlightDate").getValue().asPrimitive().toValue());
+//        flight.setAirfair((Double) complexValueFlight.get("Airfare").getValue().asPrimitive().toValue());
+//        flight.setCurrency((String) complexValueFlight.get("LocalCurrencyOfAirline").getValue().asPrimitive().toValue());
+//        flight.setSeatsMaxF((Integer) complexValueFlight.get("MaxSeatsEconomyClass").getValue().asPrimitive().toValue());
+//        flight.setSeatsOccupiedE((Integer) complexValueFlight.get("OccupiedSeatsInEconomyClass").getValue().asPrimitive().toValue());
+//        flight.setSeatsMaxB((Integer) complexValueFlight.get("MaxSeatsBusinessClass").getValue().asPrimitive().toValue());
+//        flight.setSeatsOccupiedB((Integer) complexValueFlight.get("OccupiedSeatsBusinessClass").getValue().asPrimitive().toValue());
+//        flight.setSeatsMaxF((Integer) complexValueFlight.get("MaxSeatsFirstClass").getValue().asPrimitive().toValue());
+//        flight.setSeatsOccupiedF((Integer) complexValueFlight.get("OccupiedSeatsFirstClass").getValue().asPrimitive().toValue());
+
+        final ClientComplexValue complexValueConnection = entityBookingSearchResult.getProperty("Connection").getComplexValue();
+        final Connection connection = new Connection();
+        connection.setCountryFrom((String) complexValueConnection.get("DepartureCountryKey").getValue().asPrimitive().toValue());
+        connection.setCityFrom((String) complexValueConnection.get("DepartureCity").getValue().asPrimitive().toValue());
+        connection.setAirpFrom((String) complexValueConnection.get("DepartureAirport").getValue().asPrimitive().toValue());
+        connection.setCountryTo((String) complexValueConnection.get("ArrivalCountryKey").getValue().asPrimitive().toValue());
+        connection.setCityTo((String) complexValueConnection.get("ArrivalCity").getValue().asPrimitive().toValue());
+        connection.setAirpTo((String) complexValueConnection.get("ArrivalAirport").getValue().asPrimitive().toValue());
+        connection.setFlTime((Integer) complexValueConnection.get("FlightTime").getValue().asPrimitive().toValue());
+        connection.setDepTime((String) complexValueConnection.get("DepartureTime").getValue().asPrimitive().toValue());
+        connection.setArrTime((String) complexValueConnection.get("ArrivalTime").getValue().asPrimitive().toValue());
+
+        final ClientComplexValue complexValueCarrier = entityBookingSearchResult.getProperty("Carrier").getComplexValue();
+        final Carrier carrier = new Carrier();
+        carrier.setCarrId((String) complexValueCarrier.get("CarrierCode").getValue().asPrimitive().toValue());
+        carrier.setCarrName((String) complexValueCarrier.get("CarrierName").getValue().asPrimitive().toValue());
+        carrier.setUrl((String) complexValueCarrier.get("URL").getValue().asPrimitive().toValue());
+
+        bookingSearchResult.setBooking(booking);
+        bookingSearchResult.setConnection(connection);
+        bookingSearchResult.setCarrier(carrier);
+
+        return bookingSearchResult;
     }
 
     // only considering flights that are starting at given date or up to a week later todo beschreibung

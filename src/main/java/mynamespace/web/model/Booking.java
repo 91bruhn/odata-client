@@ -72,11 +72,11 @@ public class Booking {
     }
 
     public void setCustType(String custType) {
-        mCustType = custType;
+        mCustType = custType.equals("Female") ? "weiblich" : "männlich";
     }
 
-    public boolean getSmoker() {
-        return mSmoker;
+    public String getSmoker() {
+        return mSmoker ? "Ja" : "Nein";
     }
 
     public void setSmoker(boolean smoker) {
@@ -123,8 +123,8 @@ public class Booking {
         mOrderDate = orderDate;
     }
 
-    public boolean isCancelled() {
-        return mCancelled;
+    public String getCancelled() {
+        return mCancelled ? "Ja" : "Nein";
     }
 
     public void setCancelled(boolean cancelled) {

@@ -106,7 +106,7 @@ um ${retTime}Uhr los und kommen nach ca. ${retFlTime}min., um ${retArrTime}Uhr, 
 <strong><p class="mb-0" align="left">Der Gesamtpreis der Reise beläuft sich auf: ${finalPrice}€</p></strong>
 
 <div class="container">
-<a href="/#" class="btn btn-info" role="button">Buchung abschließen</a>
+<a href="/#" class="btn btn-success" role="button">Buchung abschließen</a>
 <%--<a href="/booking?connId=${returnFlightSearchResult.connId}&flightDate=${flight.flightDate}&carrId=${carrier.carrId}" class="btn btn-info" role="button">Buchen</a>--%>
 </div>
 </div>
