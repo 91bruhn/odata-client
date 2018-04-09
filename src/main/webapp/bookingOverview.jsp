@@ -80,14 +80,14 @@
 <%--</p>--%>
 
 <%--<p align="left">--%>
-<%--Ihr Rückflug geht von ${dataTransformator.transformRequestCityName(retCity)}, ${retCountry} (${retAirp}) mit der Fluggesellschaft ${retCarrName} (${retCarrId}), am ${retFlightDate},--%>
+<%--Ihr R&uuml;ckflug geht von ${dataTransformator.transformRequestCityName(retCity)}, ${retCountry} (${retAirp}) mit der Fluggesellschaft ${retCarrName} (${retCarrId}), am ${retFlightDate},--%>
 <%--um ${retTime}Uhr los und kommen nach ca. ${retFlTime}min., um ${retArrTime}Uhr, in ${dataTransformator.transformRequestCityName(retCityTo)}, ${retCountryTo} (${retAirpTo}) an.--%>
 <%--</p>--%>
 <%--</div>--%>
 <%--</div>--%>
 
 
-<div class="alert alert-success" role="alert">
+<div class="alert alert-info" role="alert">
 <h3 class="alert-heading" align="center">Zusammenfassung Ihrer Buchung ${pageSex} ${sessionScope.firstName} ${sessionScope.lastName}</h3>
 
 <p></p>
@@ -96,17 +96,17 @@
 um ${depDepTime}Uhr los und kommen nach ca. ${depFlTime}min., um ${depArrTime}Uhr, in ${dataTransformator.transformRequestCityName(depCityTo)}, ${depCountryTo} (${depAirpTo}) an.
 </p>
 
-<p align="left">Ihr Rückflug geht von ${dataTransformator.transformRequestCityName(retCity)}, ${retCountry} (${retAirp}) mit der Fluggesellschaft ${retCarrName} (${retCarrId}), am ${retFlightDate},
+<p align="left">Ihr R&uuml;ckflug geht von ${dataTransformator.transformRequestCityName(retCity)}, ${retCountry} (${retAirp}) mit der Fluggesellschaft ${retCarrName} (${retCarrId}), am ${retFlightDate},
 um ${retTime}Uhr los und kommen nach ca. ${retFlTime}min., um ${retArrTime}Uhr, in ${dataTransformator.transformRequestCityName(retCityTo)}, ${retCountryTo} (${retAirpTo}) an.
 </p>
 
-<p align="left">Für beide Flüge sind Sitze in der Beförderungsklasse ${flightClass} reserviert.<br>
-<b>Beachten Sie, Sie dürfen nicht mehr als die angegebenen ${luggWeight}Kg Gepäck mit auf die Flüge nehmen.</b></p>
+<p align="left">F&uuml;r beide Fl&uuml;ge sind Sitze in der Bef&ouml;rderungsklasse ${flightClass} reserviert.<br>
+<b>Beachten Sie, Sie d&uuml;rfen nicht mehr als die angegebenen ${luggWeight}Kg Gep&auml;ck mit auf die Fl&uuml;ge nehmen.</b></p>
 <hr>
-<strong><p class="mb-0" align="left">Der Gesamtpreis der Reise beläuft sich auf: ${finalPrice}€</p></strong>
+<strong><p class="mb-0" align="left">Der Gesamtpreis der Reise bel&auml;uft sich auf: ${finalPrice}€</p></strong>
 
 <div class="container">
-<a href="/#" class="btn btn-success" role="button">Buchung abschließen</a>
+<a href="/#" class="btn btn-info" role="button">Buchung abschließen</a>
 <%--<a href="/booking?connId=${returnFlightSearchResult.connId}&flightDate=${flight.flightDate}&carrId=${carrier.carrId}" class="btn btn-info" role="button">Buchen</a>--%>
 </div>
 </div>

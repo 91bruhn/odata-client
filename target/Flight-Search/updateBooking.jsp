@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
 <html lang="en">
 <head>
@@ -10,84 +11,83 @@
 
 <%--<title>Hello, world!</title>--%>
 </head>
+<c:set var="depBooking" value="${sessionScope.departureBookingSearchResult.booking}"/>
 <body class="bg-light">
-
 <div class="jumbotron">
 <h2 align="center">Buchungsformular</h2>
-
-<p class="lead" align="center">Bitte geben Sie Ihre Daten an, um die Buchung f&uuml;r die Reise abzuschlie&szlig;en.
-Auf der n&auml;chsten Seite wird der Gesamtpreis berechnet.
-Bitte beachten Sie, dass sich der Preis durch die Bef&ouml;rderungsklasse ver&auml;ndert.</p>
+<p class="lead" align="center">In diesem Formular haben Sie die M&ouml;glichkeit Ihre Buchung zu ver&auml;ndern.</p>
 </div>
-
 <%--<form>--%>
 <main role="main" class="container">
 <%--<div class="my-3 p-3 bg-white rounded box-shadow">--%>
 <%--<body class="text-center">--%>
 
 <%--<div class="py-5 text-center">--%>
+
+
 <%--<img class="d-block mx-auto mb-4" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">--%>
+
+
+<%--</div>--%>
+
 
 <div class="jumbotron">
 <%--<div class="col-md-8 order-md-1">--%>
 <form action="bookingOverview" method="GET">
-<div class="form-row">
-
-
-<div class="form-group col-md-4">
-<label for="inputFirstName">Vorname</label>
-<input type="text" class="form-control" id="inputFirstName" name="inputFirstName" placeholder="Vorname">
-</div>
-
-<div class="form-group col-md-4">
-<label for="inputLastName">Nachname</label>
-<input type="text" class="form-control" id="inputLastName" name="inputLastName" placeholder="Nachname">
-</div>
+<%--<div class="form-row">--%>
 
 <%--<div class="form-group col-md-4">--%>
-<div class="form-group col-md-2">
-<label for="inputSex">Geschlecht</label>
-<select id="inputSex" class="form-control" name="inputSex">
+<%--<div class="form-group col-md-2">--%>
+<div class="form-group row">
+<label for="inputSex">Geschlecht</label><select id="inputSex" class="form-control" name="inputSex">
+<%--<div class="col-10">--%>
 <option selected>m&auml;nnlich</option>
 <option>weiblich</option>
 </select>
 </div>
 
 
-</div>
+<%--</div>--%>
 
 
-<div class="form-row">
+<%--<div class="form-row">--%>
 
 
-<div class="form-group col-md-4">
+<%--<div class="form-group col-md-4">--%>
+<div class="form-group row">
 <label for="inputFlightClass">Bef&ouml;rderungsklasse</label>
+<%--<div class="col-10">--%>
 <select id="inputFlightClass" class="form-control" name="inputFlightClass">
 <option selected>Economy Class (Basis: kein Aufschlag)</option>
 <option>Business Class (1,5-facher Aufschlag)</option>
 <option>First Class (3,5-facher Aufschlag)</option>
 </select>
 </div>
-
-
-<div class="form-group col-md-2">
-<label for="inputLuggWeight">Gewicht Gep&auml;ck in Kg</label>
-<input type="text" class="form-control" id="inputLuggWeight" name="inputLuggWeight">
-</div>
-
-
-</div>
-
-
-<div class="form-group">
-<div class="form-check">
-<input class="form-check-input" type="checkbox" id="isSmoker" name="isSmoker">
-<label class="form-check-label" for="isSmoker">Raucher?</label>
-</div>
-</div>
-<button type="submit" class="btn btn-primary">zur Zusammenfassung</button>
-</form>
 <%--</div>--%>
+
+<%--<div class="form-group col-md-2">--%>
+<div class="form-group row">
+<label for="inputLuggWeight">Gewicht Gep&auml;ck in Kg</label>
+<input type="text" class="form-control" id="inputLuggWeight" name="inputLuggWeight" value="${depBooking.luggWeight}">
+</div>
+
+<%--</div>--%>
+
+
+<%--<div class="form-group col-md-2">--%>
+<label for="inputSex">Raucher?</label>
+
+<div class="form-group row">
+<%--<div class="col-10">--%>
+<select id="isSmoker" class="form-control" name="isSmoker">
+<option selected>nein</option>
+<option>ja</option>
+</select>
+</div>
+<p></p>
+<button type="submit" class="btn btn-primary">Korrigierte Daten speichern</button>
+</form>
+</div>
 <%--</div>--%>
 <%--</body>--%>
 </main>

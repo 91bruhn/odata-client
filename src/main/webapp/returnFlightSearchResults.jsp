@@ -53,8 +53,8 @@
 <th>Abflugflughafen</th>
 <th>Ankunftsflughafen</th>
 <th>Flugpreis</th>
-<th>Vorh. Sitzplätze</th>
-<th>Flüge buchen</th>
+<th>Vorh. Sitzpl&auml;tze</th>
+<th>Fl&uuml;ge buchen</th>
 </tr>
 </thead>
 <tbody>
@@ -81,7 +81,7 @@
 <c:out value="${returnFlightSearchResult.cityTo}"/> (<c:out value="${returnFlightSearchResult.airpTo}"/>)
 </td>
 <td>
-${dataTransformator.calculateFlightPriceInEuros(flight.airfair, flight.currency)} €
+${dataTransformator.calculateFlightPriceInEuros(flight.airfair, flight.currency)}€
 </td>
 <td>
 ${dataTransformator.getCombinedAmountOfAvailableSeats(flight.seatsMaxE, flight.seatsMaxB, flight.seatsMaxF, flight.seatsOccupiedE, flight.seatsOccupiedB, flight.seatsOccupiedF)}

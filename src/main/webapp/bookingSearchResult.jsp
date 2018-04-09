@@ -103,8 +103,8 @@
 <th>Kundennummer</th>
 <th>Geschlecht</th>
 <th>Raucher</th>
-<th>Gewicht Gepäck</th>
-<th>Beförderungsklasse</th>
+<th>Gewicht Gep&auml;ck</th>
+<th>Bef&ouml;rderungsklasse</th>
 <th>Datum der Buchung</th>
 <th>Flug gestrichen?</th>
 </tr>
@@ -221,8 +221,8 @@
 <th>Kundennummer</th>
 <th>Geschlecht</th>
 <th>Raucher</th>
-<th>Gewicht Gepäck</th>
-<th>Beförderungsklasse</th>
+<th>Gewicht Gep&auml;ck</th>
+<th>Bef&ouml;rderungsklasse</th>
 <th>Datum der Buchung</th>
 <th>Flug gestrichen?</th>
 </tr>
@@ -265,7 +265,7 @@
 
 </tbody>
 </table>
-<a href="/updateBooking?bookingId=${retBooking.bookId}" class="btn btn-warning" role="button">Buchung R&uuml;ckflug bearbeiten</a>
+<a href="updateBooking.jsp?bookingId=${retBooking.bookId}" class="btn btn-warning" role="button">Buchung R&uuml;ckflug bearbeiten</a>
 <%--</div>--%>
 </div>
 </div>

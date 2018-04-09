@@ -100,8 +100,8 @@
 <th>Kundennummer</th>
 <th>Geschlecht</th>
 <th>Raucher</th>
-<th>Gewicht Gepäck</th>
-<th>Beförderungsklasse</th>
+<th>Gewicht Gep&auml;ck</th>
+<th>Bef&ouml;rderungsklasse</th>
 <th>Datum der Buchung</th>
 <th>Flug gestrichen?</th>
 </tr>
@@ -215,8 +215,8 @@
 <th>Kundennummer</th>
 <th>Geschlecht</th>
 <th>Raucher</th>
-<th>Gewicht Gepäck</th>
-<th>Beförderungsklasse</th>
+<th>Gewicht Gep&auml;ck</th>
+<th>Bef&ouml;rderungsklasse</th>
 <th>Datum der Buchung</th>
 <th>Flug gestrichen?</th>
 </tr>

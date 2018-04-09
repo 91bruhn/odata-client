@@ -12,21 +12,21 @@
 </head>
 <body class="bg-light">
 
-<%--<form>--%>
-<main role="main" class="container">
-<%--<div class="my-3 p-3 bg-white rounded box-shadow">--%>
-<body class="text-center">
+<div class="jumbotron">
+<h2 align="center">Buchungsformular</h2>
 
-<div class="py-5 text-center">
-<%--<img class="d-block mx-auto mb-4" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">--%>
-
-<h2>Buchungsformular</h2>
-
-<p class="lead">Bitte geben Sie Ihre Daten an, um die Buchung f&uuml;r die Reise abzuschlie&szlig;en.
+<p class="lead" align="center">Bitte geben Sie Ihre Daten an, um die Buchung f&uuml;r die Reise abzuschlie&szlig;en.
 Auf der n&auml;chsten Seite wird der Gesamtpreis berechnet.
 Bitte beachten Sie, dass sich der Preis durch die Bef&ouml;rderungsklasse ver&auml;ndert.</p>
 </div>
 
+<%--<form>--%>
+<main role="main" class="container">
+<%--<div class="my-3 p-3 bg-white rounded box-shadow">--%>
+<%--<body class="text-center">--%>
+
+<%--<div class="py-5 text-center">--%>
+<%--<img class="d-block mx-auto mb-4" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">--%>
 
 <div class="jumbotron">
 <%--<div class="col-md-8 order-md-1">--%>
@@ -87,9 +87,9 @@ Bitte beachten Sie, dass sich der Preis durch die Bef&ouml;rderungsklasse ver&au
 </div>
 <button type="submit" class="btn btn-primary">zur Zusammenfassung</button>
 </form>
-</div>
 <%--</div>--%>
-</body>
+<%--</div>--%>
+<%--</body>--%>
 </main>
 
 
