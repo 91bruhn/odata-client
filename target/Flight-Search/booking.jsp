@@ -8,7 +8,6 @@
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-<%--<title>Hello, world!</title>--%>
 </head>
 <body class="bg-light">
 
@@ -20,16 +19,9 @@ Auf der n&auml;chsten Seite wird der Gesamtpreis berechnet.
 Bitte beachten Sie, dass sich der Preis durch die Bef&ouml;rderungsklasse ver&auml;ndert.</p>
 </div>
 
-<%--<form>--%>
 <main role="main" class="container">
-<%--<div class="my-3 p-3 bg-white rounded box-shadow">--%>
-<%--<body class="text-center">--%>
-
-<%--<div class="py-5 text-center">--%>
-<%--<img class="d-block mx-auto mb-4" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">--%>
 
 <div class="jumbotron">
-<%--<div class="col-md-8 order-md-1">--%>
 <form action="bookingOverview" method="GET">
 <div class="form-row">
 
@@ -59,7 +51,6 @@ Bitte beachten Sie, dass sich der Preis durch die Bef&ouml;rderungsklasse ver&au
 
 <div class="form-row">
 
-
 <div class="form-group col-md-4">
 <label for="inputFlightClass">Bef&ouml;rderungsklasse</label>
 <select id="inputFlightClass" class="form-control" name="inputFlightClass">
@@ -87,9 +78,6 @@ Bitte beachten Sie, dass sich der Preis durch die Bef&ouml;rderungsklasse ver&au
 
 <button type="submit" class="btn btn-primary">zur Zusammenfassung</button>
 </form>
-<%--</div>--%>
-<%--</div>--%>
-<%--</body>--%>
 </main>
 
 

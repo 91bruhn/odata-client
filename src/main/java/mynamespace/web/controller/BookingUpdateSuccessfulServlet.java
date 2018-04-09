@@ -31,7 +31,7 @@ import java.time.format.DateTimeFormatter;
  *
  */
 @WebServlet("/bookingUpdateSuccessful")
-public class BookingUpdateSuccessful extends HttpServlet {
+public class BookingUpdateSuccessfulServlet extends HttpServlet {
 
     ODataClient mODataClient = ODataClientFactory.getClient();
 

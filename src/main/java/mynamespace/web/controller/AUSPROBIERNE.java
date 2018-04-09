@@ -39,23 +39,6 @@ public class AUSPROBIERNE {
         System.out.println(absoluteUri.toString());
         System.out.print(absoluteUri.toASCIIString());
 
-        String queryDING = "?";
-        //        String filterDING = "$filter=";
-        //        String e = "'";
-        //
-        //        String filterBy =
-        //            queryDING + filterDING + "DepartureCity eq " + e + inputAirportOfDeparture + e + " and ArrivalCity eq " + e + inputAirportOfArrival + e;
-        //
-        //        String selectsjd = "($select=FlightDate,MaxSeatsEconomyClass,OccupiedSeatsInEconomyClass,MaxSeatsBusinessClass,OccupiedSeatsBusinessClass,MaxSeatsFirstClass,OccupiedSeatsFirstClass)";
-        //
-        //        String expandByFlightsAndCarrier = "&$expand=Flights" + selectsjd + "Carrier($select=CarrierName,URL)";
-        //
-        //        String combined = serviceUri + entitySetName + filterBy + expandByFlightsAndCarrier;
-
-        //1 -- http://localhost:8080/flightDataManagement.svc/Connections?$filter=DepartureCity eq 'NEWYORK' and ArrivalCity eq 'SANFRANCISCO'
-        //2 -- &$expand=Flights($select=FlightDate,MaxSeatsEconomyClass,OccupiedSeatsInEconomyClass,MaxSeatsBusinessClass,OccupiedSeatsBusinessClass,MaxSeatsFirstClass,OccupiedSeatsFirstClass),
-        //3 Carrier($select=CarrierName,URL)
-
     }
 
 }

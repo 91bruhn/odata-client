@@ -1,4 +1,4 @@
-<%@ page import="mynamespace.web.service.DataTransformator" %>
+<%@ page import="mynamespace.web.util.DataTransformator" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--Notwendig--%>
@@ -25,20 +25,17 @@
 <c:set var="depAirport" value="${connection.cityFrom}"/>
 <c:set var="retAirport" value="${connection.cityTo}"/>
 
-<c:set var="retConnection" value="${sessionScope.returnBookingSearchResult.connection}"/>
-<c:set var="retCarrier" value="${sessionScope.returnBookingSearchResult.carrier}"/>
-<c:set var="retBooking" value="${sessionScope.returnBookingSearchResult.booking}"/>
+<%--<c:set var="retConnection" value="${sessionScope.returnBookingSearchResult.connection}"/>--%>
+<%--<c:set var="retCarrier" value="${sessionScope.returnBookingSearchResult.carrier}"/>--%>
+<%--<c:set var="retBooking" value="${sessionScope.returnBookingSearchResult.booking}"/>--%>
 
-<%--<div class="container">--%>
 <div class="jumbotron">
 <h1 class="text-center"><b>Ihre Flugbuchung von ${dataTransformator.transformRequestCityName(depAirport)} nach ${dataTransformator.transformRequestCityName(retAirport)}</b></h1>
 </div>
-<%--</div>--%>
 
 <div class="container">
 <div class="jumbotron">
-<h3 align="center">Fluginformationen zum Hinflug</h3>
-<%--<table class="table table-hover">table table-hover table-dark--%>
+<h3 align="center">Fluginformationen zur Buchung</h3>
 <table class="table table-striped table-dark">
 <thead class="thead-dark">
 <tr>
@@ -75,15 +72,6 @@
 <c:out value="${depCarrier.carrName}"/> (<c:out value="${depCarrier.carrId}"/>)
 </td>
 
-<%--&carrierCode=${carrier.carrierId}--%>
-<%--<%= request.setAttribute("fligtz", request.getAttribute("flights"))%>--%>
-
-
-<%--<a href="/current.jsp?flightDate=${flight.flightDate}" class="btn btn-info" role="button">Details</a>--%>
-
-
-<%--<a href="current?flightDate=${product.flightDate}">detail</a>--%>
-<%--<button type="button" class="btn btn-info">Info</button>--%>
 </td>
 </tr>
 
@@ -92,7 +80,7 @@
 </table>
 <p></p>
 
-<h3 align="center">Buchungsinformationen zum Hinflug</h3>
+<h3 align="center">Buchungsinformationen</h3>
 <table class="table table-hover table-dark">
 <thead class="thead-dark">
 <tr>
@@ -106,11 +94,6 @@
 </tr>
 </thead>
 <tbody>
-<%--<c:forEach items="${requestScope.searchResults}" var="searchResult">--%>
-<%--<c:forEach items="${searchResult.flights}" var="flight">--%>
-<%--<c:set value="${searchResult.carrier}" var="carrier"/>--%>
-<%--returnBookingSearchResult--%>
-<%--departureBookingSearchResult--%>
 
 <tr>
 <td>
@@ -134,14 +117,11 @@
 <td>
 <c:out value="${booking.cancelled}"/>
 </td>
-<%--<a href="/current.jsp?flightDate=${flight.flightDate}" class="btn btn-info" role="button">Details</a>--%>
-</td>
 </tr>
 
 </tbody>
 </table>
-<%--</div>--%>
-<a href="updateBooking.jsp?bookingId=${retBooking.bookId}" class="btn btn-warning" role="button">Buchung Hinflug bearbeiten</a>
+<a href="/updateBooking?bookingId=${booking.bookId}" class="btn btn-warning" role="button">Buchung Hinflug bearbeiten</a>
 </div>
 </div>
 
@@ -151,6 +131,3 @@
 
 </body>
 </html>
-<%--<a href="mobile.jsp?id=iphone">Iphone 4S</a>--%>
-<%--String clickedPhoneId = request.getParameter("id");--%>
-<%--<c:if test="${param.id == 's5'}">S5 has been clicked</c:if>--%>

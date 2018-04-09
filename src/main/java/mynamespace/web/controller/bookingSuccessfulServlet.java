@@ -7,7 +7,7 @@
 
 package mynamespace.web.controller;
 
-import mynamespace.web.service.DataTransformator;
+import mynamespace.web.util.DataTransformator;
 import org.apache.olingo.client.api.ODataClient;
 import org.apache.olingo.client.api.communication.request.cud.ODataEntityCreateRequest;
 import org.apache.olingo.client.api.communication.response.ODataEntityCreateResponse;
@@ -29,7 +29,7 @@ import java.time.format.DateTimeFormatter;
  *
  */
 @WebServlet("/bookingSuccessful")
-public class bookingSuccessfulServlet extends HttpServlet {
+public class BookingSuccessfulServlet extends HttpServlet {
 
     ODataClient mODataClient = ODataClientFactory.getClient();
 

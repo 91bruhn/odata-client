@@ -1,5 +1,5 @@
 <%@ page import="mynamespace.web.model.FlightSearchResult" %>
-<%@ page import="mynamespace.web.service.DataTransformator" %>
+<%@ page import="mynamespace.web.util.DataTransformator" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page session="true" %>
@@ -13,24 +13,14 @@
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-<%--<title>Hello, world!</title>--%>
 </head>
 <body class="bg-light">
 
-<%--<form>--%>
 <main role="main" class="container">
-<%--<div class="my-3 p-3 bg-white rounded box-shadow">--%>
-<%--<body class="text-center">--%>
-<%----%>
-<%--<div class="py-5 text-center">--%>
-<%--<img class="d-block mx-auto mb-4" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">--%>
 
 <p class="lead">
 <% pageContext.setAttribute("dataTransformator", new DataTransformator()); %>
 <% pageContext.setAttribute("flightSearchResult", new FlightSearchResult()); %>
-
-<%--<c:set var="connection" value="${flightSearchResult.carrier(sessionScope.departureFlightSearchResult.carrier)}"/>--%>
-
 
 <c:set var="depBookingId" value="${requestScope.departureFlightBookingId}"/>
 <c:set var="retBookingId" value="${requestScope.returnFlightBookingId}"/>
@@ -53,7 +43,6 @@
 <p align="center">Sie können nun von der Startseite aus unter dem Reiter "Buchungen" Ihre Buchungen einsehen und bearbeiten.
 </p>
 <br>
-<%--<b>Beachten Sie, Sie d&uuml;rfen nicht mehr als die angegebenen ${luggWeight}Kg Gep&auml;ck mit auf die Fl&uuml;ge nehmen.</b></p>--%>
 <hr>
 <strong><p class="mb-0" align="left">Bitte notieren Sie sich unbedingt Ihre Buchungsnummern:</p>
 <ul>
@@ -65,9 +54,6 @@
 <div class="container">
 <a href="/index.jsp" class="btn btn-success" role="button">zur Startseite</a>
 </div>
-<%--</div>--%>
-
-<%--</body>--%>
 </main>
 
 

@@ -8,7 +8,7 @@
 package mynamespace.web.controller;
 
 import mynamespace.web.model.BookingSearchResult;
-import mynamespace.web.service.DataTransformator;
+import mynamespace.web.util.DataTransformator;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.olingo.client.api.ODataClient;
 import org.apache.olingo.client.api.communication.request.retrieve.ODataEntityRequest;

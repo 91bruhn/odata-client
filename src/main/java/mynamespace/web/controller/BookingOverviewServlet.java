@@ -8,7 +8,7 @@
 package mynamespace.web.controller;
 
 import mynamespace.web.model.FlightSearchResult;
-import mynamespace.web.service.DataTransformator;
+import mynamespace.web.util.DataTransformator;
 import org.apache.olingo.client.api.ODataClient;
 import org.apache.olingo.client.api.communication.request.retrieve.ODataEntityRequest;
 import org.apache.olingo.client.api.communication.response.ODataRetrieveResponse;

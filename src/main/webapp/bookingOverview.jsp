@@ -1,5 +1,5 @@
 <%@ page import="mynamespace.web.model.FlightSearchResult" %>
-<%@ page import="mynamespace.web.service.DataTransformator" %>
+<%@ page import="mynamespace.web.util.DataTransformator" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page session="true" %>
@@ -13,23 +13,17 @@
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-<%--<title>Hello, world!</title>--%>
 </head>
 <body class="bg-light">
 
-<%--<form>--%>
 <main role="main" class="container">
-<%--<div class="my-3 p-3 bg-white rounded box-shadow">--%>
 <body class="text-center">
 
 <div class="py-5 text-center">
-<%--<img class="d-block mx-auto mb-4" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">--%>
 
 <p class="lead">
 <% pageContext.setAttribute("dataTransformator", new DataTransformator()); %>
 <% pageContext.setAttribute("flightSearchResult", new FlightSearchResult()); %>
-
-<%--<c:set var="connection" value="${flightSearchResult.carrier(sessionScope.departureFlightSearchResult.carrier)}"/>--%>
 
 
 <c:set var="finalPrice" value="${sessionScope.finalPrice}"/>
@@ -72,21 +66,6 @@
 </c:otherwise>
 </c:choose>
 
-<%--<div class="jumbotron">--%>
-<%--<h3>Zusammenfassung Ihrer Buchung ${pageSex} ${sessionScope.firstName} ${sessionScope.lastName}</h3>--%>
-
-<%--<p align="left">Sie fliegen von ${dataTransformator.transformRequestCityName(depCity)}, ${depCountry} (${depAirp}) mit der Fluggesellschaft ${depCarrName} (${depCarrId}), am ${depFlightDate},--%>
-<%--um ${depDepTime}Uhr los und kommen nach ca. ${depFlTime}min., um ${depArrTime}Uhr, in ${dataTransformator.transformRequestCityName(depCityTo)}, ${depCountryTo} (${depAirpTo}) an.--%>
-<%--</p>--%>
-
-<%--<p align="left">--%>
-<%--Ihr R&uuml;ckflug geht von ${dataTransformator.transformRequestCityName(retCity)}, ${retCountry} (${retAirp}) mit der Fluggesellschaft ${retCarrName} (${retCarrId}), am ${retFlightDate},--%>
-<%--um ${retTime}Uhr los und kommen nach ca. ${retFlTime}min., um ${retArrTime}Uhr, in ${dataTransformator.transformRequestCityName(retCityTo)}, ${retCountryTo} (${retAirpTo}) an.--%>
-<%--</p>--%>
-<%--</div>--%>
-<%--</div>--%>
-
-
 <div class="alert alert-info" role="alert">
 <h3 class="alert-heading" align="center">Zusammenfassung Ihrer Buchungungen ${pageSex} ${sessionScope.firstName} ${sessionScope.lastName}</h3>
 
@@ -111,74 +90,6 @@ um ${retTime}Uhr los und kommen nach ca. ${retFlTime}min., um ${retArrTime}Uhr, 
 </div>
 </div>
 
-
-<%--<c:set var="depAirfare" value="${sessionScope.departureFlightSearchResult.flight.airfair}"/>--%>
-<%--<c:set var="depCurrency" value="${sessionScope.departureFlightSearchResult.flight.currency}"/>--%>
-<%--<c:set var="retAirfare" value="${sessionScope.departureFlightSearchResult.flight.airfair}"/>--%>
-<%--<c:set var="depCurrency" value="${sessionScope.departureFlightSearchResult.flight.currency}"/>--%>
-
-
-<%--<div class="jumbotron">--%>
-<%--&lt;%&ndash;<div class="col-md-8 order-md-1">&ndash;%&gt;--%>
-<%--<form action="bookingOverview" method="GET">--%>
-<%--<div class="form-row">--%>
-
-
-<%--<div class="form-group col-md-4">--%>
-<%--<label for="inputFirstName">Vorname</label>--%>
-<%--<input type="text" class="form-control" id="inputFirstName" placeholder="Vorname">--%>
-<%--</div>--%>
-
-<%--<div class="form-group col-md-4">--%>
-<%--<label for="inputLastName">Nachname</label>--%>
-<%--<input type="text" class="form-control" id="inputLastName" placeholder="Nachname">--%>
-<%--</div>--%>
-
-<%--&lt;%&ndash;<div class="form-group col-md-4">&ndash;%&gt;--%>
-<%--<div class="form-group col-md-2">--%>
-<%--<label for="inputSex">Geschlecht</label>--%>
-<%--<select id="inputSex" class="form-control">--%>
-<%--<option selected>m&auml;nnlich</option>--%>
-<%--<option>weiblich</option>--%>
-<%--</select>--%>
-<%--</div>--%>
-
-
-<%--</div>--%>
-
-
-<%--<div class="form-row">--%>
-
-
-<%--<div class="form-group col-md-4">--%>
-<%--<label for="inputFlightClass">Bef&ouml;rderungsklasse</label>--%>
-<%--<select id="inputFlightClass" class="form-control">--%>
-<%--<option selected>Economy Class (Basis: kein Aufschlag)</option>--%>
-<%--<option>Business Class (1,5-facher Aufschlag)</option>--%>
-<%--<option>First Class (3,5-facher Aufschlag)</option>--%>
-<%--</select>--%>
-<%--</div>--%>
-
-
-<%--<div class="form-group col-md-2">--%>
-<%--<label for="inputLuggWeight">Gewicht Gep&auml;ck in Kg</label>--%>
-<%--<input type="text" class="form-control" id="inputLuggWeight">--%>
-<%--</div>--%>
-
-
-<%--</div>--%>
-
-
-<%--<div class="form-group">--%>
-<%--<div class="form-check">--%>
-<%--<input class="form-check-input" type="checkbox" id="isSmoker">--%>
-<%--<label class="form-check-label" for="isSmoker">Raucher?</label>--%>
-<%--</div>--%>
-<%--</div>--%>
-<%--<button type="submit" class="btn btn-primary">zur Zusammenfassung</button>--%>
-<%--</form>--%>
-<%--</div>--%>
-<%--</div>--%>
 </body>
 </main>
 

@@ -34,7 +34,6 @@
 </li>
 </ul>
 </p>
-<%--<br>--%>
 
 <form action="searchResult" method="GET">
 <div class="form-row">
@@ -44,7 +43,6 @@
 <%--<input type="airportOfDeparture" flightDate="inputAirportOfDeparture" name="inputAirportOfDeparture" class="form-control" placeholder="Abflughafen" required autofocus>--%>
 
 <select class="form-control" id="inputAirportOfDeparture" name="inputAirportOfDeparture" required autofocus>
-<%--<option value="AUSWAHL">Abflughafen auswaehlen...</option>--%>
 <option value="NEWYORK">New York</option>
 <option value="FRANKFURT">Frankfurt</option>
 <option value="SANFRANCISCO">San Francisco</option>
@@ -67,10 +65,8 @@ Bitte einen Abflughafen angeben.
 
 
 <div class="col-md-3 mb-3">
-<%--<input type="airportOfArrival" flightDate="inputAirportOfArrival" name="inputAirportOfArrival" class="form-control" placeholder="Ankunftsflughafen" required autofocus>--%>
 <%--            Airport of Arrival               --%>
 <select class="form-control" id="inputAirportOfArrival" name="inputAirportOfArrival" required autofocus>
-<%--<option value="AUSWAHL">Ankunftsflughafen auswaehlen...</option>--%>
 <option value="SANFRANCISCO">San Francisco</option>
 <option value="NEWYORK">New York</option>
 <option value="FRANKFURT">Frankfurt</option>
@@ -96,7 +92,6 @@ Bitte einen Abflughafen angeben.
 <%--            Second  Row               --%>
 <div class="col-md-3 mb-3">
 <%--            Departure Flight Date               --%>
-<%--<input type="departureFlightDate" flightDate="inputDepartureFlightDate" name="inputDepartureFlightDate" class="form-control" placeholder="Abflugdatum [dd.MM.yyyy]" required autofocus>--%>
 <input class="form-control" type="date" value="2017-10-01" id="inputDepartureFlightDate" name="inputDepartureFlightDate" required autofocus>
 <label for="inputDepartureFlightDate">Abflugdatum (default: fr&uuml;hester)</label>
 
@@ -109,7 +104,6 @@ Bitte ein Abflugdatum angeben.
 <div class="col-md-3 mb-3">
 <%--            Return Flight Date               --%>
 <input class="form-control" type="date" value="2018-05-18" id="inputReturnFlightDate" name="inputReturnFlightDate" required autofocus>
-<%--<input type="returnFlightDate" flightDate="inputReturnFlightDate" name="inputReturnFlightDate" class="form-control" placeholder="Rueckflugdatum [dd.MM.yyyy]" required autofocus>--%>
 <label for="inputReturnFlightDate">R&uuml;ckflugdatum (default: sp&auml;tester)</label>
 
 <div class="invalid-tooltip">

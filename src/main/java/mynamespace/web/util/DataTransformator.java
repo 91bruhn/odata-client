@@ -5,7 +5,7 @@
 // Copyright (c) 2006 - 2018 FORCAM GmbH. All rights reserved.
 ////////////////////////////////////////////////////////////////////////////////
 
-package mynamespace.web.service;
+package mynamespace.web.util;
 
 import mynamespace.web.model.Booking;
 import mynamespace.web.model.BookingSearchResult;
@@ -110,11 +110,10 @@ public class DataTransformator {
             final ClientComplexValue complexValueFlight = flightRequestEntity.asComplex();
             final String flightDate = (String) complexValueFlight.get("FlightDate").getValue().asPrimitive().toValue();
 
-            if (considerFlight(flightDate, dateFrom, dateTo)) {//TODO richtig machen
+            if (considerFlight(flightDate, dateFrom, dateTo)) {
                 flight.setFlightDate(flightDate);
                 flight.setAirfair((Double) complexValueFlight.get("Airfare").getValue().asPrimitive().toValue());
                 flight.setCurrency((String) complexValueFlight.get("LocalCurrencyOfAirline").getValue().asPrimitive().toValue());
-                //            flight.setPlane((String) flightRequestEntity.asComplex().get("PlaneType").getValue().asPrimitive().toValue());
                 flight.setSeatsMaxE((Integer) complexValueFlight.get("MaxSeatsEconomyClass").getValue().asPrimitive().toValue());
                 flight.setSeatsMaxB((Integer) complexValueFlight.get("MaxSeatsBusinessClass").getValue().asPrimitive().toValue());
                 flight.setSeatsMaxF((Integer) complexValueFlight.get("MaxSeatsFirstClass").getValue().asPrimitive().toValue());
@@ -214,7 +213,7 @@ public class DataTransformator {
         return bookingSearchResult;
     }
 
-    // only considering flights that are starting at given date or up to a week later todo beschreibung
+    //only consider flights that are between the given requested departure date and the return date
     private static boolean considerFlight(String flightDateOfRequest, String requestedDateFrom, String requestedDateTo) {
         final DateTimeFormatter formatterRequestedDate = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         final DateTimeFormatter formatterRequestDate = DateTimeFormatter.ofPattern("dd.MM.yyyy");

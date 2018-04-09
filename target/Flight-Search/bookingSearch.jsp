@@ -35,13 +35,11 @@
 </li>
 </ul>
 </p>
-<%--<br>--%>
 
 <form action="bookingSearchResult" method="GET">
 <div class="form-row">
 <%--            First  Row               --%>
 <div class="col-md-3 mb-3">
-<%--<div class="input-group">--%>
 <input type="text" class="form-control" id="inputBookingIdDepFlight" name="inputBookingIdDepFlight" placeholder="Buchungsnummer">
 <label for="inputBookingIdDepFlight">Hinflug</label>
 
@@ -49,7 +47,6 @@
 Bitte eine Buchungsnummer angeben.
 </div>
 </div>
-<%--</div>--%>
 
 <div class="col-md-3 mb-3">
 <input type="text" class="form-control" id="inputBookingIdRetFlight" name="inputBookingIdRetFlight" aria-describedby="infoDepFlight" placeholder="Buchungsnummer">
@@ -59,11 +56,8 @@ Bitte eine Buchungsnummer angeben.
 
 
 </div>
-<%--<br>--%>
 <button class="btn btn-primary" type="submit">Suche starten</button>
 </div>
-
-<%--            Start Search               --%>
 
 </form>
 </div>

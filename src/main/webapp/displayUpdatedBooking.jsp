@@ -1,4 +1,4 @@
-<%@ page import="mynamespace.web.service.DataTransformator" %>
+<%@ page import="mynamespace.web.util.DataTransformator" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--Notwendig--%>
@@ -66,7 +66,6 @@
 </td>
 <td>
 <c:out value="${booking.cancelled}"/>
-</td>
 </td>
 </tr>
 

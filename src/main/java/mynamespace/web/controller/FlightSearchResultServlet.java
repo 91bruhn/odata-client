@@ -8,7 +8,7 @@
 package mynamespace.web.controller;
 
 import mynamespace.web.model.ConnectionSearchResult;
-import mynamespace.web.service.DataTransformator;
+import mynamespace.web.util.DataTransformator;
 import org.apache.olingo.client.api.ODataClient;
 import org.apache.olingo.client.api.communication.request.retrieve.ODataEntitySetIteratorRequest;
 import org.apache.olingo.client.api.communication.response.ODataRetrieveResponse;

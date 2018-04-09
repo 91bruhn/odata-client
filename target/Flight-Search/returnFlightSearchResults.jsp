@@ -1,4 +1,4 @@
-<%@ page import="mynamespace.web.service.DataTransformator" %>
+<%@ page import="mynamespace.web.util.DataTransformator" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--Notwendig--%>
@@ -19,30 +19,16 @@
 
 
 <body>
-
-
-<%--<body>--%>
 <% pageContext.setAttribute("dataTransformator", new DataTransformator()); %>
 <c:set var="airportOfDeparture" value="${sessionScope.inputAirportOfDeparture}"/>
 <c:set var="airportOfArrival" value="${sessionScope.inputAirportOfArrival}"/>
-<%--<c:set var="airportOfDepartureFormatted" value="${dataTransformator.transformRequestCityName(airportOfDeparture)}"/>--%>
-<%--&lt;%&ndash;<div class="container">&ndash;%&gt;--%>
-<%--<div class="jumbotron">--%>
-<%--<h1 class="text-center"><b>Ergebnisse der Flugsuche von ${dataTransformator.transformRequestCityName(airportOfDeparture)} nach ${dataTransformator.transformRequestCityName(airportOfArrival)}--%>
-<%--</b></h1>--%>
-<%--</div>--%>
-<%--&lt;%&ndash;</div>&ndash;%&gt;--%>
 
-
-<%--<div class="container">--%>
 <div class="jumbotron">
 <h1 class="text-center"><b>Ergebnisse der Flugsuche von ${dataTransformator.transformRequestCityName(airportOfDeparture)} nach ${dataTransformator.transformRequestCityName(airportOfArrival)}
 </b></h1>
 </div>
-<%--</div>--%>
 
 <div class="container">
-<%--<table class="table table-hover">table table-hover table-dark--%>
 <table class="table table-hover">
 <thead class="thead-dark">
 <tr>
@@ -89,23 +75,12 @@ ${dataTransformator.getCombinedAmountOfAvailableSeats(flight.seatsMaxE, flight.s
 <td>
 <a href="/booking?connId=${returnFlightSearchResult.connId}&flightDate=${flight.flightDate}&carrId=${carrier.carrId}" class="btn btn-info" role="button">Buchen</a>
 </td>
-<%--<%= request.setAttribute("fligtz", request.getAttribute("flights"))%>--%>
-<%--&carrierCode=${carrier.carrierId}--%>
-
-<%--<a href="/current.jsp?flightDate=${flight.flightDate}" class="btn btn-info" role="button">Details</a>--%>
-
-
-<%--<a href="current?flightDate=${product.flightDate}">detail</a>--%>
-<%--<button type="button" class="btn btn-info">Info</button>--%>
-</td>
 </tr>
 </c:forEach>
 </c:forEach>
-
-
 </tbody>
 </table>
-<%--</div>--%>
+
 </div>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -113,6 +88,3 @@ ${dataTransformator.getCombinedAmountOfAvailableSeats(flight.seatsMaxE, flight.s
 
 </body>
 </html>
-<%--<a href="mobile.jsp?id=iphone">Iphone 4S</a>--%>
-<%--String clickedPhoneId = request.getParameter("id");--%>
-<%--<c:if test="${param.id == 's5'}">S5 has been clicked</c:if>--%>

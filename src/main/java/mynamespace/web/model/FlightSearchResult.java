@@ -7,15 +7,13 @@
 
 package mynamespace.web.model;
 
-import java.util.List;
-
 /**
  *
  */
 public class FlightSearchResult {
 
     private Flight mFlight;
-    private  Connection mConnection;
+    private Connection mConnection;
     private Carrier mCarrier;
 
     public Flight getFlight() {

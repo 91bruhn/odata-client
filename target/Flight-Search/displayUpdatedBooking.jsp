@@ -1,4 +1,4 @@
-<%@ page import="mynamespace.web.service.DataTransformator" %>
+<%@ page import="mynamespace.web.util.DataTransformator" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--Notwendig--%>
@@ -24,11 +24,9 @@
 <c:set var="depAirport" value="${connection.cityFrom}"/>
 <c:set var="retAirport" value="${connection.cityTo}"/>
 
-<%--<div class="container">--%>
 <div class="alert alert-success">
 <h1 class="text-center"><b>Ihre erfolgreich aktualisierte Flugbuchung von ${dataTransformator.transformRequestCityName(depAirport)} nach ${dataTransformator.transformRequestCityName(retAirport)}</b></h1>
 </div>
-<%--</div>--%>
 
 <div class="container">
 <div class="alert alert-success">
@@ -69,13 +67,10 @@
 <td>
 <c:out value="${booking.cancelled}"/>
 </td>
-<%--<a href="/current.jsp?flightDate=${flight.flightDate}" class="btn btn-info" role="button">Details</a>--%>
-</td>
 </tr>
 
 </tbody>
 </table>
-<%--</div>--%>
 <a href="index.jsp" class="btn btn-success" role="button">zur Startseite</a>
 </div>
 </div>
@@ -86,6 +81,3 @@
 
 </body>
 </html>
-<%--<a href="mobile.jsp?id=iphone">Iphone 4S</a>--%>
-<%--String clickedPhoneId = request.getParameter("id");--%>
-<%--<c:if test="${param.id == 's5'}">S5 has been clicked</c:if>--%>
