@@ -1,6 +1,6 @@
-package mynamespace.web.controller;
+package odataservice.flightsearch.controller;
 
-import mynamespace.web.util.DataTransformator;
+import odataservice.flightsearch.util.DataTransformator;
 import org.apache.olingo.client.api.ODataClient;
 import org.apache.olingo.client.api.communication.request.cud.ODataEntityCreateRequest;
 import org.apache.olingo.client.api.communication.response.ODataEntityCreateResponse;

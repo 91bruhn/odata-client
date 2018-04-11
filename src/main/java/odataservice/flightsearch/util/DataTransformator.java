@@ -1,18 +1,16 @@
-package mynamespace.web.util;
+package odataservice.flightsearch.util;
 
-import mynamespace.web.model.Booking;
-import mynamespace.web.model.BookingSearchResult;
-import mynamespace.web.model.Carrier;
-import mynamespace.web.model.Connection;
-import mynamespace.web.model.ConnectionSearchResult;
-import mynamespace.web.model.Flight;
-import mynamespace.web.model.FlightSearchResult;
-import mynamespace.web.model.Plane;
+import odataservice.flightsearch.model.Booking;
+import odataservice.flightsearch.model.BookingSearchResult;
+import odataservice.flightsearch.model.Carrier;
+import odataservice.flightsearch.model.Connection;
+import odataservice.flightsearch.model.ConnectionSearchResult;
+import odataservice.flightsearch.model.Flight;
+import odataservice.flightsearch.model.FlightSearchResult;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.olingo.client.api.ODataClient;
 import org.apache.olingo.client.api.domain.ClientComplexValue;
 import org.apache.olingo.client.api.domain.ClientEntity;
-import org.apache.olingo.commons.api.edm.FullQualifiedName;
 
 import java.text.DecimalFormat;
 import java.time.LocalDate;
@@ -20,57 +18,45 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
-import static mynamespace.web.util.EntityNames.AIRPORT_FROM;
-import static mynamespace.web.util.EntityNames.AIRPORT_TO;
-import static mynamespace.web.util.EntityNames.ARRIVAL_TIME;
-import static mynamespace.web.util.EntityNames.BOOKING_ID;
-import static mynamespace.web.util.EntityNames.CARRIER_ID;
-import static mynamespace.web.util.EntityNames.CARRIER_NAME;
-import static mynamespace.web.util.EntityNames.CITY_FROM;
-import static mynamespace.web.util.EntityNames.CITY_TO;
-import static mynamespace.web.util.EntityNames.CONNECTION_ID;
-import static mynamespace.web.util.EntityNames.CONSUMPTION;
-import static mynamespace.web.util.EntityNames.CONSUM_UNIT;
-import static mynamespace.web.util.EntityNames.COUNTRY_FROM;
-import static mynamespace.web.util.EntityNames.COUNTRY_TO;
-import static mynamespace.web.util.EntityNames.CURRENCY;
-import static mynamespace.web.util.EntityNames.CUSTOMER_ID;
-import static mynamespace.web.util.EntityNames.DEPARTURE_TIME;
-import static mynamespace.web.util.EntityNames.DISTANCE;
-import static mynamespace.web.util.EntityNames.DISTANCE_UNIT;
-import static mynamespace.web.util.EntityNames.FLIGHT_CLASS;
-import static mynamespace.web.util.EntityNames.FLIGHT_DATE;
-import static mynamespace.web.util.EntityNames.FLIGHT_TIME;
-import static mynamespace.web.util.EntityNames.FLIGHT_TYPE;
-import static mynamespace.web.util.EntityNames.HAS_INVOICE;
-import static mynamespace.web.util.EntityNames.IS_CANCELLED;
-import static mynamespace.web.util.EntityNames.IS_RESERVED;
-import static mynamespace.web.util.EntityNames.IS_SMOKER;
-import static mynamespace.web.util.EntityNames.LENGTH;
-import static mynamespace.web.util.EntityNames.LENGTH_UNIT;
-import static mynamespace.web.util.EntityNames.LUGGAGE_WEIGHT;
-import static mynamespace.web.util.EntityNames.ORDER_DATE;
-import static mynamespace.web.util.EntityNames.PERIOD;
-import static mynamespace.web.util.EntityNames.PLANE_TYPE;
-import static mynamespace.web.util.EntityNames.PRICE;
-import static mynamespace.web.util.EntityNames.PRODUCER;
-import static mynamespace.web.util.EntityNames.SEATS_MAX;
-import static mynamespace.web.util.EntityNames.SEATS_MAX_B;
-import static mynamespace.web.util.EntityNames.SEATS_MAX_E;
-import static mynamespace.web.util.EntityNames.SEATS_MAX_F;
-import static mynamespace.web.util.EntityNames.SEATS_OCC_B;
-import static mynamespace.web.util.EntityNames.SEATS_OCC_E;
-import static mynamespace.web.util.EntityNames.SEATS_OCC_F;
-import static mynamespace.web.util.EntityNames.SEX;
-import static mynamespace.web.util.EntityNames.SPAN;
-import static mynamespace.web.util.EntityNames.SPAN_UNIT;
-import static mynamespace.web.util.EntityNames.SPEED;
-import static mynamespace.web.util.EntityNames.SPEED_UNIT;
-import static mynamespace.web.util.EntityNames.TANK_CAPACITY;
-import static mynamespace.web.util.EntityNames.TANK_CAP_UNIT;
-import static mynamespace.web.util.EntityNames.URL;
-import static mynamespace.web.util.EntityNames.WEIGHT;
-import static mynamespace.web.util.EntityNames.WEIGHT_UNIT;
+import static odataservice.flightsearch.util.EntityNames.AIRPORT_FROM;
+import static odataservice.flightsearch.util.EntityNames.AIRPORT_TO;
+import static odataservice.flightsearch.util.EntityNames.ARRIVAL_TIME;
+import static odataservice.flightsearch.util.EntityNames.BOOKING_ID;
+import static odataservice.flightsearch.util.EntityNames.CARRIER_ID;
+import static odataservice.flightsearch.util.EntityNames.CARRIER_NAME;
+import static odataservice.flightsearch.util.EntityNames.CITY_FROM;
+import static odataservice.flightsearch.util.EntityNames.CITY_TO;
+import static odataservice.flightsearch.util.EntityNames.CONNECTION_ID;
+import static odataservice.flightsearch.util.EntityNames.COUNTRY_FROM;
+import static odataservice.flightsearch.util.EntityNames.COUNTRY_TO;
+import static odataservice.flightsearch.util.EntityNames.CURRENCY;
+import static odataservice.flightsearch.util.EntityNames.CUSTOMER_ID;
+import static odataservice.flightsearch.util.EntityNames.DEPARTURE_TIME;
+import static odataservice.flightsearch.util.EntityNames.DISTANCE;
+import static odataservice.flightsearch.util.EntityNames.DISTANCE_UNIT;
+import static odataservice.flightsearch.util.EntityNames.ET_SBOOK_FQN;
+import static odataservice.flightsearch.util.EntityNames.FLIGHT_CLASS;
+import static odataservice.flightsearch.util.EntityNames.FLIGHT_DATE;
+import static odataservice.flightsearch.util.EntityNames.FLIGHT_TIME;
+import static odataservice.flightsearch.util.EntityNames.FLIGHT_TYPE;
+import static odataservice.flightsearch.util.EntityNames.HAS_INVOICE;
+import static odataservice.flightsearch.util.EntityNames.IS_CANCELLED;
+import static odataservice.flightsearch.util.EntityNames.IS_RESERVED;
+import static odataservice.flightsearch.util.EntityNames.IS_SMOKER;
+import static odataservice.flightsearch.util.EntityNames.LUGGAGE_WEIGHT;
+import static odataservice.flightsearch.util.EntityNames.ORDER_DATE;
+import static odataservice.flightsearch.util.EntityNames.PERIOD;
+import static odataservice.flightsearch.util.EntityNames.PLANE_TYPE;
+import static odataservice.flightsearch.util.EntityNames.PRICE;
+import static odataservice.flightsearch.util.EntityNames.SEATS_MAX_B;
+import static odataservice.flightsearch.util.EntityNames.SEATS_MAX_E;
+import static odataservice.flightsearch.util.EntityNames.SEATS_MAX_F;
+import static odataservice.flightsearch.util.EntityNames.SEATS_OCC_B;
+import static odataservice.flightsearch.util.EntityNames.SEATS_OCC_E;
+import static odataservice.flightsearch.util.EntityNames.SEATS_OCC_F;
+import static odataservice.flightsearch.util.EntityNames.SEX;
+import static odataservice.flightsearch.util.EntityNames.URL;
+import static odataservice.flightsearch.util.EntityNames.WEIGHT_UNIT;
 
 /**
  *
@@ -95,9 +81,9 @@ public class DataTransformator {
 
         final Carrier carrier = new Carrier();
         final ClientComplexValue complexValueCarrier = entityFlightSearchResult.getProperty("Carrier").getComplexValue();
-        carrier.setCarrId((String) complexValueCarrier.get("CarrierCode").getValue().asPrimitive().toValue());
-        carrier.setCarrName((String) complexValueCarrier.get("CarrierName").getValue().asPrimitive().toValue());
-        carrier.setUrl((String) complexValueCarrier.get("URL").getValue().asPrimitive().toValue());
+        carrier.setCarrId((String) complexValueCarrier.get(EntityNames.CARRIER_ID).getValue().asPrimitive().toValue());
+        carrier.setCarrName((String) complexValueCarrier.get(CARRIER_NAME).getValue().asPrimitive().toValue());
+        carrier.setUrl((String) complexValueCarrier.get(URL).getValue().asPrimitive().toValue());
 
         final List<Flight> flights = new ArrayList<>();
         entityFlightSearchResult.getProperty("Flights").getCollectionValue().forEach(flightRequestEntity -> {
@@ -154,9 +140,9 @@ public class DataTransformator {
 
         final ClientComplexValue complexValueCarrier = entityFlightSearchResult.getProperty("Carrier").getComplexValue();
         final Carrier carrier = new Carrier();
-        carrier.setCarrId((String) complexValueCarrier.get("CarrierCode").getValue().asPrimitive().toValue());
-        carrier.setCarrName((String) complexValueCarrier.get("CarrierName").getValue().asPrimitive().toValue());
-        carrier.setUrl((String) complexValueCarrier.get("URL").getValue().asPrimitive().toValue());
+        carrier.setCarrId((String) complexValueCarrier.get(EntityNames.CARRIER_ID).getValue().asPrimitive().toValue());
+        carrier.setCarrName((String) complexValueCarrier.get(CARRIER_NAME).getValue().asPrimitive().toValue());
+        carrier.setUrl((String) complexValueCarrier.get(URL).getValue().asPrimitive().toValue());
 
         flightSearchResult.setFlight(flight);
         flightSearchResult.setConnection(connection);
@@ -184,7 +170,7 @@ public class DataTransformator {
 
         final ClientComplexValue complexValueConnection = entityBookingSearchResult.getProperty("Connection").getComplexValue();
         final Connection connection = new Connection();
-        connection.setConnId((String) complexValueConnection.get("FlightConnectionNumber").getValue().asPrimitive().toValue());
+        connection.setConnId((String) complexValueConnection.get(CONNECTION_ID).getValue().asPrimitive().toValue());
         connection.setCountryFrom((String) complexValueConnection.get("DepartureCountryKey").getValue().asPrimitive().toValue());
         connection.setCityFrom((String) complexValueConnection.get("DepartureCity").getValue().asPrimitive().toValue());
         connection.setAirpFrom((String) complexValueConnection.get("DepartureAirport").getValue().asPrimitive().toValue());
@@ -197,9 +183,9 @@ public class DataTransformator {
 
         final ClientComplexValue complexValueCarrier = entityBookingSearchResult.getProperty("Carrier").getComplexValue();
         final Carrier carrier = new Carrier();
-        carrier.setCarrId((String) complexValueCarrier.get("CarrierCode").getValue().asPrimitive().toValue());
-        carrier.setCarrName((String) complexValueCarrier.get("CarrierName").getValue().asPrimitive().toValue());
-        carrier.setUrl((String) complexValueCarrier.get("URL").getValue().asPrimitive().toValue());
+        carrier.setCarrId((String) complexValueCarrier.get(CARRIER_ID).getValue().asPrimitive().toValue());
+        carrier.setCarrName((String) complexValueCarrier.get(CARRIER_NAME).getValue().asPrimitive().toValue());
+        carrier.setUrl((String) complexValueCarrier.get(URL).getValue().asPrimitive().toValue());
 
         bookingSearchResult.setBooking(booking);
         bookingSearchResult.setConnection(connection);
@@ -297,27 +283,6 @@ public class DataTransformator {
         return carrier;
     }
 
-    public static Plane transformPlaneEntityToPlane(ClientEntity entityPlane) {
-        final Plane plane = new Plane();
-
-        plane.setPlaneType((String) entityPlane.getProperty(PLANE_TYPE).getValue().asPrimitive().toValue());
-        plane.setSeatsMaxE((Integer) entityPlane.getProperty(SEATS_MAX).getValue().asPrimitive().toValue());
-        plane.setConsumption((Integer) entityPlane.getProperty(CONSUMPTION).getValue().asPrimitive().toValue());
-        plane.setConUnit((String) entityPlane.getProperty(CONSUM_UNIT).getValue().asPrimitive().toValue());
-        plane.setTankCap((Integer) entityPlane.getProperty(TANK_CAPACITY).getValue().asPrimitive().toValue());
-        plane.setCapUnit((String) entityPlane.getProperty(TANK_CAP_UNIT).getValue().asPrimitive().toValue());
-        plane.setWeight((Integer) entityPlane.getProperty(WEIGHT).getValue().asPrimitive().toValue());
-        plane.setSpan((Integer) entityPlane.getProperty(SPAN).getValue().asPrimitive().toValue());
-        plane.setSpanUnit((String) entityPlane.getProperty(SPAN_UNIT).getValue().asPrimitive().toValue());
-        plane.setLength((Integer) entityPlane.getProperty(LENGTH).getValue().asPrimitive().toValue());
-        plane.setLengUnit((String) entityPlane.getProperty(LENGTH_UNIT).getValue().asPrimitive().toValue());
-        plane.setOpSpeed((Integer) entityPlane.getProperty(SPEED).getValue().asPrimitive().toValue());
-        plane.setSpeedUnit((String) entityPlane.getProperty(SPEED_UNIT).getValue().asPrimitive().toValue());
-        plane.setProducer((String) entityPlane.getProperty(PRODUCER).getValue().asPrimitive().toValue());
-
-        return plane;
-    }
-
     public static String getBookingIdFromClientEntity(ClientEntity clientEntityBooking) {
         return (String) clientEntityBooking.getProperty("BookingId").getValue().asPrimitive().toValue();
     }
@@ -395,20 +360,19 @@ public class DataTransformator {
 
     public static ClientEntity buildBookingEntity(ODataClient oDataClient, String sex, String flightClass, double luggWeight, String isSmoker,
                                                   String carrierCode, String flightConnectionNumber, String FlightDate) {
-        final String namespace = "OData.FlightDataManagement";//TODO use namespace
-        final FullQualifiedName bookingFqn = new FullQualifiedName(namespace, "Booking");
-        final ClientEntity entityBooking = oDataClient.getObjectFactory().newEntity(bookingFqn);
+
+        final ClientEntity entityBooking = oDataClient.getObjectFactory().newEntity(ET_SBOOK_FQN);
 
         entityBooking.getProperties().add(oDataClient.getObjectFactory()
-                                                     .newPrimitiveProperty("CarrierCode",
+                                                     .newPrimitiveProperty(CARRIER_ID,
                                                                            oDataClient.getObjectFactory().newPrimitiveValueBuilder().buildString(carrierCode)));
         entityBooking.getProperties().add(oDataClient.getObjectFactory()
-                                                     .newPrimitiveProperty("FlightConnectionNumber",
+                                                     .newPrimitiveProperty(CONNECTION_ID,
                                                                            oDataClient.getObjectFactory()
                                                                                       .newPrimitiveValueBuilder()
                                                                                       .buildString(flightConnectionNumber)));
         entityBooking.getProperties().add(oDataClient.getObjectFactory()
-                                                     .newPrimitiveProperty("FlightDate",
+                                                     .newPrimitiveProperty(FLIGHT_DATE,
                                                                            oDataClient.getObjectFactory().newPrimitiveValueBuilder().buildString(FlightDate)));
         entityBooking.getProperties().add(oDataClient.getObjectFactory()
                                                      .newPrimitiveProperty("Sex",

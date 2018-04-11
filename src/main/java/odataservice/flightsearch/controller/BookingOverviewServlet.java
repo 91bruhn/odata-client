@@ -1,7 +1,8 @@
-package mynamespace.web.controller;
+package odataservice.flightsearch.controller;
 
-import mynamespace.web.model.FlightSearchResult;
-import mynamespace.web.util.DataTransformator;
+import odataservice.flightsearch.model.FlightSearchResult;
+import odataservice.flightsearch.util.DataTransformator;
+import odataservice.flightsearch.util.EntityNames;
 import org.apache.olingo.client.api.ODataClient;
 import org.apache.olingo.client.api.communication.request.retrieve.ODataEntityRequest;
 import org.apache.olingo.client.api.communication.response.ODataRetrieveResponse;
@@ -60,18 +61,18 @@ public class BookingOverviewServlet extends HttpServlet {
 
     private Map<String, Object> createFlightKeyValuesForDepartureFlight(HttpServletRequest req) {
         final Map<String, Object> keyValues = new HashMap<>();
-        keyValues.put("CarrierCode", req.getSession().getAttribute("chosenDepartureCarrId"));
-        keyValues.put("FlightConnectionNumber", req.getSession().getAttribute("chosenDepartureConnId"));
-        keyValues.put("FlightDate", req.getSession().getAttribute("chosenDepartureFlightDate"));
+        keyValues.put(EntityNames.CARRIER_ID, req.getSession().getAttribute("chosenDepartureCarrId"));
+        keyValues.put(EntityNames.CONNECTION_ID, req.getSession().getAttribute("chosenDepartureConnId"));
+        keyValues.put(EntityNames.FLIGHT_DATE, req.getSession().getAttribute("chosenDepartureFlightDate"));
 
         return keyValues;
     }
 
     private Map<String, Object> createFlightKeyValuesForReturnFlight(HttpServletRequest req) {
         final Map<String, Object> keyValues = new HashMap<>();
-        keyValues.put("CarrierCode", req.getSession().getAttribute("chosenReturnCarrId"));
-        keyValues.put("FlightConnectionNumber", req.getSession().getAttribute("chosenReturnConnId"));
-        keyValues.put("FlightDate", req.getSession().getAttribute("chosenReturnFlightDate"));
+        keyValues.put(EntityNames.CARRIER_ID, req.getSession().getAttribute("chosenReturnCarrId"));
+        keyValues.put(EntityNames.CONNECTION_ID, req.getSession().getAttribute("chosenReturnConnId"));
+        keyValues.put(EntityNames.FLIGHT_DATE, req.getSession().getAttribute("chosenReturnFlightDate"));
 
         return keyValues;
     }
@@ -105,7 +106,7 @@ public class BookingOverviewServlet extends HttpServlet {
                                              "FlightTime",
                                              "DepartureTime",
                                              "ArrivalTime")
-                           .expandWithSelect(entitySetNameCarrier, "CarrierCode", "CarrierName", "URL")
+                           .expandWithSelect(entitySetNameCarrier, EntityNames.CARRIER_ID, "CarrierName", "URL")
                            .build();
     }
 

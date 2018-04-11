@@ -1,4 +1,4 @@
-package mynamespace.web.util;
+package odataservice.flightsearch.util;
 
 import org.apache.olingo.commons.api.edm.FullQualifiedName;
 
@@ -12,41 +12,31 @@ public class EntityNames {
     // ------------------------------------------------------------------------
 
     // ========================================================================
+    //                           SERVICE NAMESPACE
+    // ========================================================================
+
+    public static final String NAMESPACE = "OData.FlightDataManagement";
+
+    // ========================================================================
     //                          ENTITY TYPES NAMES
     // ========================================================================
 
-//    public static final String ET_SAPLANE_NAME = "Airplane";
-//        public static final FullQualifiedName ET_SAPLANE_FQN = new FullQualifiedName(NAMESPACE, ET_SAPLANE_NAME);
+//    public static final String ET_SCARR_NAME = "Carrier";
+//    public static final FullQualifiedName ET_SCARR_FQN = new FullQualifiedName(NAMESPACE, ET_SCARR_NAME);
 //
-//        public static final String ET_SCARR_NAME = "Carrier";
-//        public static final FullQualifiedName ET_SCARR_FQN = new FullQualifiedName(NAMESPACE, ET_SCARR_NAME);
+//    public static final String ET_SPFLI_NAME = "Connection";
+//    public static final FullQualifiedName ET_SPFLI_FQN = new FullQualifiedName(NAMESPACE, ET_SPFLI_NAME);
 //
-//        public static final String ET_SPFLI_NAME = "Connection";
-//        public static final FullQualifiedName ET_SPFLI_FQN = new FullQualifiedName(NAMESPACE, ET_SPFLI_NAME);
-//
-//        public static final String ET_SFLIGHT_NAME = "Flight";
-//        public static final FullQualifiedName ET_SFLIGHT_FQN = new FullQualifiedName(NAMESPACE, ET_SFLIGHT_NAME);
-//
-//        public static final String ET_SBOOK_NAME = "Booking";
-//        public static final FullQualifiedName ET_SBOOK_FQN = new FullQualifiedName(NAMESPACE, ET_SBOOK_NAME);
-//TODO check if useable
-    // ========================================================================
-    //                          ENTITY SET NAMES
-    // ========================================================================
-
-    public static final String ES_SCARR_NAME = "Carriers";
-    public static final String ES_SAPLANE_NAME = "Airplanes";
-    public static final String ES_SPFLI_NAME = "Connections";
-    public static final String ES_SFLIGHT_NAME = "Flights";
-    public static final String ES_SBOOK_NAME = "Bookings";
+    public static final String ET_SBOOK_NAME = "Booking";
+    public static final FullQualifiedName ET_SBOOK_FQN = new FullQualifiedName(NAMESPACE, ET_SBOOK_NAME);
 
     // ========================================================================
-    //                        CARRIER ENTITY ATTRIBUTES
+    //                        KEY PARAMETERS OF ENTITIES
     // ========================================================================
 
     public static final String CARRIER_ID = "CarrierCode";
     public static final String CONNECTION_ID = "FlightConnectionNumber";
-    public static final String FLIGHT_DATE = "FlightDate";//TODO falsch
+    public static final String FLIGHT_DATE = "FlightDate";
     public static final String PLANE_TYPE = "PlaneType";
     public static final String BOOKING_ID = "BookingId";
 

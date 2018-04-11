@@ -1,7 +1,7 @@
-package mynamespace.web.controller;
+package odataservice.flightsearch.controller;
 
-import mynamespace.web.model.BookingSearchResult;
-import mynamespace.web.util.DataTransformator;
+import odataservice.flightsearch.model.BookingSearchResult;
+import odataservice.flightsearch.util.DataTransformator;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.olingo.client.api.ODataClient;
 import org.apache.olingo.client.api.communication.request.retrieve.ODataEntityRequest;
@@ -54,10 +54,7 @@ public class BookingSearchResultServlet extends HttpServlet {
 
     private URI createFlightSearchRequestURI(String bookingKeyValue) {
         final String serviceUri = "http://localhost:8080/flightDataManagement.svc/";
-
         final String entitySetNameBookings = "Bookings";
-        //        final String entitySetNameFlight = "Flight";
-        //        final String entitySetNameFlights = "Flights";//TODO name -> Collection?
         final String entitySetNameConnection = "Connection";
         final String entitySetNameCarrier = "Carrier";//TODO specific
 

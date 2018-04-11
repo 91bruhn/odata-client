@@ -1,4 +1,4 @@
-package mynamespace.web.controller;
+package odataservice.flightsearch.controller;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;

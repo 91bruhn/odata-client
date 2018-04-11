@@ -1,15 +1,14 @@
-package mynamespace.web.controller;
+package odataservice.flightsearch.controller;
 
-import mynamespace.web.model.Booking;
-import mynamespace.web.model.BookingSearchResult;
-import mynamespace.web.util.DataTransformator;
+import odataservice.flightsearch.model.Booking;
+import odataservice.flightsearch.model.BookingSearchResult;
+import odataservice.flightsearch.util.DataTransformator;
 import org.apache.olingo.client.api.ODataClient;
 import org.apache.olingo.client.api.communication.request.cud.ODataEntityUpdateRequest;
 import org.apache.olingo.client.api.communication.request.cud.UpdateType;
 import org.apache.olingo.client.api.communication.response.ODataEntityUpdateResponse;
 import org.apache.olingo.client.api.domain.ClientEntity;
 import org.apache.olingo.client.core.ODataClientFactory;
-import org.apache.olingo.commons.api.edm.FullQualifiedName;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,8 +17,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.net.URI;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 
 /**
  *
@@ -42,10 +39,18 @@ public class BookingUpdateSuccessfulServlet extends HttpServlet {
         final String flightDate = bookingSearchResult.getBooking().getFlightId();
         final String bookingId = bookingSearchResult.getBooking().getBookId();
 
-        final ClientEntity requestEntityBooking = DataTransformator.buildBookingEntity(mODataClient, sex, flightClass, luggWeight, isSmoker, carrId, connId, flightDate);
-        final int httpStatusCodeOfUpdate = this.updateEntity(this.createCreateBookingURI(bookingId), requestEntityBooking);
+        final ClientEntity requestEntityBooking = DataTransformator.buildBookingEntity(mODataClient,
+                                                                                       sex,
+                                                                                       flightClass,
+                                                                                       luggWeight,
+                                                                                       isSmoker,
+                                                                                       carrId,
+                                                                                       connId,
+                                                                                       flightDate);
+        final int httpStatusCodeOfUpdate = this.updateEntity(this.createCreateBookingURI(bookingId), requestEntityBooking);//TODO so richtog???????
+        //there is no payload returned for an update operation, the http status code 204 suggests the update was successful
         if (httpStatusCodeOfUpdate == 204) {
-            Booking updateBooking = bookingSearchResult.getBooking();
+            final Booking updateBooking = bookingSearchResult.getBooking();
             updateBooking.setCustType(DataTransformator.transformSex(sex));
             updateBooking.setFlightClass(DataTransformator.transformFlightClass(flightClass));
             updateBooking.setLuggWeight(luggWeight);

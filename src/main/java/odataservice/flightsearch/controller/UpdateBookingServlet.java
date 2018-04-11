@@ -1,6 +1,6 @@
-package mynamespace.web.controller;
+package odataservice.flightsearch.controller;
 
-import mynamespace.web.model.BookingSearchResult;
+import odataservice.flightsearch.model.BookingSearchResult;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

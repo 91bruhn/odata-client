@@ -1,15 +1,12 @@
-package mynamespace.web.model;
-
-import java.util.List;
+package odataservice.flightsearch.model;
 
 /**
- * Combined Object of a Connection and the attached flights and its carrier.
+ *
  */
-public class ConnectionSearchResult {
+public class Connection {
 
-    private String connId;
-    private List<Flight> mFlights;
-    private Carrier mCarrier;
+    private String mConnId;
+    private String mScarrId;
     private String mAirpFrom;
     private String mAirpTo;
     private String mCityFrom;
@@ -21,33 +18,27 @@ public class ConnectionSearchResult {
     private String mArrTime;
     private double mDistance;
     private String mDistId;
+    private String mFlType;
+    private int mPeriod;
 
     // ------------------------------------------------------------------------
     // getters/setters
     // ------------------------------------------------------------------------
 
     public String getConnId() {
-        return connId;
+        return mConnId;
     }
 
     public void setConnId(String connId) {
-        this.connId = connId;
+        mConnId = connId;
     }
 
-    public List<Flight> getFlights() {
-        return mFlights;
+    public String getScarrId() {
+        return mScarrId;
     }
 
-    public void setFlights(List<Flight> flights) {
-        mFlights = flights;
-    }
-
-    public Carrier getCarrier() {
-        return mCarrier;
-    }
-
-    public void setCarrier(Carrier carrier) {
-        mCarrier = carrier;
+    public void setScarrId(String scarrId) {
+        mScarrId = scarrId;
     }
 
     public String getAirpFrom() {
@@ -136,5 +127,21 @@ public class ConnectionSearchResult {
 
     public void setDistId(String distId) {
         mDistId = distId;
+    }
+
+    public String getFlType() {
+        return mFlType;
+    }
+
+    public void setFlType(String flType) {
+        mFlType = flType;
+    }
+
+    public int getPeriod() {
+        return mPeriod;
+    }
+
+    public void setPeriod(int period) {
+        mPeriod = period;
     }
 }

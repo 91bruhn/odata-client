@@ -1,4 +1,4 @@
-package mynamespace.web.model;
+package odataservice.flightsearch.model;
 
 /**
  *

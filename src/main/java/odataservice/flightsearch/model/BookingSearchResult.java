@@ -1,4 +1,4 @@
-package mynamespace.web.model;
+package odataservice.flightsearch.model;
 
 /**
  * Combined object of a booking and its attached connection and carrier.

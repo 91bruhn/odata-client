@@ -1,7 +1,8 @@
-package mynamespace.web.controller;
+package odataservice.flightsearch.controller;
 
-import mynamespace.web.model.ConnectionSearchResult;
-import mynamespace.web.util.DataTransformator;
+import odataservice.flightsearch.model.ConnectionSearchResult;
+import odataservice.flightsearch.util.DataTransformator;
+import odataservice.flightsearch.util.EntityNames;
 import org.apache.olingo.client.api.ODataClient;
 import org.apache.olingo.client.api.communication.request.retrieve.ODataEntitySetIteratorRequest;
 import org.apache.olingo.client.api.communication.response.ODataRetrieveResponse;
@@ -62,7 +63,7 @@ public class ReturnFlightSearchResult extends HttpServlet {
                                                               "OccupiedSeatsBusinessClass",
                                                               "MaxSeatsFirstClass",
                                                               "OccupiedSeatsFirstClass")
-                                            .expandWithSelect("Carrier", "CarrierCode", "CarrierName", "URL")
+                                            .expandWithSelect("Carrier", EntityNames.CARRIER_ID, "CarrierName", "URL")
                                             .build();
         final ClientEntitySetIterator<ClientEntitySet, ClientEntity> iterator = readEntities(absoluteUri);
         final List<ConnectionSearchResult> returnConnectionSearchResults = new ArrayList<>();
