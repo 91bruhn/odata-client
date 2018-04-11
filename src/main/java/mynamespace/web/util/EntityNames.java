@@ -1,11 +1,6 @@
-////////////////////////////////////////////////////////////////////////////////
-//
-// Created by bruhn on 01.04.2018.
-//
-// Copyright (c) 2006 - 2018 FORCAM GmbH. All rights reserved.
-////////////////////////////////////////////////////////////////////////////////
-
 package mynamespace.web.util;
+
+import org.apache.olingo.commons.api.edm.FullQualifiedName;
 
 /**
  *
@@ -15,25 +10,26 @@ public class EntityNames {
     // ------------------------------------------------------------------------
     // constants
     // ------------------------------------------------------------------------
+
     // ========================================================================
     //                          ENTITY TYPES NAMES
     // ========================================================================
 
 //    public static final String ET_SAPLANE_NAME = "Airplane";
-    //    public static final FullQualifiedName ET_SAPLANE_FQN = new FullQualifiedName(NAMESPACE, ET_SAPLANE_NAME);
-    //
-    //    public static final String ET_SCARR_NAME = "Carrier";
-    //    public static final FullQualifiedName ET_SCARR_FQN = new FullQualifiedName(NAMESPACE, ET_SCARR_NAME);
-    //
-    //    public static final String ET_SPFLI_NAME = "Connection";
-    //    public static final FullQualifiedName ET_SPFLI_FQN = new FullQualifiedName(NAMESPACE, ET_SPFLI_NAME);
-    //
-    //    public static final String ET_SFLIGHT_NAME = "Flight";
-    //    public static final FullQualifiedName ET_SFLIGHT_FQN = new FullQualifiedName(NAMESPACE, ET_SFLIGHT_NAME);
-    //
-    //    public static final String ET_SBOOK_NAME = "Booking";
-    //    public static final FullQualifiedName ET_SBOOK_FQN = new FullQualifiedName(NAMESPACE, ET_SBOOK_NAME);
-
+//        public static final FullQualifiedName ET_SAPLANE_FQN = new FullQualifiedName(NAMESPACE, ET_SAPLANE_NAME);
+//
+//        public static final String ET_SCARR_NAME = "Carrier";
+//        public static final FullQualifiedName ET_SCARR_FQN = new FullQualifiedName(NAMESPACE, ET_SCARR_NAME);
+//
+//        public static final String ET_SPFLI_NAME = "Connection";
+//        public static final FullQualifiedName ET_SPFLI_FQN = new FullQualifiedName(NAMESPACE, ET_SPFLI_NAME);
+//
+//        public static final String ET_SFLIGHT_NAME = "Flight";
+//        public static final FullQualifiedName ET_SFLIGHT_FQN = new FullQualifiedName(NAMESPACE, ET_SFLIGHT_NAME);
+//
+//        public static final String ET_SBOOK_NAME = "Booking";
+//        public static final FullQualifiedName ET_SBOOK_FQN = new FullQualifiedName(NAMESPACE, ET_SBOOK_NAME);
+//TODO check if useable
     // ========================================================================
     //                          ENTITY SET NAMES
     // ========================================================================

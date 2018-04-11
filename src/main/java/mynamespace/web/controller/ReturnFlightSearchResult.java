@@ -1,10 +1,3 @@
-////////////////////////////////////////////////////////////////////////////////
-//
-// Created by BBruhns on 07.04.2018.
-//
-// Copyright (c) 2006 - 2018 FORCAM GmbH. All rights reserved.
-////////////////////////////////////////////////////////////////////////////////
-
 package mynamespace.web.controller;
 
 import mynamespace.web.model.ConnectionSearchResult;
@@ -89,13 +82,6 @@ public class ReturnFlightSearchResult extends HttpServlet {
         req.getSession().setAttribute("inputAirportOfDeparture", airportOfDeparture);
         req.getSession().setAttribute("inputAirportOfArrival", airportOfArrival);
         req.getRequestDispatcher("/returnFlightSearchResults.jsp").forward(req, resp);
-
-        //        req.getSession().setAttribute("searchResults", searchResults);
-        //        req.getSession().setAttribute("inputAirportOfDeparture", inputAirportOfDeparture);
-        //        req.getSession().setAttribute("inputAirportOfArrival", inputAirportOfArrival);
-        //        req.getSession().setAttribute("inputDepartureFlightDate", inputDepartureFlightDate);
-        //        req.getSession().setAttribute("inputReturnFlightDate", inputReturnFlightDate);
-        //        req.setAttribute("searchResults", searchResults);
 
     }
 

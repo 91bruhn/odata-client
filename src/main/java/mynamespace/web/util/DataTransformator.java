@@ -1,10 +1,3 @@
-////////////////////////////////////////////////////////////////////////////////
-//
-// Created by bruhn on 01.04.2018.
-//
-// Copyright (c) 2006 - 2018 FORCAM GmbH. All rights reserved.
-////////////////////////////////////////////////////////////////////////////////
-
 package mynamespace.web.util;
 
 import mynamespace.web.model.Booking;
@@ -16,8 +9,10 @@ import mynamespace.web.model.Flight;
 import mynamespace.web.model.FlightSearchResult;
 import mynamespace.web.model.Plane;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.olingo.client.api.ODataClient;
 import org.apache.olingo.client.api.domain.ClientComplexValue;
 import org.apache.olingo.client.api.domain.ClientEntity;
+import org.apache.olingo.commons.api.edm.FullQualifiedName;
 
 import java.text.DecimalFormat;
 import java.time.LocalDate;
@@ -279,7 +274,7 @@ public class DataTransformator {
         booking.setFlightId((String) entityBooking.getProperty(FLIGHT_DATE).getValue().asPrimitive().toValue());
         booking.setCustomId((String) entityBooking.getProperty(CUSTOMER_ID).getValue().asPrimitive().toValue());
         booking.setCustType((String) entityBooking.getProperty(SEX).getValue().asPrimitive().toValue());
-        booking.setSmoker(Boolean.valueOf((Boolean) entityBooking.getProperty(IS_SMOKER).getValue().asPrimitive().toValue()));
+        booking.setSmoker((Boolean) entityBooking.getProperty(IS_SMOKER).getValue().asPrimitive().toValue());
         booking.setLuggWeight((Double) entityBooking.getProperty(LUGGAGE_WEIGHT).getValue().asPrimitive().toValue());
         booking.setWUnit((String) entityBooking.getProperty(WEIGHT_UNIT).getValue().asPrimitive().toValue());
         booking.setInvoice((Boolean) entityBooking.getProperty(HAS_INVOICE).getValue().asPrimitive().toValue());
@@ -396,5 +391,87 @@ public class DataTransformator {
     //combines the amount of available seats from economic, business and first class
     public int getCombinedAmountOfAvailableSeats(int seatsMaxE, int seatsMaxB, int seatsMaxF, int seatsOccuppiedE, int seatsOccuppiedB, int seatsOccuppiedF) {
         return (seatsMaxE - seatsOccuppiedE) + (seatsMaxB - seatsOccuppiedB) + (seatsMaxF - seatsOccuppiedF);
+    }
+
+    public static ClientEntity buildBookingEntity(ODataClient oDataClient, String sex, String flightClass, double luggWeight, String isSmoker,
+                                                  String carrierCode, String flightConnectionNumber, String FlightDate) {
+        final String namespace = "OData.FlightDataManagement";//TODO use namespace
+        final FullQualifiedName bookingFqn = new FullQualifiedName(namespace, "Booking");
+        final ClientEntity entityBooking = oDataClient.getObjectFactory().newEntity(bookingFqn);
+
+        entityBooking.getProperties().add(oDataClient.getObjectFactory()
+                                                     .newPrimitiveProperty("CarrierCode",
+                                                                           oDataClient.getObjectFactory().newPrimitiveValueBuilder().buildString(carrierCode)));
+        entityBooking.getProperties().add(oDataClient.getObjectFactory()
+                                                     .newPrimitiveProperty("FlightConnectionNumber",
+                                                                           oDataClient.getObjectFactory()
+                                                                                      .newPrimitiveValueBuilder()
+                                                                                      .buildString(flightConnectionNumber)));
+        entityBooking.getProperties().add(oDataClient.getObjectFactory()
+                                                     .newPrimitiveProperty("FlightDate",
+                                                                           oDataClient.getObjectFactory().newPrimitiveValueBuilder().buildString(FlightDate)));
+        entityBooking.getProperties().add(oDataClient.getObjectFactory()
+                                                     .newPrimitiveProperty("Sex",
+                                                                           oDataClient.getObjectFactory()
+                                                                                      .newPrimitiveValueBuilder()
+                                                                                      .buildString(transformSex(sex))));
+        entityBooking.getProperties().add(oDataClient.getObjectFactory()
+                                                     .newPrimitiveProperty("IsSmoker",
+                                                                           oDataClient.getObjectFactory()
+                                                                                      .newPrimitiveValueBuilder()
+                                                                                      .buildBoolean(transformIsSmoker(isSmoker))));
+        entityBooking.getProperties().add(oDataClient.getObjectFactory()
+                                                     .newPrimitiveProperty("LuggageWeight",
+                                                                           oDataClient.getObjectFactory().newPrimitiveValueBuilder().buildDouble(luggWeight)));
+        entityBooking.getProperties().add(oDataClient.getObjectFactory()
+                                                     .newPrimitiveProperty("WeightUnit",
+                                                                           oDataClient.getObjectFactory().newPrimitiveValueBuilder().buildString("KG")));
+        entityBooking.getProperties().add(oDataClient.getObjectFactory()
+                                                     .newPrimitiveProperty("InvoiceAvailable",
+                                                                           oDataClient.getObjectFactory().newPrimitiveValueBuilder().buildBoolean(true)));
+        entityBooking.getProperties().add(oDataClient.getObjectFactory()
+                                                     .newPrimitiveProperty("FlightClass",
+                                                                           oDataClient.getObjectFactory()
+                                                                                      .newPrimitiveValueBuilder()
+                                                                                      .buildString(DataTransformator.transformFlightClass(flightClass))));
+        entityBooking.getProperties().add(oDataClient.getObjectFactory()
+                                                     .newPrimitiveProperty("OrderDate",
+                                                                           oDataClient.getObjectFactory()
+                                                                                      .newPrimitiveValueBuilder()
+                                                                                      .buildString(getDateOfToday())));
+        entityBooking.getProperties().add(oDataClient.getObjectFactory()
+                                                     .newPrimitiveProperty("IsCancelled",
+                                                                           oDataClient.getObjectFactory().newPrimitiveValueBuilder().buildBoolean(false)));
+        entityBooking.getProperties().add(oDataClient.getObjectFactory()
+                                                     .newPrimitiveProperty("IsReserved",
+                                                                           oDataClient.getObjectFactory().newPrimitiveValueBuilder().buildBoolean(true)));
+
+        return entityBooking;
+    }
+
+    public static String transformSex(String sex) {
+        return sex.equals("weiblich") ? "Female" : "Male";
+    }
+
+    public static boolean transformIsSmoker(String isSmoker) {
+        return isSmoker.equals("ja");
+    }
+
+    public static String getDateOfToday() {
+        final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+        final LocalDate today = LocalDate.now();
+
+        return today.format(formatter);
+    }
+
+    public static String transformFlightClass(String flightClass) {
+        switch (flightClass) {
+            case "Business Class (1,5-facher Aufschlag)":
+                return "Business";
+            case "First Class (3,5-facher Aufschlag)":
+                return "First Class";
+            default:
+                return "Economy";
+        }
     }
 }

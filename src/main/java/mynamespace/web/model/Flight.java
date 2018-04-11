@@ -1,10 +1,3 @@
-////////////////////////////////////////////////////////////////////////////////
-//
-// Created by bruhn on 01.04.2018.
-//
-// Copyright (c) 2006 - 2018 FORCAM GmbH. All rights reserved.
-////////////////////////////////////////////////////////////////////////////////
-
 package mynamespace.web.model;
 
 import java.util.List;
@@ -37,6 +30,7 @@ public class Flight {
                 return flight;
             }
         }
+
         return null;
     }
 
