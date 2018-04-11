@@ -24,7 +24,7 @@ import java.net.URI;
 @WebServlet("/bookingSearchResult")
 public class BookingSearchResultServlet extends HttpServlet {
 
-    ODataClient mODataClient = ODataClientFactory.getClient();
+    private ODataClient mODataClient = ODataClientFactory.getClient();
 
     @Override
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

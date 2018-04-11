@@ -26,7 +26,7 @@ import java.util.List;
 @WebServlet("/returnFlightSearchResult")
 public class ReturnFlightSearchResult extends HttpServlet {
 
-    ODataClient mODataClient = ODataClientFactory.getClient();
+    private ODataClient mODataClient = ODataClientFactory.getClient();
 
     @Override
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

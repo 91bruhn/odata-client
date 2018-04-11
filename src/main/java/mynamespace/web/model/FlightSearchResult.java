@@ -1,13 +1,17 @@
 package mynamespace.web.model;
 
 /**
- *
+ * Combined Object of a flight and its attached connection and carrier.
  */
 public class FlightSearchResult {
 
     private Flight mFlight;
     private Connection mConnection;
     private Carrier mCarrier;
+
+    // ------------------------------------------------------------------------
+    // getters/setters
+    // ------------------------------------------------------------------------
 
     public Flight getFlight() {
         return mFlight;

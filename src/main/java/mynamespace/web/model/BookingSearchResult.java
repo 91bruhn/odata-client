@@ -1,13 +1,17 @@
 package mynamespace.web.model;
 
 /**
- *
+ * Combined object of a booking and its attached connection and carrier.
  */
 public class BookingSearchResult {
 
     private Booking mBooking;
     private Connection mConnection;
     private Carrier mCarrier;
+
+    // ------------------------------------------------------------------------
+    // getters/setters
+    // ------------------------------------------------------------------------
 
     public Booking getBooking() {
         return mBooking;

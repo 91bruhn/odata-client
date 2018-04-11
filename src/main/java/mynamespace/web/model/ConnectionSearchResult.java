@@ -3,7 +3,7 @@ package mynamespace.web.model;
 import java.util.List;
 
 /**
- *
+ * Combined Object of a Connection and the attached flights and its carrier.
  */
 public class ConnectionSearchResult {
 
@@ -21,6 +21,10 @@ public class ConnectionSearchResult {
     private String mArrTime;
     private double mDistance;
     private String mDistId;
+
+    // ------------------------------------------------------------------------
+    // getters/setters
+    // ------------------------------------------------------------------------
 
     public String getConnId() {
         return connId;

@@ -24,7 +24,7 @@ import java.util.Map;
 @WebServlet("/bookingOverview")
 public class BookingOverviewServlet extends HttpServlet {
 
-    ODataClient mODataClient = ODataClientFactory.getClient();
+    private ODataClient mODataClient = ODataClientFactory.getClient();
 
     @Override
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -77,7 +77,7 @@ public class BookingOverviewServlet extends HttpServlet {
     }
 
     private URI createFlightSearchRequestURI(Map<String, Object> flightKeyValues) {
-        //http://localhost:8080/flightDataManagement.svc/Flights(CarrierCode='AA',FlightConnectionNumber='17',FlightDate='01.10.2017')?$expand=Connection,Carrier
+        //todo URI anzeigen
         final String serviceUri = "http://localhost:8080/flightDataManagement.svc/";
         final String entitySetNameFlights = "Flights";
         final String entitySetNameConnection = "Connection";
@@ -138,14 +138,6 @@ public class BookingOverviewServlet extends HttpServlet {
 
         return response.getBody();
     }
-    //    private void getDepartureFlightInfo(HttpServletRequest req){
-    //        req.getSession().getAttribute()
-    //    }
-    //
-    //
-    //    private void getReturnFlightInfo(HttpServletRequest req){
-    //        req.getSession().getAttribute()
-    //    }todo löschen?
 
 }
 

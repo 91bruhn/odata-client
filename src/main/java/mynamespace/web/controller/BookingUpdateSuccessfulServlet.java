@@ -27,7 +27,7 @@ import java.time.format.DateTimeFormatter;
 @WebServlet("/bookingUpdateSuccessful")
 public class BookingUpdateSuccessfulServlet extends HttpServlet {
 
-    ODataClient mODataClient = ODataClientFactory.getClient();
+    private ODataClient mODataClient = ODataClientFactory.getClient();
 
     @Override
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

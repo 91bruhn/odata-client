@@ -10,6 +10,10 @@ public class Carrier {
     private String mCurrCode;
     private String mUrl;
 
+    // ------------------------------------------------------------------------
+    // getters/setters
+    // ------------------------------------------------------------------------
+
     public String getCarrId() {
         return mCarrId;
     }

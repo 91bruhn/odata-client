@@ -20,6 +20,10 @@ public class Booking {
     private boolean mCancelled;
     private boolean mReserved;
 
+    // ------------------------------------------------------------------------
+    // getters/setters
+    // ------------------------------------------------------------------------
+
     public String getBookId() {
         return mBookId;
     }

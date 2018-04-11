@@ -18,8 +18,12 @@ public class Connection {
     private String mArrTime;
     private double mDistance;
     private String mDistId;
-    private String mFlType;//boolean?
+    private String mFlType;
     private int mPeriod;
+
+    // ------------------------------------------------------------------------
+    // getters/setters
+    // ------------------------------------------------------------------------
 
     public String getConnId() {
         return mConnId;
