@@ -2,7 +2,6 @@ package odataservice.flightsearch.controller;
 
 import odataservice.flightsearch.model.ConnectionSearchResult;
 import odataservice.flightsearch.util.DataTransformator;
-import odataservice.flightsearch.util.EntityNames;
 import org.apache.olingo.client.api.ODataClient;
 import org.apache.olingo.client.api.communication.request.retrieve.ODataEntitySetIteratorRequest;
 import org.apache.olingo.client.api.communication.response.ODataRetrieveResponse;
@@ -20,6 +19,26 @@ import java.io.IOException;
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
+
+import static odataservice.flightsearch.util.EntityNames.CARRIER_ID;
+import static odataservice.flightsearch.util.EntityNames.CARRIER_NAME;
+import static odataservice.flightsearch.util.EntityNames.CITY_FROM;
+import static odataservice.flightsearch.util.EntityNames.CITY_TO;
+import static odataservice.flightsearch.util.EntityNames.CURRENCY;
+import static odataservice.flightsearch.util.EntityNames.ES_SFLIGHT_NAME;
+import static odataservice.flightsearch.util.EntityNames.ES_SPFLI_NAME;
+import static odataservice.flightsearch.util.EntityNames.ET_SCARR_NAME;
+import static odataservice.flightsearch.util.EntityNames.FLIGHT_DATE;
+import static odataservice.flightsearch.util.EntityNames.HEADER_ACCEPT_JSON;
+import static odataservice.flightsearch.util.EntityNames.PRICE;
+import static odataservice.flightsearch.util.EntityNames.SEATS_MAX_B;
+import static odataservice.flightsearch.util.EntityNames.SEATS_MAX_E;
+import static odataservice.flightsearch.util.EntityNames.SEATS_MAX_F;
+import static odataservice.flightsearch.util.EntityNames.SEATS_OCC_B;
+import static odataservice.flightsearch.util.EntityNames.SEATS_OCC_E;
+import static odataservice.flightsearch.util.EntityNames.SEATS_OCC_F;
+import static odataservice.flightsearch.util.EntityNames.SERVICE_URI;
+import static odataservice.flightsearch.util.EntityNames.URL;
 
 /**
  *
@@ -39,28 +58,26 @@ public class FlightSearchResultServlet extends HttpServlet {
         //TODO auslagern?? oder in Methode speichern...
         //TODO Sample Zeug iwie benutzen?
         //TODO Doku diese Applikation kann die Möglichkeiten von OData nur begrenzt ausreizen...
-        final String serviceUri = "http://localhost:8080/flightDataManagement.svc/";
-        final String entitySetName = "Connections";
         //TODO in Doku nutzen
         //1 -- http://localhost:8080/flightDataManagement.svc/Connections?$filter=DepartureCity eq 'NEWYORK' and ArrivalCity eq 'SANFRANCISCO'
         //2 -- &$expand=Flights($select=FlightDate,MaxSeatsEconomyClass,OccupiedSeatsInEconomyClass,MaxSeatsBusinessClass,OccupiedSeatsBusinessClass,MaxSeatsFirstClass,OccupiedSeatsFirstClass),
         //3 Carrier($select=CarrierName,URL)
         //TODO use for Flights, Connection vllt Constants
         //TODO naming, extra methode?
-        final URI absoluteUri = mODataClient.newURIBuilder(serviceUri)
-                                            .appendEntitySetSegment(entitySetName)
-                                            .filter("DepartureCity eq '" + inputAirportOfDeparture + "' and ArrivalCity eq '" + inputAirportOfArrival + "'")
-                                            .expandWithSelect("Flights",
-                                                              "FlightDate",
-                                                              "Airfare",
-                                                              "LocalCurrencyOfAirline",
-                                                              "MaxSeatsEconomyClass",
-                                                              "OccupiedSeatsInEconomyClass",
-                                                              "MaxSeatsBusinessClass",
-                                                              "OccupiedSeatsBusinessClass",
-                                                              "MaxSeatsFirstClass",
-                                                              "OccupiedSeatsFirstClass")
-                                            .expandWithSelect("Carrier", EntityNames.CARRIER_ID, "CarrierName", "URL")
+        final URI absoluteUri = mODataClient.newURIBuilder(SERVICE_URI)
+                                            .appendEntitySetSegment(ES_SPFLI_NAME)
+                                            .filter(CITY_FROM + " eq '" + inputAirportOfDeparture + "' and " + CITY_TO + " eq '" + inputAirportOfArrival + "'")
+                                            .expandWithSelect(ES_SFLIGHT_NAME,
+                                                              FLIGHT_DATE,
+                                                              PRICE,
+                                                              CURRENCY,
+                                                              SEATS_MAX_E,
+                                                              SEATS_OCC_E,
+                                                              SEATS_MAX_B,
+                                                              SEATS_OCC_B,
+                                                              SEATS_MAX_F,
+                                                              SEATS_OCC_F)
+                                            .expandWithSelect(ET_SCARR_NAME, CARRIER_ID, CARRIER_NAME, URL)
                                             .build();
         final ClientEntitySetIterator<ClientEntitySet, ClientEntity> iterator = readEntities(absoluteUri);
         final List<ConnectionSearchResult> searchResults = new ArrayList<>();
@@ -86,8 +103,7 @@ public class FlightSearchResultServlet extends HttpServlet {
     private ClientEntitySetIterator<ClientEntitySet, ClientEntity> readEntities(URI absoluteUri) {
         final ODataEntitySetIteratorRequest<ClientEntitySet, ClientEntity> request = mODataClient.getRetrieveRequestFactory().getEntitySetIteratorRequest(
             absoluteUri);
-        // todo odata4 sample/server limitation not handling metadata=full
-        request.setAccept("application/json;odata.metadata=minimal");
+        request.setAccept(HEADER_ACCEPT_JSON);
         final ODataRetrieveResponse<ClientEntitySetIterator<ClientEntitySet, ClientEntity>> response = request.execute();
 
         return response.getBody();

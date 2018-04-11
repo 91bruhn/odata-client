@@ -2,35 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bda5505f-954f-40a7-b55d-759727f7b474" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/mynamespace/web/model/Plane.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/bookingOverview.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/bookingOverview.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/bookingSearchResult.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/bookingSearchResult.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/bookingSuccessful.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/bookingSuccessful.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/displayUpdatedBooking.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/displayUpdatedBooking.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/returnFlightSearchResults.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/returnFlightSearchResults.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/searchResults.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/searchResults.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/singleBookingSearchResult.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/singleBookingSearchResult.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/Flight-Search/META-INF/MANIFEST.MF" afterPath="$PROJECT_DIR$/target/Flight-Search/META-INF/MANIFEST.MF" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/mynamespace/web/controller/BookingOverviewServlet.java" afterPath="$PROJECT_DIR$/src/main/java/odataservice/flightsearch/controller/BookingOverviewServlet.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/mynamespace/web/controller/BookingSearchResultServlet.java" afterPath="$PROJECT_DIR$/src/main/java/odataservice/flightsearch/controller/BookingSearchResultServlet.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/mynamespace/web/controller/BookingServlet.java" afterPath="$PROJECT_DIR$/src/main/java/odataservice/flightsearch/controller/BookingServlet.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/mynamespace/web/controller/BookingUpdateSuccessfulServlet.java" afterPath="$PROJECT_DIR$/src/main/java/odataservice/flightsearch/controller/BookingUpdateSuccessfulServlet.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/mynamespace/web/controller/FlightSearchResultServlet.java" afterPath="$PROJECT_DIR$/src/main/java/odataservice/flightsearch/controller/FlightSearchResultServlet.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/mynamespace/web/controller/ReturnFlightSearchResult.java" afterPath="$PROJECT_DIR$/src/main/java/odataservice/flightsearch/controller/ReturnFlightSearchResult.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/mynamespace/web/controller/Servlet.java" afterPath="$PROJECT_DIR$/src/main/java/odataservice/flightsearch/controller/Servlet.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/mynamespace/web/controller/UpdateBookingServlet.java" afterPath="$PROJECT_DIR$/src/main/java/odataservice/flightsearch/controller/UpdateBookingServlet.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/mynamespace/web/controller/bookingSuccessfulServlet.java" afterPath="$PROJECT_DIR$/src/main/java/odataservice/flightsearch/controller/BookingSuccessfulServlet.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/mynamespace/web/model/Booking.java" afterPath="$PROJECT_DIR$/src/main/java/odataservice/flightsearch/model/Booking.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/mynamespace/web/model/BookingSearchResult.java" afterPath="$PROJECT_DIR$/src/main/java/odataservice/flightsearch/model/BookingSearchResult.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/mynamespace/web/model/Carrier.java" afterPath="$PROJECT_DIR$/src/main/java/odataservice/flightsearch/model/Carrier.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/mynamespace/web/model/Connection.java" afterPath="$PROJECT_DIR$/src/main/java/odataservice/flightsearch/model/Connection.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/mynamespace/web/model/ConnectionSearchResult.java" afterPath="$PROJECT_DIR$/src/main/java/odataservice/flightsearch/model/ConnectionSearchResult.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/mynamespace/web/model/Flight.java" afterPath="$PROJECT_DIR$/src/main/java/odataservice/flightsearch/model/Flight.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/mynamespace/web/model/FlightSearchResult.java" afterPath="$PROJECT_DIR$/src/main/java/odataservice/flightsearch/model/FlightSearchResult.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/mynamespace/web/util/DataTransformator.java" afterPath="$PROJECT_DIR$/src/main/java/odataservice/flightsearch/util/DataTransformator.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/mynamespace/web/util/EntityNames.java" afterPath="$PROJECT_DIR$/src/main/java/odataservice/flightsearch/util/EntityNames.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/odataservice/flightsearch/controller/BookingOverviewServlet.java" afterPath="$PROJECT_DIR$/src/main/java/odataservice/flightsearch/controller/BookingOverviewServlet.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/odataservice/flightsearch/controller/BookingSearchResultServlet.java" afterPath="$PROJECT_DIR$/src/main/java/odataservice/flightsearch/controller/BookingSearchResultServlet.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/odataservice/flightsearch/controller/BookingSuccessfulServlet.java" afterPath="$PROJECT_DIR$/src/main/java/odataservice/flightsearch/controller/BookingSuccessfulServlet.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/odataservice/flightsearch/controller/BookingUpdateSuccessfulServlet.java" afterPath="$PROJECT_DIR$/src/main/java/odataservice/flightsearch/controller/BookingUpdateSuccessfulServlet.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/odataservice/flightsearch/controller/FlightSearchResultServlet.java" afterPath="$PROJECT_DIR$/src/main/java/odataservice/flightsearch/controller/FlightSearchResultServlet.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/odataservice/flightsearch/controller/ReturnFlightSearchResult.java" afterPath="$PROJECT_DIR$/src/main/java/odataservice/flightsearch/controller/ReturnFlightSearchResult.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/odataservice/flightsearch/util/DataTransformator.java" afterPath="$PROJECT_DIR$/src/main/java/odataservice/flightsearch/util/DataTransformator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/odataservice/flightsearch/util/EntityNames.java" afterPath="$PROJECT_DIR$/src/main/java/odataservice/flightsearch/util/EntityNames.java" />
     </list>
     <ignored path="odata-client.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -60,10 +39,44 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/odataservice/flightsearch/controller/UpdateBookingServlet.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+              <caret line="21" column="18" selection-start-line="21" selection-start-column="18" selection-end-line="21" selection-end-column="18" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BookingOverviewServlet.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/odataservice/flightsearch/controller/BookingOverviewServlet.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="157" column="39" selection-start-line="157" selection-start-column="39" selection-end-line="157" selection-end-column="39" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DataTransformator.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/odataservice/flightsearch/util/DataTransformator.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="66" column="13" selection-start-line="66" selection-start-column="13" selection-end-line="66" selection-end-column="13" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Booking.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/odataservice/flightsearch/model/Booking.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="24" column="79" selection-start-line="24" selection-start-column="79" selection-end-line="24" selection-end-column="79" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -78,63 +91,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DataTransformator.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/odataservice/flightsearch/util/DataTransformator.java">
+      <file leaf-file-name="ReturnFlightSearchResult.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/odataservice/flightsearch/controller/ReturnFlightSearchResult.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="283" column="5" selection-start-line="283" selection-start-column="5" selection-end-line="283" selection-end-column="5" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="EntityNames.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/odataservice/flightsearch/util/EntityNames.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="23" column="58" selection-start-line="23" selection-start-column="49" selection-end-line="23" selection-end-column="58" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pom.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BookingSearchResultServlet.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/odataservice/flightsearch/controller/BookingSearchResultServlet.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="58" column="44" selection-start-line="58" selection-start-column="44" selection-end-line="58" selection-end-column="44" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FlightSearchResultServlet.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/odataservice/flightsearch/controller/FlightSearchResultServlet.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="27" column="13" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BookingServlet.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/odataservice/flightsearch/controller/BookingServlet.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="19" column="52" selection-start-line="19" selection-start-column="52" selection-end-line="19" selection-end-column="52" />
+              <caret line="99" column="46" selection-start-line="99" selection-start-column="46" selection-end-line="99" selection-end-column="46" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -146,7 +107,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/odataservice/flightsearch/controller/BookingSuccessfulServlet.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="80" column="0" selection-start-line="80" selection-start-column="0" selection-end-line="87" selection-end-column="5" />
+              <caret line="20" column="3" selection-start-line="20" selection-start-column="3" selection-end-line="20" selection-end-column="3" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -158,7 +119,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/odataservice/flightsearch/controller/BookingUpdateSuccessfulServlet.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="50" column="123" selection-start-line="50" selection-start-column="123" selection-end-line="50" selection-end-column="123" />
+              <caret line="56" column="33" selection-start-line="56" selection-start-column="33" selection-end-line="56" selection-end-column="33" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -166,11 +127,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ReturnFlightSearchResult.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/odataservice/flightsearch/controller/ReturnFlightSearchResult.java">
+      <file leaf-file-name="BookingServlet.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/odataservice/flightsearch/controller/BookingServlet.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="32" column="21" selection-start-line="32" selection-start-column="16" selection-end-line="32" selection-end-column="21" />
+              <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -178,41 +139,33 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BookingSearchResult.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/odataservice/flightsearch/model/BookingSearchResult.java">
+      <file leaf-file-name="FlightSearchResultServlet.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/odataservice/flightsearch/controller/FlightSearchResultServlet.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="3" column="72" selection-start-line="3" selection-start-column="72" selection-end-line="3" selection-end-column="72" />
+              <caret line="88" column="9" selection-start-line="88" selection-start-column="9" selection-end-line="88" selection-end-column="9" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BookingSearchResultServlet.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/odataservice/flightsearch/controller/BookingSearchResultServlet.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ConnectionSearchResult.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/odataservice/flightsearch/model/ConnectionSearchResult.java">
+      <file leaf-file-name="EntityNames.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/odataservice/flightsearch/util/EntityNames.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.017489713">
-              <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="6" selection-end-column="3" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FlightSearchResult.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/odataservice/flightsearch/model/FlightSearchResult.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="4" column="3" selection-start-line="4" selection-start-column="3" selection-end-line="4" selection-end-column="3" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BookingOverviewServlet.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/odataservice/flightsearch/controller/BookingOverviewServlet.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="133" column="0" selection-start-line="133" selection-start-column="0" selection-end-line="140" selection-end-column="5" />
+            <state vertical-scroll-proportion="0.71875">
+              <caret line="69" column="47" selection-start-line="69" selection-start-column="47" selection-end-line="69" selection-end-column="47" />
               <folding />
             </state>
           </provider>
@@ -240,12 +193,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/webapp/searchResult.jsp" />
-        <option value="$PROJECT_DIR$/src/main/resources/css/common.css" />
-        <option value="$PROJECT_DIR$/src/main/webapp/resources/offcanvas.css" />
-        <option value="$PROJECT_DIR$/src/main/webapp/resources/css/offcanvas.css" />
-        <option value="$PROJECT_DIR$/src/main/webapp/indexOneWay.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/mynamespace/web/controller/OneWayFlightSearchResultServlet.java" />
         <option value="$PROJECT_DIR$/src/main/java/mynamespace/web/service/RequestResultDataTransformator.java" />
         <option value="$PROJECT_DIR$/src/main/java/mynamespace/web/controller/BookingOverview.java" />
         <option value="$PROJECT_DIR$/src/main/java/mynamespace/web/controller/AAAA.java" />
@@ -289,8 +236,14 @@
         <option value="$PROJECT_DIR$/src/main/java/mynamespace/web/controller/BookingOverviewServlet.java" />
         <option value="$PROJECT_DIR$/src/main/java/mynamespace/web/util/DataTransformator.java" />
         <option value="$PROJECT_DIR$/src/main/java/mynamespace/web/util/EntityNames.java" />
-        <option value="$PROJECT_DIR$/src/main/java/odataservice/flightsearch/controller/BookingUpdateSuccessfulServlet.java" />
         <option value="$PROJECT_DIR$/src/main/java/odataservice/flightsearch/util/DataTransformator.java" />
+        <option value="$PROJECT_DIR$/src/main/java/odataservice/flightsearch/controller/BookingOverviewServlet.java" />
+        <option value="$PROJECT_DIR$/src/main/java/odataservice/flightsearch/controller/BookingUpdateSuccessfulServlet.java" />
+        <option value="$PROJECT_DIR$/src/main/java/odataservice/flightsearch/controller/FlightSearchResultServlet.java" />
+        <option value="$PROJECT_DIR$/src/main/java/odataservice/flightsearch/util/EntityNames.java" />
+        <option value="$PROJECT_DIR$/src/main/java/odataservice/flightsearch/controller/BookingSearchResultServlet.java" />
+        <option value="$PROJECT_DIR$/src/main/java/odataservice/flightsearch/controller/ReturnFlightSearchResult.java" />
+        <option value="$PROJECT_DIR$/src/main/java/odataservice/flightsearch/controller/BookingSuccessfulServlet.java" />
       </list>
     </option>
   </component>
@@ -386,40 +339,6 @@
               <option name="myItemId" value="main" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="odata-client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="odata-client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="css" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -444,6 +363,10 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="flightsearch" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="util" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1137,16 +1060,16 @@
       <workItem from="1523356715387" duration="9000" />
       <workItem from="1523356737265" duration="7946000" />
       <workItem from="1523476223995" duration="35000" />
-      <workItem from="1523476413638" duration="6964000" />
+      <workItem from="1523476413638" duration="11084000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="202479000" />
+    <option name="totallyTimeSpent" value="206599000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1176" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1157,10 +1080,10 @@
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32900432" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3096836" sideWeight="0.49573562" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3096836" sideWeight="0.49573562" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32981783" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24360341" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24360341" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3279003" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1360,13 +1283,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/updateBooking.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-16.32258">
-          <caret line="23" column="37" selection-start-line="23" selection-start-column="14" selection-end-line="23" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/singleBookingSearchResult.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-31.225807">
@@ -1381,20 +1297,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/returnFlightSearchResults.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-56.774193">
-          <caret line="80" column="0" selection-start-line="80" selection-start-column="0" selection-end-line="80" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/index.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-22.709677">
-          <caret line="32" column="34" selection-start-line="32" selection-start-column="34" selection-end-line="32" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/displayUpdatedBooking.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="23.612904">
@@ -1406,13 +1308,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-41.16129">
           <caret line="58" column="0" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/bookingSearchResult.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="53.612904">
-          <caret line="122" column="34" selection-start-line="122" selection-start-column="9" selection-end-line="122" selection-end-column="34" />
         </state>
       </provider>
     </entry>
@@ -1472,21 +1367,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/odataservice/flightsearch/model/Booking.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="24" column="79" selection-start-line="24" selection-start-column="79" selection-end-line="24" selection-end-column="79" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/odataservice/flightsearch/util/EntityNames.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="23" column="58" selection-start-line="23" selection-start-column="49" selection-end-line="23" selection-end-column="58" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1500,98 +1380,6 @@
         <state vertical-scroll-proportion="0.1053719">
           <caret line="22" column="22" selection-start-line="22" selection-start-column="22" selection-end-line="22" selection-end-column="22" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/odataservice/flightsearch/controller/Servlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/odataservice/flightsearch/controller/FlightSearchResultServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="27" column="13" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/odataservice/flightsearch/controller/BookingServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="19" column="52" selection-start-line="19" selection-start-column="52" selection-end-line="19" selection-end-column="52" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/odataservice/flightsearch/controller/BookingOverviewServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="133" column="0" selection-start-line="133" selection-start-column="0" selection-end-line="140" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/odataservice/flightsearch/controller/BookingSearchResultServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="58" column="44" selection-start-line="58" selection-start-column="44" selection-end-line="58" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/odataservice/flightsearch/controller/BookingSuccessfulServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="80" column="0" selection-start-line="80" selection-start-column="0" selection-end-line="87" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/odataservice/flightsearch/controller/BookingUpdateSuccessfulServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="50" column="123" selection-start-line="50" selection-start-column="123" selection-end-line="50" selection-end-column="123" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/odataservice/flightsearch/controller/UpdateBookingServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/odataservice/flightsearch/util/DataTransformator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="283" column="5" selection-start-line="283" selection-start-column="5" selection-end-line="283" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/odataservice/flightsearch/controller/ReturnFlightSearchResult.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="32" column="21" selection-start-line="32" selection-start-column="16" selection-end-line="32" selection-end-column="21" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1613,8 +1401,152 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/odataservice/flightsearch/model/ConnectionSearchResult.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.017489713">
-          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="6" selection-end-column="3" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="24" column="27" selection-start-line="24" selection-start-column="27" selection-end-line="24" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/index.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-11.961538">
+          <caret line="117" column="0" selection-start-line="117" selection-start-column="0" selection-end-line="118" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/bookingSearchResult.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="46.653847">
+          <caret line="122" column="34" selection-start-line="122" selection-start-column="9" selection-end-line="122" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/updateBooking.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="10.346154">
+          <caret line="23" column="37" selection-start-line="23" selection-start-column="14" selection-end-line="23" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/returnFlightSearchResults.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-49.03846">
+          <caret line="75" column="17" selection-start-line="75" selection-start-column="9" selection-end-line="75" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/odataservice/flightsearch/controller/Servlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/odataservice/flightsearch/controller/UpdateBookingServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="21" column="18" selection-start-line="21" selection-start-column="18" selection-end-line="21" selection-end-column="18" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/odataservice/flightsearch/controller/ReturnFlightSearchResult.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="99" column="46" selection-start-line="99" selection-start-column="46" selection-end-line="99" selection-end-column="46" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/odataservice/flightsearch/controller/FlightSearchResultServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="88" column="9" selection-start-line="88" selection-start-column="9" selection-end-line="88" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/odataservice/flightsearch/controller/BookingUpdateSuccessfulServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="56" column="33" selection-start-line="56" selection-start-column="33" selection-end-line="56" selection-end-column="33" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/odataservice/flightsearch/controller/BookingSuccessfulServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="20" column="3" selection-start-line="20" selection-start-column="3" selection-end-line="20" selection-end-column="3" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/odataservice/flightsearch/controller/BookingServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/odataservice/flightsearch/controller/BookingSearchResultServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/odataservice/flightsearch/controller/BookingOverviewServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="157" column="39" selection-start-line="157" selection-start-column="39" selection-end-line="157" selection-end-column="39" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/odataservice/flightsearch/model/Booking.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="24" column="79" selection-start-line="24" selection-start-column="79" selection-end-line="24" selection-end-column="79" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/odataservice/flightsearch/util/DataTransformator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="66" column="13" selection-start-line="66" selection-start-column="13" selection-end-line="66" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/odataservice/flightsearch/util/EntityNames.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.71875">
+          <caret line="69" column="47" selection-start-line="69" selection-start-column="47" selection-end-line="69" selection-end-column="47" />
           <folding />
         </state>
       </provider>

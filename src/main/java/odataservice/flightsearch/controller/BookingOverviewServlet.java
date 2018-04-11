@@ -19,6 +19,33 @@ import java.net.URI;
 import java.util.HashMap;
 import java.util.Map;
 
+import static odataservice.flightsearch.util.EntityNames.AIRPORT_FROM;
+import static odataservice.flightsearch.util.EntityNames.AIRPORT_TO;
+import static odataservice.flightsearch.util.EntityNames.ARRIVAL_TIME;
+import static odataservice.flightsearch.util.EntityNames.CARRIER_ID;
+import static odataservice.flightsearch.util.EntityNames.CARRIER_NAME;
+import static odataservice.flightsearch.util.EntityNames.CITY_FROM;
+import static odataservice.flightsearch.util.EntityNames.CITY_TO;
+import static odataservice.flightsearch.util.EntityNames.COUNTRY_FROM;
+import static odataservice.flightsearch.util.EntityNames.COUNTRY_TO;
+import static odataservice.flightsearch.util.EntityNames.CURRENCY;
+import static odataservice.flightsearch.util.EntityNames.DEPARTURE_TIME;
+import static odataservice.flightsearch.util.EntityNames.ES_SFLIGHT_NAME;
+import static odataservice.flightsearch.util.EntityNames.ET_SCARR_NAME;
+import static odataservice.flightsearch.util.EntityNames.ET_SPFLI_NAME;
+import static odataservice.flightsearch.util.EntityNames.FLIGHT_DATE;
+import static odataservice.flightsearch.util.EntityNames.FLIGHT_TIME;
+import static odataservice.flightsearch.util.EntityNames.HEADER_ACCEPT_JSON;
+import static odataservice.flightsearch.util.EntityNames.PRICE;
+import static odataservice.flightsearch.util.EntityNames.SEATS_MAX_B;
+import static odataservice.flightsearch.util.EntityNames.SEATS_MAX_E;
+import static odataservice.flightsearch.util.EntityNames.SEATS_MAX_F;
+import static odataservice.flightsearch.util.EntityNames.SEATS_OCC_B;
+import static odataservice.flightsearch.util.EntityNames.SEATS_OCC_E;
+import static odataservice.flightsearch.util.EntityNames.SEATS_OCC_F;
+import static odataservice.flightsearch.util.EntityNames.SERVICE_URI;
+import static odataservice.flightsearch.util.EntityNames.URL;
+
 /**
  *
  */
@@ -51,11 +78,12 @@ public class BookingOverviewServlet extends HttpServlet {
 
         req.getSession().setAttribute("departureFlightSearchResult", departureFlightSearchResult);
         req.getSession().setAttribute("returnFlightSearchResult", returnFlightSearchResult);
-        req.getSession().setAttribute("finalPrice", calculateFinalPrice(flightClass,
-                                                                        departureFlightSearchResult.getFlight().getAirfair(),
-                                                                        departureFlightSearchResult.getFlight().getCurrency(),
-                                                                        returnFlightSearchResult.getFlight().getAirfair(),
-                                                                        returnFlightSearchResult.getFlight().getCurrency()));
+        req.getSession().setAttribute("finalPrice",
+                                      calculateFinalPrice(flightClass,
+                                                          departureFlightSearchResult.getFlight().getAirfair(),
+                                                          departureFlightSearchResult.getFlight().getCurrency(),
+                                                          returnFlightSearchResult.getFlight().getAirfair(),
+                                                          returnFlightSearchResult.getFlight().getCurrency()));
         req.getRequestDispatcher("/bookingOverview.jsp").forward(req, resp);
     }
 
@@ -78,35 +106,29 @@ public class BookingOverviewServlet extends HttpServlet {
     }
 
     private URI createFlightSearchRequestURI(Map<String, Object> flightKeyValues) {
-        //todo URI anzeigen
-        final String serviceUri = "http://localhost:8080/flightDataManagement.svc/";
-        final String entitySetNameFlights = "Flights";
-        final String entitySetNameConnection = "Connection";
-        final String entitySetNameCarrier = "Carrier";//TODO specific
-
-        return mODataClient.newURIBuilder(serviceUri)
-                           .appendEntitySetSegment(entitySetNameFlights)
+        return mODataClient.newURIBuilder(SERVICE_URI)
+                           .appendEntitySetSegment(ES_SFLIGHT_NAME)
                            .appendKeySegment(flightKeyValues)
-                           .select("Airfare",
-                                   "FlightDate",
-                                   "LocalCurrencyOfAirline",
-                                   "MaxSeatsEconomyClass",
-                                   "OccupiedSeatsInEconomyClass",
-                                   "MaxSeatsBusinessClass",
-                                   "OccupiedSeatsBusinessClass",
-                                   "MaxSeatsFirstClass",
-                                   "OccupiedSeatsFirstClass")
-                           .expandWithSelect(entitySetNameConnection,
-                                             "DepartureCountryKey",
-                                             "DepartureCity",
-                                             "DepartureAirport",
-                                             "ArrivalCountryKey",
-                                             "ArrivalCity",
-                                             "ArrivalAirport",
-                                             "FlightTime",
-                                             "DepartureTime",
-                                             "ArrivalTime")
-                           .expandWithSelect(entitySetNameCarrier, EntityNames.CARRIER_ID, "CarrierName", "URL")
+                           .select(PRICE,
+                                   FLIGHT_DATE,
+                                   CURRENCY,
+                                   SEATS_MAX_E,
+                                   SEATS_OCC_E,
+                                   SEATS_MAX_B,
+                                   SEATS_OCC_B,
+                                   SEATS_MAX_F,
+                                   SEATS_OCC_F)
+                           .expandWithSelect(ET_SPFLI_NAME,
+                                             COUNTRY_FROM,
+                                             CITY_FROM,
+                                             AIRPORT_FROM,
+                                             COUNTRY_TO,
+                                             CITY_TO,
+                                             AIRPORT_TO,
+                                             FLIGHT_TIME,
+                                             DEPARTURE_TIME,
+                                             ARRIVAL_TIME)
+                           .expandWithSelect(ET_SCARR_NAME, CARRIER_ID, CARRIER_NAME, URL)
                            .build();
     }
 
@@ -133,8 +155,7 @@ public class BookingOverviewServlet extends HttpServlet {
 
     private ClientEntity readEntity(URI absoluteUri) {
         ODataEntityRequest<ClientEntity> request = mODataClient.getRetrieveRequestFactory().getEntityRequest(absoluteUri);
-        // odata4 sample/server limitation not handling metadata=full
-        request.setAccept("application/json;odata.metadata=minimal");
+        request.setAccept(HEADER_ACCEPT_JSON);
         ODataRetrieveResponse<ClientEntity> response = request.execute();
 
         return response.getBody();

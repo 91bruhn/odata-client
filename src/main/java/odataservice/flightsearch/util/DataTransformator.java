@@ -34,7 +34,10 @@ import static odataservice.flightsearch.util.EntityNames.CUSTOMER_ID;
 import static odataservice.flightsearch.util.EntityNames.DEPARTURE_TIME;
 import static odataservice.flightsearch.util.EntityNames.DISTANCE;
 import static odataservice.flightsearch.util.EntityNames.DISTANCE_UNIT;
+import static odataservice.flightsearch.util.EntityNames.ES_SFLIGHT_NAME;
 import static odataservice.flightsearch.util.EntityNames.ET_SBOOK_FQN;
+import static odataservice.flightsearch.util.EntityNames.ET_SCARR_NAME;
+import static odataservice.flightsearch.util.EntityNames.ET_SPFLI_NAME;
 import static odataservice.flightsearch.util.EntityNames.FLIGHT_CLASS;
 import static odataservice.flightsearch.util.EntityNames.FLIGHT_DATE;
 import static odataservice.flightsearch.util.EntityNames.FLIGHT_TIME;
@@ -80,27 +83,27 @@ public class DataTransformator {
         connectionSearchResult.setDistId((String) entityFlightSearchResult.getProperty(DISTANCE_UNIT).getValue().asPrimitive().toValue());
 
         final Carrier carrier = new Carrier();
-        final ClientComplexValue complexValueCarrier = entityFlightSearchResult.getProperty("Carrier").getComplexValue();
+        final ClientComplexValue complexValueCarrier = entityFlightSearchResult.getProperty(ET_SCARR_NAME).getComplexValue();
         carrier.setCarrId((String) complexValueCarrier.get(EntityNames.CARRIER_ID).getValue().asPrimitive().toValue());
         carrier.setCarrName((String) complexValueCarrier.get(CARRIER_NAME).getValue().asPrimitive().toValue());
         carrier.setUrl((String) complexValueCarrier.get(URL).getValue().asPrimitive().toValue());
 
         final List<Flight> flights = new ArrayList<>();
-        entityFlightSearchResult.getProperty("Flights").getCollectionValue().forEach(flightRequestEntity -> {
+        entityFlightSearchResult.getProperty(ES_SFLIGHT_NAME).getCollectionValue().forEach(flightRequestEntity -> {
             final Flight flight = new Flight();
             final ClientComplexValue complexValueFlight = flightRequestEntity.asComplex();
-            final String flightDate = (String) complexValueFlight.get("FlightDate").getValue().asPrimitive().toValue();
+            final String flightDate = (String) complexValueFlight.get(FLIGHT_DATE).getValue().asPrimitive().toValue();
 
             if (considerFlight(flightDate, dateFrom, dateTo)) {
                 flight.setFlightDate(flightDate);
-                flight.setAirfair((Double) complexValueFlight.get("Airfare").getValue().asPrimitive().toValue());
-                flight.setCurrency((String) complexValueFlight.get("LocalCurrencyOfAirline").getValue().asPrimitive().toValue());
-                flight.setSeatsMaxE((Integer) complexValueFlight.get("MaxSeatsEconomyClass").getValue().asPrimitive().toValue());
-                flight.setSeatsMaxB((Integer) complexValueFlight.get("MaxSeatsBusinessClass").getValue().asPrimitive().toValue());
-                flight.setSeatsMaxF((Integer) complexValueFlight.get("MaxSeatsFirstClass").getValue().asPrimitive().toValue());
-                flight.setSeatsOccupiedE((Integer) complexValueFlight.get("OccupiedSeatsInEconomyClass").getValue().asPrimitive().toValue());
-                flight.setSeatsOccupiedB((Integer) complexValueFlight.get("OccupiedSeatsBusinessClass").getValue().asPrimitive().toValue());
-                flight.setSeatsOccupiedF((Integer) complexValueFlight.get("OccupiedSeatsFirstClass").getValue().asPrimitive().toValue());
+                flight.setAirfair((Double) complexValueFlight.get(PRICE).getValue().asPrimitive().toValue());
+                flight.setCurrency((String) complexValueFlight.get(CURRENCY).getValue().asPrimitive().toValue());
+                flight.setSeatsMaxE((Integer) complexValueFlight.get(SEATS_MAX_E).getValue().asPrimitive().toValue());
+                flight.setSeatsMaxB((Integer) complexValueFlight.get(SEATS_MAX_B).getValue().asPrimitive().toValue());
+                flight.setSeatsMaxF((Integer) complexValueFlight.get(SEATS_MAX_F).getValue().asPrimitive().toValue());
+                flight.setSeatsOccupiedE((Integer) complexValueFlight.get(SEATS_OCC_E).getValue().asPrimitive().toValue());
+                flight.setSeatsOccupiedB((Integer) complexValueFlight.get(SEATS_OCC_B).getValue().asPrimitive().toValue());
+                flight.setSeatsOccupiedF((Integer) complexValueFlight.get(SEATS_OCC_F).getValue().asPrimitive().toValue());
 
                 flights.add(flight);
             }
@@ -116,29 +119,29 @@ public class DataTransformator {
         final FlightSearchResult flightSearchResult = new FlightSearchResult();
 
         final Flight flight = new Flight();
-        flight.setFlightDate((String) entityFlightSearchResult.getProperty("FlightDate").getValue().asPrimitive().toValue());
-        flight.setAirfair((Double) entityFlightSearchResult.getProperty("Airfare").getValue().asPrimitive().toValue());
-        flight.setCurrency((String) entityFlightSearchResult.getProperty("LocalCurrencyOfAirline").getValue().asPrimitive().toValue());
-        flight.setSeatsMaxF((Integer) entityFlightSearchResult.getProperty("MaxSeatsEconomyClass").getValue().asPrimitive().toValue());
-        flight.setSeatsOccupiedE((Integer) entityFlightSearchResult.getProperty("OccupiedSeatsInEconomyClass").getValue().asPrimitive().toValue());
-        flight.setSeatsMaxB((Integer) entityFlightSearchResult.getProperty("MaxSeatsBusinessClass").getValue().asPrimitive().toValue());
-        flight.setSeatsOccupiedB((Integer) entityFlightSearchResult.getProperty("OccupiedSeatsBusinessClass").getValue().asPrimitive().toValue());
-        flight.setSeatsMaxF((Integer) entityFlightSearchResult.getProperty("MaxSeatsFirstClass").getValue().asPrimitive().toValue());
-        flight.setSeatsOccupiedF((Integer) entityFlightSearchResult.getProperty("OccupiedSeatsFirstClass").getValue().asPrimitive().toValue());
+        flight.setFlightDate((String) entityFlightSearchResult.getProperty(FLIGHT_DATE).getValue().asPrimitive().toValue());
+        flight.setAirfair((Double) entityFlightSearchResult.getProperty(PRICE).getValue().asPrimitive().toValue());
+        flight.setCurrency((String) entityFlightSearchResult.getProperty(CURRENCY).getValue().asPrimitive().toValue());
+        flight.setSeatsMaxF((Integer) entityFlightSearchResult.getProperty(SEATS_MAX_E).getValue().asPrimitive().toValue());
+        flight.setSeatsOccupiedE((Integer) entityFlightSearchResult.getProperty(SEATS_OCC_E).getValue().asPrimitive().toValue());
+        flight.setSeatsMaxB((Integer) entityFlightSearchResult.getProperty(SEATS_MAX_B).getValue().asPrimitive().toValue());
+        flight.setSeatsOccupiedB((Integer) entityFlightSearchResult.getProperty(SEATS_OCC_B).getValue().asPrimitive().toValue());
+        flight.setSeatsMaxF((Integer) entityFlightSearchResult.getProperty(SEATS_MAX_F).getValue().asPrimitive().toValue());
+        flight.setSeatsOccupiedF((Integer) entityFlightSearchResult.getProperty(SEATS_OCC_F).getValue().asPrimitive().toValue());
 
-        final ClientComplexValue complexValueConnection = entityFlightSearchResult.getProperty("Connection").getComplexValue();
+        final ClientComplexValue complexValueConnection = entityFlightSearchResult.getProperty(ET_SPFLI_NAME).getComplexValue();
         final Connection connection = new Connection();
-        connection.setCountryFrom((String) complexValueConnection.get("DepartureCountryKey").getValue().asPrimitive().toValue());
-        connection.setCityFrom((String) complexValueConnection.get("DepartureCity").getValue().asPrimitive().toValue());
-        connection.setAirpFrom((String) complexValueConnection.get("DepartureAirport").getValue().asPrimitive().toValue());
-        connection.setCountryTo((String) complexValueConnection.get("ArrivalCountryKey").getValue().asPrimitive().toValue());
-        connection.setCityTo((String) complexValueConnection.get("ArrivalCity").getValue().asPrimitive().toValue());
-        connection.setAirpTo((String) complexValueConnection.get("ArrivalAirport").getValue().asPrimitive().toValue());
-        connection.setFlTime((Integer) complexValueConnection.get("FlightTime").getValue().asPrimitive().toValue());
-        connection.setDepTime((String) complexValueConnection.get("DepartureTime").getValue().asPrimitive().toValue());
-        connection.setArrTime((String) complexValueConnection.get("ArrivalTime").getValue().asPrimitive().toValue());
+        connection.setCountryFrom((String) complexValueConnection.get(COUNTRY_FROM).getValue().asPrimitive().toValue());
+        connection.setCityFrom((String) complexValueConnection.get(AIRPORT_FROM).getValue().asPrimitive().toValue());
+        connection.setAirpFrom((String) complexValueConnection.get(AIRPORT_FROM).getValue().asPrimitive().toValue());
+        connection.setCountryTo((String) complexValueConnection.get(COUNTRY_TO).getValue().asPrimitive().toValue());
+        connection.setCityTo((String) complexValueConnection.get(CITY_TO).getValue().asPrimitive().toValue());
+        connection.setAirpTo((String) complexValueConnection.get(AIRPORT_TO).getValue().asPrimitive().toValue());
+        connection.setFlTime((Integer) complexValueConnection.get(FLIGHT_TIME).getValue().asPrimitive().toValue());
+        connection.setDepTime((String) complexValueConnection.get(DEPARTURE_TIME).getValue().asPrimitive().toValue());
+        connection.setArrTime((String) complexValueConnection.get(ARRIVAL_TIME).getValue().asPrimitive().toValue());
 
-        final ClientComplexValue complexValueCarrier = entityFlightSearchResult.getProperty("Carrier").getComplexValue();
+        final ClientComplexValue complexValueCarrier = entityFlightSearchResult.getProperty(ET_SCARR_NAME).getComplexValue();
         final Carrier carrier = new Carrier();
         carrier.setCarrId((String) complexValueCarrier.get(EntityNames.CARRIER_ID).getValue().asPrimitive().toValue());
         carrier.setCarrName((String) complexValueCarrier.get(CARRIER_NAME).getValue().asPrimitive().toValue());
@@ -155,33 +158,33 @@ public class DataTransformator {
         final BookingSearchResult bookingSearchResult = new BookingSearchResult();
 
         final Booking booking = new Booking();
-        booking.setBookId((String) entityBookingSearchResult.getProperty("BookingId").getValue().asPrimitive().toValue());
-        booking.setFlightId((String) entityBookingSearchResult.getProperty("FlightDate").getValue().asPrimitive().toValue());
-        booking.setCustomId((String) entityBookingSearchResult.getProperty("CustomerId").getValue().asPrimitive().toValue());
-        booking.setCustType((String) entityBookingSearchResult.getProperty("Sex").getValue().asPrimitive().toValue());
-        booking.setSmoker((Boolean) entityBookingSearchResult.getProperty("IsSmoker").getValue().asPrimitive().toValue());
-        booking.setLuggWeight((Double) entityBookingSearchResult.getProperty("LuggageWeight").getValue().asPrimitive().toValue());
-        booking.setWUnit((String) entityBookingSearchResult.getProperty("WeightUnit").getValue().asPrimitive().toValue());
-        booking.setInvoice((Boolean) entityBookingSearchResult.getProperty("InvoiceAvailable").getValue().asPrimitive().toValue());
-        booking.setFlightClass((String) entityBookingSearchResult.getProperty("FlightClass").getValue().asPrimitive().toValue());
-        booking.setOrderDate((String) entityBookingSearchResult.getProperty("OrderDate").getValue().asPrimitive().toValue());
-        booking.setCancelled((Boolean) entityBookingSearchResult.getProperty("IsCancelled").getValue().asPrimitive().toValue());
-        booking.setReserved((Boolean) entityBookingSearchResult.getProperty("IsReserved").getValue().asPrimitive().toValue());
+        booking.setBookId((String) entityBookingSearchResult.getProperty(BOOKING_ID).getValue().asPrimitive().toValue());
+        booking.setFlightId((String) entityBookingSearchResult.getProperty(FLIGHT_DATE).getValue().asPrimitive().toValue());
+        booking.setCustomId((String) entityBookingSearchResult.getProperty(CUSTOMER_ID).getValue().asPrimitive().toValue());
+        booking.setCustType((String) entityBookingSearchResult.getProperty(SEX).getValue().asPrimitive().toValue());
+        booking.setSmoker((Boolean) entityBookingSearchResult.getProperty(IS_SMOKER).getValue().asPrimitive().toValue());
+        booking.setLuggWeight((Double) entityBookingSearchResult.getProperty(LUGGAGE_WEIGHT).getValue().asPrimitive().toValue());
+        booking.setWUnit((String) entityBookingSearchResult.getProperty(WEIGHT_UNIT).getValue().asPrimitive().toValue());
+        booking.setInvoice((Boolean) entityBookingSearchResult.getProperty(HAS_INVOICE).getValue().asPrimitive().toValue());
+        booking.setFlightClass((String) entityBookingSearchResult.getProperty(FLIGHT_CLASS).getValue().asPrimitive().toValue());
+        booking.setOrderDate((String) entityBookingSearchResult.getProperty(ORDER_DATE).getValue().asPrimitive().toValue());
+        booking.setCancelled((Boolean) entityBookingSearchResult.getProperty(IS_CANCELLED).getValue().asPrimitive().toValue());
+        booking.setReserved((Boolean) entityBookingSearchResult.getProperty(IS_RESERVED).getValue().asPrimitive().toValue());
 
-        final ClientComplexValue complexValueConnection = entityBookingSearchResult.getProperty("Connection").getComplexValue();
+        final ClientComplexValue complexValueConnection = entityBookingSearchResult.getProperty(ET_SPFLI_NAME).getComplexValue();
         final Connection connection = new Connection();
         connection.setConnId((String) complexValueConnection.get(CONNECTION_ID).getValue().asPrimitive().toValue());
-        connection.setCountryFrom((String) complexValueConnection.get("DepartureCountryKey").getValue().asPrimitive().toValue());
-        connection.setCityFrom((String) complexValueConnection.get("DepartureCity").getValue().asPrimitive().toValue());
-        connection.setAirpFrom((String) complexValueConnection.get("DepartureAirport").getValue().asPrimitive().toValue());
-        connection.setCountryTo((String) complexValueConnection.get("ArrivalCountryKey").getValue().asPrimitive().toValue());
-        connection.setCityTo((String) complexValueConnection.get("ArrivalCity").getValue().asPrimitive().toValue());
-        connection.setAirpTo((String) complexValueConnection.get("ArrivalAirport").getValue().asPrimitive().toValue());
-        connection.setFlTime((Integer) complexValueConnection.get("FlightTime").getValue().asPrimitive().toValue());
-        connection.setDepTime((String) complexValueConnection.get("DepartureTime").getValue().asPrimitive().toValue());
-        connection.setArrTime((String) complexValueConnection.get("ArrivalTime").getValue().asPrimitive().toValue());
+        connection.setCountryFrom((String) complexValueConnection.get(COUNTRY_FROM).getValue().asPrimitive().toValue());
+        connection.setCityFrom((String) complexValueConnection.get(AIRPORT_FROM).getValue().asPrimitive().toValue());
+        connection.setAirpFrom((String) complexValueConnection.get(AIRPORT_FROM).getValue().asPrimitive().toValue());
+        connection.setCountryTo((String) complexValueConnection.get(COUNTRY_TO).getValue().asPrimitive().toValue());
+        connection.setCityTo((String) complexValueConnection.get(CITY_TO).getValue().asPrimitive().toValue());
+        connection.setAirpTo((String) complexValueConnection.get(AIRPORT_TO).getValue().asPrimitive().toValue());
+        connection.setFlTime((Integer) complexValueConnection.get(FLIGHT_TIME).getValue().asPrimitive().toValue());
+        connection.setDepTime((String) complexValueConnection.get(DEPARTURE_TIME).getValue().asPrimitive().toValue());
+        connection.setArrTime((String) complexValueConnection.get(ARRIVAL_TIME).getValue().asPrimitive().toValue());
 
-        final ClientComplexValue complexValueCarrier = entityBookingSearchResult.getProperty("Carrier").getComplexValue();
+        final ClientComplexValue complexValueCarrier = entityBookingSearchResult.getProperty(ET_SCARR_NAME).getComplexValue();
         final Carrier carrier = new Carrier();
         carrier.setCarrId((String) complexValueCarrier.get(CARRIER_ID).getValue().asPrimitive().toValue());
         carrier.setCarrName((String) complexValueCarrier.get(CARRIER_NAME).getValue().asPrimitive().toValue());
@@ -284,7 +287,7 @@ public class DataTransformator {
     }
 
     public static String getBookingIdFromClientEntity(ClientEntity clientEntityBooking) {
-        return (String) clientEntityBooking.getProperty("BookingId").getValue().asPrimitive().toValue();
+        return (String) clientEntityBooking.getProperty(BOOKING_ID).getValue().asPrimitive().toValue();
     }
 
     public String transformRequestCityName(String cityName) {
@@ -375,39 +378,39 @@ public class DataTransformator {
                                                      .newPrimitiveProperty(FLIGHT_DATE,
                                                                            oDataClient.getObjectFactory().newPrimitiveValueBuilder().buildString(FlightDate)));
         entityBooking.getProperties().add(oDataClient.getObjectFactory()
-                                                     .newPrimitiveProperty("Sex",
+                                                     .newPrimitiveProperty(SEX,
                                                                            oDataClient.getObjectFactory()
                                                                                       .newPrimitiveValueBuilder()
                                                                                       .buildString(transformSex(sex))));
         entityBooking.getProperties().add(oDataClient.getObjectFactory()
-                                                     .newPrimitiveProperty("IsSmoker",
+                                                     .newPrimitiveProperty(IS_SMOKER,
                                                                            oDataClient.getObjectFactory()
                                                                                       .newPrimitiveValueBuilder()
                                                                                       .buildBoolean(transformIsSmoker(isSmoker))));
         entityBooking.getProperties().add(oDataClient.getObjectFactory()
-                                                     .newPrimitiveProperty("LuggageWeight",
+                                                     .newPrimitiveProperty(LUGGAGE_WEIGHT,
                                                                            oDataClient.getObjectFactory().newPrimitiveValueBuilder().buildDouble(luggWeight)));
         entityBooking.getProperties().add(oDataClient.getObjectFactory()
-                                                     .newPrimitiveProperty("WeightUnit",
+                                                     .newPrimitiveProperty(WEIGHT_UNIT,
                                                                            oDataClient.getObjectFactory().newPrimitiveValueBuilder().buildString("KG")));
         entityBooking.getProperties().add(oDataClient.getObjectFactory()
-                                                     .newPrimitiveProperty("InvoiceAvailable",
+                                                     .newPrimitiveProperty(HAS_INVOICE,
                                                                            oDataClient.getObjectFactory().newPrimitiveValueBuilder().buildBoolean(true)));
         entityBooking.getProperties().add(oDataClient.getObjectFactory()
-                                                     .newPrimitiveProperty("FlightClass",
+                                                     .newPrimitiveProperty(FLIGHT_CLASS,
                                                                            oDataClient.getObjectFactory()
                                                                                       .newPrimitiveValueBuilder()
                                                                                       .buildString(DataTransformator.transformFlightClass(flightClass))));
         entityBooking.getProperties().add(oDataClient.getObjectFactory()
-                                                     .newPrimitiveProperty("OrderDate",
+                                                     .newPrimitiveProperty(ORDER_DATE,
                                                                            oDataClient.getObjectFactory()
                                                                                       .newPrimitiveValueBuilder()
                                                                                       .buildString(getDateOfToday())));
         entityBooking.getProperties().add(oDataClient.getObjectFactory()
-                                                     .newPrimitiveProperty("IsCancelled",
+                                                     .newPrimitiveProperty(IS_CANCELLED,
                                                                            oDataClient.getObjectFactory().newPrimitiveValueBuilder().buildBoolean(false)));
         entityBooking.getProperties().add(oDataClient.getObjectFactory()
-                                                     .newPrimitiveProperty("IsReserved",
+                                                     .newPrimitiveProperty(IS_RESERVED,
                                                                            oDataClient.getObjectFactory().newPrimitiveValueBuilder().buildBoolean(true)));
 
         return entityBooking;

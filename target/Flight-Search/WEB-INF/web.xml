@@ -7,7 +7,7 @@
 
     <servlet>
         <servlet-name>Servlet-flight-search</servlet-name>
-        <servlet-class>mynamespace.web.controller.Servlet</servlet-class>
+        <servlet-class>odataservice.flightsearch.controller.Servlet</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
 

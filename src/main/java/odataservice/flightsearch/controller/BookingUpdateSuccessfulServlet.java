@@ -3,6 +3,7 @@ package odataservice.flightsearch.controller;
 import odataservice.flightsearch.model.Booking;
 import odataservice.flightsearch.model.BookingSearchResult;
 import odataservice.flightsearch.util.DataTransformator;
+import odataservice.flightsearch.util.EntityNames;
 import org.apache.olingo.client.api.ODataClient;
 import org.apache.olingo.client.api.communication.request.cud.ODataEntityUpdateRequest;
 import org.apache.olingo.client.api.communication.request.cud.UpdateType;
@@ -62,16 +63,12 @@ public class BookingUpdateSuccessfulServlet extends HttpServlet {
     }
 
     private URI createCreateBookingURI(String bookingId) {
-        final String serviceUri = "http://localhost:8080/flightDataManagement.svc/";
-        final String entitySetNameBookings = "Bookings";
-
-        return mODataClient.newURIBuilder(serviceUri).appendEntitySetSegment(entitySetNameBookings).appendKeySegment(bookingId).build();
+        return mODataClient.newURIBuilder(EntityNames.SERVICE_URI).appendEntitySetSegment(EntityNames.ES_SBOOK_NAME).appendKeySegment(bookingId).build();
     }
 
     private int updateEntity(URI absoluteUri, ClientEntity ce) {
         final ODataEntityUpdateRequest<ClientEntity> request = mODataClient.getCUDRequestFactory().getEntityUpdateRequest(absoluteUri, UpdateType.PATCH, ce);
-        // odata4 sample/server limitation not handling metadata=full
-        request.setAccept("application/json;odata.metadata=minimal");
+        request.setAccept(EntityNames.HEADER_ACCEPT_JSON);
         final ODataEntityUpdateResponse<ClientEntity> response = request.execute();
 
         return response.getStatusCode();

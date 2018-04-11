@@ -12,6 +12,14 @@ public class EntityNames {
     // ------------------------------------------------------------------------
 
     // ========================================================================
+    //                           ODATA-SERVER-FLIGHT-DATA-MANAGEMENT
+    // ========================================================================
+
+    public static final String SERVICE_URI = "http://localhost:8080/flightDataManagement.svc/";
+
+    public static final String HEADER_ACCEPT_JSON = "application/json;odata.metadata=minimal";
+
+    // ========================================================================
     //                           SERVICE NAMESPACE
     // ========================================================================
 
@@ -21,14 +29,20 @@ public class EntityNames {
     //                          ENTITY TYPES NAMES
     // ========================================================================
 
-//    public static final String ET_SCARR_NAME = "Carrier";
-//    public static final FullQualifiedName ET_SCARR_FQN = new FullQualifiedName(NAMESPACE, ET_SCARR_NAME);
-//
-//    public static final String ET_SPFLI_NAME = "Connection";
-//    public static final FullQualifiedName ET_SPFLI_FQN = new FullQualifiedName(NAMESPACE, ET_SPFLI_NAME);
-//
+    public static final String ET_SCARR_NAME = "Carrier";
+    //
+    public static final String ET_SPFLI_NAME = "Connection";
+    //
     public static final String ET_SBOOK_NAME = "Booking";
     public static final FullQualifiedName ET_SBOOK_FQN = new FullQualifiedName(NAMESPACE, ET_SBOOK_NAME);
+
+    // ========================================================================
+    //                          ENTITY SET NAMES
+    // ========================================================================
+
+    public static final String ES_SPFLI_NAME = "Connections";
+    public static final String ES_SFLIGHT_NAME = "Flights";
+    public static final String ES_SBOOK_NAME = "Bookings";
 
     // ========================================================================
     //                        KEY PARAMETERS OF ENTITIES
@@ -87,23 +101,5 @@ public class EntityNames {
     public static final String ORDER_DATE = "OrderDate";
     public static final String IS_CANCELLED = "IsCancelled";
     public static final String IS_RESERVED = "IsReserved";
-
-    // ========================================================================
-    //                        PLANE ENTITY ATTRIBUTES
-    // ========================================================================
-
-    public static final String SEATS_MAX = "MaxSeats";
-    public static final String CONSUMPTION = "Consumption";
-    public static final String CONSUM_UNIT = "MassUnitOfConsumption";
-    public static final String TANK_CAPACITY = "TankCapacity";
-    public static final String TANK_CAP_UNIT = "UnitOfTankCapacity";
-    public static final String WEIGHT = "Weight";
-    public static final String SPAN = "WingSpan";
-    public static final String SPAN_UNIT = "UnitOfSpan";
-    public static final String LENGTH = "Length";
-    public static final String LENGTH_UNIT = "UnitOfLength";
-    public static final String SPEED = "Speed";
-    public static final String SPEED_UNIT = "UnitOfSpeed";
-    public static final String PRODUCER = " Producer";
 
 }

@@ -1,6 +1,7 @@
 package odataservice.flightsearch.controller;
 
 import odataservice.flightsearch.util.DataTransformator;
+import odataservice.flightsearch.util.EntityNames;
 import org.apache.olingo.client.api.ODataClient;
 import org.apache.olingo.client.api.communication.request.cud.ODataEntityCreateRequest;
 import org.apache.olingo.client.api.communication.response.ODataEntityCreateResponse;
@@ -14,6 +15,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.net.URI;
+
+import static odataservice.flightsearch.util.EntityNames.*;
 
 /**
  *
@@ -72,16 +75,12 @@ public class BookingSuccessfulServlet extends HttpServlet {
 
     private URI createCreateBookingURI() {
         //http://localhost:8080/flightDataManagement.svc/Flights(CarrierCode='AA',FlightConnectionNumber='17',FlightDate='01.10.2017')?$expand=Connection,Carrier
-        final String serviceUri = "http://localhost:8080/flightDataManagement.svc/";
-        final String entitySetNameBookings = "Bookings";
-
-        return mODataClient.newURIBuilder(serviceUri).appendEntitySetSegment(entitySetNameBookings).build();
+        return mODataClient.newURIBuilder(SERVICE_URI).appendEntitySetSegment(ES_SBOOK_NAME).build();
     }
 
     private ClientEntity createEntity(URI absoluteUri, ClientEntity ce) {
         final ODataEntityCreateRequest<ClientEntity> request = mODataClient.getCUDRequestFactory().getEntityCreateRequest(absoluteUri, ce);
-        // odata4 sample/server limitation not handling metadata=full
-        request.setAccept("application/json;odata.metadata=minimal");
+        request.setAccept(HEADER_ACCEPT_JSON);
         final ODataEntityCreateResponse<ClientEntity> response = request.execute();
 
         return response.getBody();

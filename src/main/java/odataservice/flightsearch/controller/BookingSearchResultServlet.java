@@ -18,6 +18,12 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.net.URI;
 
+import static odataservice.flightsearch.util.EntityNames.ES_SBOOK_NAME;
+import static odataservice.flightsearch.util.EntityNames.ET_SCARR_NAME;
+import static odataservice.flightsearch.util.EntityNames.ET_SPFLI_NAME;
+import static odataservice.flightsearch.util.EntityNames.HEADER_ACCEPT_JSON;
+import static odataservice.flightsearch.util.EntityNames.SERVICE_URI;
+
 /**
  *
  */
@@ -53,20 +59,13 @@ public class BookingSearchResultServlet extends HttpServlet {
     }
 
     private URI createFlightSearchRequestURI(String bookingKeyValue) {
-        final String serviceUri = "http://localhost:8080/flightDataManagement.svc/";
-        final String entitySetNameBookings = "Bookings";
-        final String entitySetNameConnection = "Connection";
-        final String entitySetNameCarrier = "Carrier";//TODO specific
-
-        return mODataClient.newURIBuilder(serviceUri).appendEntitySetSegment(entitySetNameBookings).appendKeySegment(bookingKeyValue).expand(
-            entitySetNameConnection,
-            entitySetNameCarrier).build();
+        return mODataClient.newURIBuilder(SERVICE_URI).appendEntitySetSegment(ES_SBOOK_NAME).appendKeySegment(bookingKeyValue).expand(ET_SPFLI_NAME,
+                                                                                                                                      ET_SCARR_NAME).build();
     }
 
     private ClientEntity readEntity(URI absoluteUri) {
         ODataEntityRequest<ClientEntity> request = mODataClient.getRetrieveRequestFactory().getEntityRequest(absoluteUri);
-        // odata4 sample/server limitation not handling metadata=full
-        request.setAccept("application/json;odata.metadata=minimal");
+        request.setAccept(HEADER_ACCEPT_JSON);
         ODataRetrieveResponse<ClientEntity> response = request.execute();
 
         return response.getBody();
