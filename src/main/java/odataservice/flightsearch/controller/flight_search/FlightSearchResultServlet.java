@@ -1,4 +1,4 @@
-package odataservice.flightsearch.controller;
+package odataservice.flightsearch.controller.flight_search;
 
 import odataservice.flightsearch.model.ConnectionSearchResult;
 import odataservice.flightsearch.util.DataTransformator;

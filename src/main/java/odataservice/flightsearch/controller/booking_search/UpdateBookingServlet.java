@@ -1,4 +1,4 @@
-package odataservice.flightsearch.controller;
+package odataservice.flightsearch.controller.booking_search;
 
 import odataservice.flightsearch.model.BookingSearchResult;
 

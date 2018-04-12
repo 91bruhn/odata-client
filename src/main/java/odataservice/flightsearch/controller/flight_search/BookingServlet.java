@@ -1,4 +1,4 @@
-package odataservice.flightsearch.controller;
+package odataservice.flightsearch.controller.flight_search;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
