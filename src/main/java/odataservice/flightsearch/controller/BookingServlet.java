@@ -15,20 +15,13 @@ public class BookingServlet extends HttpServlet {
 
     @Override
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        final String flightDate = req.getParameter("flightDate");
-        final String connectionId = req.getParameter("connId");
-        final String carrierCode = req.getParameter("carrierCode");
+        req.setAttribute("flightDate", req.getParameter("flightDate"));
+        req.setAttribute("connectionId", req.getParameter("connId"));
+        req.setAttribute("carrierCode", req.getParameter("carrierCode"));
         //request parameters - from chosen return flight
-        final String chosenReturnFlightDate = req.getParameter("flightDate");
-        final String chosenReturnConnId = req.getParameter("connId");
-        final String chosenReturnCarrId = req.getParameter("carrId");
-
-        req.setAttribute("flightDate", flightDate);
-        req.setAttribute("connectionId", connectionId);
-        req.setAttribute("carrierCode", carrierCode);
-        req.getSession().setAttribute("chosenReturnFlightDate", chosenReturnFlightDate);
-        req.getSession().setAttribute("chosenReturnConnId", chosenReturnConnId);
-        req.getSession().setAttribute("chosenReturnCarrId", chosenReturnCarrId);
+        req.getSession().setAttribute("chosenReturnFlightDate", req.getParameter("flightDate"));
+        req.getSession().setAttribute("chosenReturnConnId", req.getParameter("connId"));
+        req.getSession().setAttribute("chosenReturnCarrId", req.getParameter("carrId"));
 
         req.getRequestDispatcher("/booking.jsp").forward(req, resp);
     }

@@ -48,7 +48,7 @@ public class BookingUpdateSuccessfulServlet extends HttpServlet {
                                                                                        carrId,
                                                                                        connId,
                                                                                        flightDate);
-        final int httpStatusCodeOfUpdate = this.updateEntity(this.createCreateBookingURI(bookingId), requestEntityBooking);//TODO so richtog???????
+        final int httpStatusCodeOfUpdate = this.updateEntity(this.createCreateBookingURI(bookingId), requestEntityBooking);
         //there is no payload returned for an update operation, the http status code 204 suggests the update was successful
         if (httpStatusCodeOfUpdate == 204) {
             final Booking updateBooking = bookingSearchResult.getBooking();

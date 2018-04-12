@@ -63,10 +63,10 @@ public class BookingOverviewServlet extends HttpServlet {
         final String luggWeight = req.getParameter("inputLuggWeight");
         final String isSmoker = req.getParameter("isSmoker");
 
-        ClientEntity clientEntity = readEntity(createFlightSearchRequestURI(createFlightKeyValuesForDepartureFlight(req)));
+        ClientEntity clientEntity = this.readEntity(this.createFlightSearchRequestURI(this.createFlightKeyValuesForDepartureFlight(req)));
         final FlightSearchResult departureFlightSearchResult = DataTransformator.transformFlightSearchResultRequestToFlightSearchResult(clientEntity);
 
-        clientEntity = readEntity(createFlightSearchRequestURI(createFlightKeyValuesForReturnFlight(req)));
+        clientEntity = this.readEntity(this.createFlightSearchRequestURI(this.createFlightKeyValuesForReturnFlight(req)));
         final FlightSearchResult returnFlightSearchResult = DataTransformator.transformFlightSearchResultRequestToFlightSearchResult(clientEntity);
 
         req.getSession().setAttribute("firstName", firstName);
@@ -79,7 +79,7 @@ public class BookingOverviewServlet extends HttpServlet {
         req.getSession().setAttribute("departureFlightSearchResult", departureFlightSearchResult);
         req.getSession().setAttribute("returnFlightSearchResult", returnFlightSearchResult);
         req.getSession().setAttribute("finalPrice",
-                                      calculateFinalPrice(flightClass,
+                                      this.calculateFinalPrice(flightClass,
                                                           departureFlightSearchResult.getFlight().getAirfair(),
                                                           departureFlightSearchResult.getFlight().getCurrency(),
                                                           returnFlightSearchResult.getFlight().getAirfair(),
@@ -132,13 +132,21 @@ public class BookingOverviewServlet extends HttpServlet {
                            .build();
     }
 
+    private ClientEntity readEntity(URI absoluteUri) {
+        final ODataEntityRequest<ClientEntity> request = mODataClient.getRetrieveRequestFactory().getEntityRequest(absoluteUri);
+        request.setAccept(HEADER_ACCEPT_JSON);
+        ODataRetrieveResponse<ClientEntity> response = request.execute();
+
+        return response.getBody();
+    }
+
     private double calculateFinalPrice(String flightClass, double airfareDepartureFlight, String currencyDepartureFlight, double airfareReturnFlight,
                                        String currencyReturnFlight) {
         final DataTransformator dataTransformator = new DataTransformator();
         final double depFlightPriceInEuros = dataTransformator.calculateFlightPriceInEuros(airfareDepartureFlight, currencyDepartureFlight);
         final double retFlightPriceInEuros = dataTransformator.calculateFlightPriceInEuros(airfareReturnFlight, currencyReturnFlight);
 
-        return adjustFlightPrice(flightClass, depFlightPriceInEuros) + adjustFlightPrice(flightClass, retFlightPriceInEuros);
+        return this.adjustFlightPrice(flightClass, depFlightPriceInEuros) + this.adjustFlightPrice(flightClass, retFlightPriceInEuros);
     }
 
     private double adjustFlightPrice(String flightClass, double airfare) {
@@ -151,14 +159,6 @@ public class BookingOverviewServlet extends HttpServlet {
                 //Economy Class - Standard
                 return airfare;
         }
-    }
-
-    private ClientEntity readEntity(URI absoluteUri) {
-        ODataEntityRequest<ClientEntity> request = mODataClient.getRetrieveRequestFactory().getEntityRequest(absoluteUri);
-        request.setAccept(HEADER_ACCEPT_JSON);
-        ODataRetrieveResponse<ClientEntity> response = request.execute();
-
-        return response.getBody();
     }
 
 }

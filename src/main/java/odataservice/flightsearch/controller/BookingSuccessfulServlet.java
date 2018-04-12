@@ -53,7 +53,7 @@ public class BookingSuccessfulServlet extends HttpServlet {
                                                                                          depCarrId,
                                                                                          depConnId,
                                                                                          depflightDate);
-        responseEntityBooking = createEntity(this.createCreateBookingURI(), departureBookingEntity);
+        responseEntityBooking = this.createEntity(this.createCreateBookingURI(), departureBookingEntity);
         responseBookingId = DataTransformator.getBookingIdFromClientEntity(responseEntityBooking);
         req.setAttribute("departureFlightBookingId", responseBookingId);
 
@@ -66,7 +66,7 @@ public class BookingSuccessfulServlet extends HttpServlet {
                                                                                       retCarrId,
                                                                                       retConnId,
                                                                                       retflightDate);
-        responseEntityBooking = createEntity(this.createCreateBookingURI(), returnBookingEntity);
+        responseEntityBooking = this.createEntity(this.createCreateBookingURI(), returnBookingEntity);
         responseBookingId = DataTransformator.getBookingIdFromClientEntity(responseEntityBooking);
         req.setAttribute("returnFlightBookingId", responseBookingId);
 
@@ -74,7 +74,6 @@ public class BookingSuccessfulServlet extends HttpServlet {
     }
 
     private URI createCreateBookingURI() {
-        //http://localhost:8080/flightDataManagement.svc/Flights(CarrierCode='AA',FlightConnectionNumber='17',FlightDate='01.10.2017')?$expand=Connection,Carrier
         return mODataClient.newURIBuilder(SERVICE_URI).appendEntitySetSegment(ES_SBOOK_NAME).build();
     }
 

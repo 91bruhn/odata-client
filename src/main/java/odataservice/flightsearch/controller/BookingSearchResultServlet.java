@@ -64,7 +64,7 @@ public class BookingSearchResultServlet extends HttpServlet {
     }
 
     private ClientEntity readEntity(URI absoluteUri) {
-        ODataEntityRequest<ClientEntity> request = mODataClient.getRetrieveRequestFactory().getEntityRequest(absoluteUri);
+        final ODataEntityRequest<ClientEntity> request = mODataClient.getRetrieveRequestFactory().getEntityRequest(absoluteUri);
         request.setAccept(HEADER_ACCEPT_JSON);
         ODataRetrieveResponse<ClientEntity> response = request.execute();
 

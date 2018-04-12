@@ -55,19 +55,33 @@ public class ReturnFlightSearchResult extends HttpServlet {
         //input values from flight search mask
         final String departureFlightDate = (String) req.getSession().getAttribute("inputDepartureFlightDate");
         final String returnFlightDate = (String) req.getSession().getAttribute("inputReturnFlightDate");
-
         //request parameters - from chosen departure flight
         final String chosenDepartureFlightDate = req.getParameter("flightDate");
         final String chosenDepartureConnId = req.getParameter("connId");
         final String chosenDepartureCarrId = req.getParameter("carrId");
 
-        //1 -- http://localhost:8080/flightDataManagement.svc/Connections?$filter=DepartureCity eq 'NEWYORK' and ArrivalCity eq 'SANFRANCISCO'
-        //2 -- &$expand=Flights($select=FlightDate,MaxSeatsEconomyClass,OccupiedSeatsInEconomyClass,MaxSeatsBusinessClass,OccupiedSeatsBusinessClass,MaxSeatsFirstClass,OccupiedSeatsFirstClass),
-        //3 Carrier($select=CarrierName,URL)
-        //TODO use for Flights, Connection vllt Constants
-        //TODO naming, extra methode?
-        //TODO umgedreht
-        final URI absoluteUri = mODataClient.newURIBuilder(SERVICE_URI).appendEntitySetSegment(ES_SPFLI_NAME).filter(
+        final ClientEntitySetIterator<ClientEntitySet, ClientEntity> iterator = this.readEntities(this.createFlightSearchRequestURI(airportOfDeparture,
+                                                                                                                                    airportOfArrival));
+        final List<ConnectionSearchResult> returnConnectionSearchResults = new ArrayList<>();
+        while (iterator.hasNext()) {
+            returnConnectionSearchResults.add(DataTransformator.transformConnectionSearchResultRequestToConnectionSearchResult(iterator.next(),
+                                                                                                                               departureFlightDate,
+                                                                                                                               returnFlightDate));
+        }
+
+        req.setAttribute("returnConnectionSearchResults", returnConnectionSearchResults);
+        //override old values - meaning vice versa is true
+        req.getSession().setAttribute("chosenDepartureFlightDate", chosenDepartureFlightDate);
+        req.getSession().setAttribute("chosenDepartureConnId", chosenDepartureConnId);
+        req.getSession().setAttribute("chosenDepartureCarrId", chosenDepartureCarrId);
+        req.getSession().setAttribute("inputAirportOfDeparture", airportOfDeparture);
+        req.getSession().setAttribute("inputAirportOfArrival", airportOfArrival);
+        req.getRequestDispatcher("/returnFlightSearchResults.jsp").forward(req, resp);
+
+    }
+
+    private URI createFlightSearchRequestURI(String airportOfDeparture, String airportOfArrival) {
+        return mODataClient.newURIBuilder(SERVICE_URI).appendEntitySetSegment(ES_SPFLI_NAME).filter(
             CITY_FROM + " eq '" + airportOfDeparture + "' and " + CITY_TO + " eq '" + airportOfArrival + "'").expandWithSelect(ES_SFLIGHT_NAME,
                                                                                                                                FLIGHT_DATE,
                                                                                                                                PRICE,
@@ -82,25 +96,6 @@ public class ReturnFlightSearchResult extends HttpServlet {
             CARRIER_ID,
             CARRIER_NAME,
             URL).build();
-        final ClientEntitySetIterator<ClientEntitySet, ClientEntity> iterator = readEntities(absoluteUri);
-        final List<ConnectionSearchResult> returnConnectionSearchResults = new ArrayList<>();
-
-        while (iterator.hasNext()) {
-            returnConnectionSearchResults.add(DataTransformator.transformConnectionSearchResultRequestToConnectionSearchResult(iterator.next(),
-                                                                                                                               departureFlightDate,
-                                                                                                                               returnFlightDate));
-        }
-        //        req.getSession().setAttribute("returnConnectionSearchResults", returnConnectionSearchResults);
-        //        req.getSession().setAttribute("inputReturnFlightDate", inputReturnFlightDate);
-        req.setAttribute("returnConnectionSearchResults", returnConnectionSearchResults);
-        //override old values - meaning vice versa is true
-        req.getSession().setAttribute("chosenDepartureFlightDate", chosenDepartureFlightDate);
-        req.getSession().setAttribute("chosenDepartureConnId", chosenDepartureConnId);
-        req.getSession().setAttribute("chosenDepartureCarrId", chosenDepartureCarrId);
-        req.getSession().setAttribute("inputAirportOfDeparture", airportOfDeparture);
-        req.getSession().setAttribute("inputAirportOfArrival", airportOfArrival);
-        req.getRequestDispatcher("/returnFlightSearchResults.jsp").forward(req, resp);
-
     }
 
     private ClientEntitySetIterator<ClientEntitySet, ClientEntity> readEntities(URI absoluteUri) {
